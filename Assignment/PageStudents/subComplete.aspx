@@ -1,0 +1,26 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="subComplete.aspx.cs" Inherits="Assignment.subComplete" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+       <style type="text/css">
+
+        .label{
+            
+            margin-left:auto;
+            margin-right:auto;
+            text-align:center;
+            width:50%;
+        }
+    </style>
+    <form id="form1" runat="server">
+         <div>
+            <asp:Label CssClass="label" ID="Label1" runat="server" Text="Congradulation , you just DO IT"></asp:Label>
+         </div>
+    </form>
+</body>
+</html>
