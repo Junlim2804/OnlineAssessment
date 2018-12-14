@@ -1,11 +1,12 @@
 * linguist-vendored
+*.rb linguist-language=C#
 *.js linguist-vendored=false
 
 ###############################################################################
 # Set default behavior to automatically normalize line endings.
 ###############################################################################
 * text=auto
-*.rb linguist-language=C#
+
 
 ###############################################################################
 # Set default behavior for command prompt diff.
