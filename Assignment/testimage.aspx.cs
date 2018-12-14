@@ -22,7 +22,7 @@ namespace Assignment
             byte[] arr = (byte[])img;
             string base64String = Convert.ToBase64String(arr, 0, arr.Length);
             Image1.ImageUrl = "data:image/jpg;base64," + base64String;
-            connection.Close);
+            connection.Close();
         }
     }
 }

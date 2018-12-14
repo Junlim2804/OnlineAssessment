@@ -125,6 +125,7 @@
     <Content Include="PageStudents\Student.aspx" />
     <Content Include="PageStudents\test.aspx" />
     <Content Include="PageStudents\subComplete.aspx" />
+    <Content Include="test upload image.aspx" />
     <Content Include="testimage.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -327,6 +328,13 @@
     </Compile>
     <Compile Include="PageStudents\subComplete.aspx.designer.cs">
       <DependentUpon>subComplete.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="test upload image.aspx.cs">
+      <DependentUpon>test upload image.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test upload image.aspx.designer.cs">
+      <DependentUpon>test upload image.aspx</DependentUpon>
     </Compile>
     <Compile Include="testimage.aspx.cs">
       <DependentUpon>testimage.aspx</DependentUpon>
