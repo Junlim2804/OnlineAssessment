@@ -21,8 +21,8 @@ namespace Assignment
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
-           paperSet= Request.QueryString["SETID"];
+            Page.MaintainScrollPositionOnPostBack = true;
+            paperSet = Request.QueryString["SETID"];
            
            
             if (!IsPostBack)

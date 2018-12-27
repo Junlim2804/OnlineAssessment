@@ -17,6 +17,7 @@ namespace Assignment
         SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["CaringWow"].ToString());
         protected void Page_Load(object sender, EventArgs e)
         {
+            Page.MaintainScrollPositionOnPostBack = true;
             if (IsPostBack)
             {
                 SetFocus(fv_set);
