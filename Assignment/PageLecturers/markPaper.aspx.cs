@@ -8,6 +8,8 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Net;
+using System.Net.Mail;
 
 namespace Assignment
 {
@@ -86,6 +88,29 @@ namespace Assignment
         {
 
             updateData();
+            //Msg.Text = "Password reset. Your new password is sent to your registered email." + Server.HtmlEncode(newPassword);
+            try
+            {
+                System.Net.Mail.MailMessage obj = new System.Net.Mail.MailMessage();
+
+                SmtpClient serverobj = new SmtpClient();
+                serverobj.Credentials = new NetworkCredential("caringwow@outlook.com", "Caringw0w!");
+                serverobj.Port = 587;
+                serverobj.Host = "smtp.outlook.com";
+                serverobj.EnableSsl = true;
+                obj = new System.Net.Mail.MailMessage();
+                obj.From = new MailAddress("caringwow@outlook.com", "Reset Password", System.Text.Encoding.UTF8);
+                //obj.To.Add(u.Email);
+                obj.Priority = System.Net.Mail.MailPriority.High;
+                obj.Subject = "Result for XXX";
+                string date = DateTime.Now.ToString();
+                //obj.Body = "Your new password is " + Server.HtmlEncode(newPassword) + ". Please proceed to change your password to prevent others from using your account.";
+                serverobj.Send(obj);
+            }
+            catch (Exception ex)
+            {
+                ex.ToString();
+            }
             Response.Redirect("PageLecturers/LecturerShow.aspx");
             
         }
@@ -112,6 +137,7 @@ namespace Assignment
         protected void SqlDataSource1_Updated1(object sender, SqlDataSourceStatusEventArgs e)
         {
             btnSubmit.Enabled = false;
+           
         }
 
         protected void SqlDataSource1_Selecting(object sender, SqlDataSourceSelectingEventArgs e)

@@ -7,36 +7,36 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace OnlineAssessementSite {
+namespace Assignment.PageLecturers {
     
     
-    public partial class Student {
+    public partial class lecSideNav {
         
         /// <summary>
-        /// log control.
+        /// hpSet control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Assignment.studentSideNav log;
+        protected global::System.Web.UI.WebControls.HyperLink hpSet;
         
         /// <summary>
-        /// DataList1 control.
+        /// hpPersonalInfo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DataList DataList1;
+        protected global::System.Web.UI.WebControls.HyperLink hpPersonalInfo;
         
         /// <summary>
-        /// LoginName1 control.
+        /// HyperLink2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LoginName LoginName1;
+        protected global::System.Web.UI.WebControls.HyperLink HyperLink2;
     }
 }

@@ -139,6 +139,8 @@
                                                                                 <tr>
                                                                                     <td>
                                                                                         <asp:Button CssClass="button" ID="btnEdit" runat="server" Text="Edit" CommandName="Edit"/>
+                                                                                        <asp:Button CssClass="button" ID="imageUpload" runat="server" Text="Insert Image" CommandName="Upload"/>
+                                                                                        <asp:FileUpload ID="Upload1" runat="server" />
                                                                                     </td>
                                                                                 </tr>
                                                              

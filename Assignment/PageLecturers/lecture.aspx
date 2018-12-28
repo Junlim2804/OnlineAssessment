@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/LayoutPage.Master" AutoEventWireup="true" CodeBehind="lecture.aspx.cs" Inherits="OnlineAssessementSite.lecture" %>
+<%@ Register TagPrefix="lecturerSide" TagName="lecturerSide" Src="lecSideNav.ascx" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <link rel="stylesheet" type="text/css" href="../CSS/Student.css"/>
@@ -28,19 +29,11 @@
  </header> 
 
 <section>
-  <nav>
-    <div class="sidenav">
-        <ul>
-     
-
-          <asp:HyperLink ID="hpSet" runat="server" NavigateUrl="~/PageLecturers/ShowSetList.aspx">Create Examination Set</asp:HyperLink>
-          <asp:HyperLink ID="hpPersonalInfo" runat="server" NavigateUrl="~/PageLecturers/lecture.aspx">Personal Information</asp:HyperLink>
-          <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/PageLecturers/LecturerShow.aspx">Mark Paper</asp:HyperLink>
-        
-    </ul>
-
-    </div>
-  </nav>
+<nav>
+<div class="sidenav">
+<lecturerSide:lecturerSide ID="log" Runat="Server"/>
+</div>
+</nav>
   
 
       <div class="infobox">

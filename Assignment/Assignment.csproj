@@ -83,6 +83,7 @@
     </Content>
     <Content Include="Image\lecBack.jpg" />
     <Content Include="Image\studBack.jpg" />
+    <Content Include="PageLecturers\lecSideNav.ascx" />
     <Content Include="PageLecturers\LecturerShow.aspx" />
     <Content Include="PageLecturers\markPaper.aspx" />
     <Content Include="PageStudents\complete.aspx" />
@@ -125,6 +126,7 @@
     <Content Include="PageStudents\Student.aspx" />
     <Content Include="PageStudents\test.aspx" />
     <Content Include="PageStudents\subComplete.aspx" />
+    <Content Include="PageStudents\studentSideNav.ascx" />
     <Content Include="test upload image.aspx" />
     <Content Include="testimage.aspx" />
     <Content Include="Web.config">
@@ -138,6 +140,13 @@
     </Compile>
     <Compile Include="About.aspx.designer.cs">
       <DependentUpon>About.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageLecturers\lecSideNav.ascx.cs">
+      <DependentUpon>lecSideNav.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageLecturers\lecSideNav.ascx.designer.cs">
+      <DependentUpon>lecSideNav.ascx</DependentUpon>
     </Compile>
     <Compile Include="PageLecturers\LecturerShow.aspx.cs">
       <DependentUpon>LecturerShow.aspx</DependentUpon>
@@ -328,6 +337,13 @@
     </Compile>
     <Compile Include="PageStudents\subComplete.aspx.designer.cs">
       <DependentUpon>subComplete.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageStudents\studentSideNav.ascx.cs">
+      <DependentUpon>studentSideNav.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageStudents\studentSideNav.ascx.designer.cs">
+      <DependentUpon>studentSideNav.ascx</DependentUpon>
     </Compile>
     <Compile Include="test upload image.aspx.cs">
       <DependentUpon>test upload image.aspx</DependentUpon>

@@ -13,31 +13,13 @@ namespace OnlineAssessementSite {
     public partial class lecture {
         
         /// <summary>
-        /// hpSet control.
+        /// log control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink hpSet;
-        
-        /// <summary>
-        /// hpPersonalInfo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink hpPersonalInfo;
-        
-        /// <summary>
-        /// HyperLink2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink HyperLink2;
+        protected global::Assignment.PageLecturers.lecSideNav log;
         
         /// <summary>
         /// DataList1 control.
