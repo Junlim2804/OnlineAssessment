@@ -72,9 +72,7 @@ namespace Assignment
                 SetFocus(e.Item);
                 Filldata();
                 //TextBox a=e.Item.FindControl("tbDesc") as TextBox;
-                //a.Focus();
-                
-               
+                //a.Focus();    
             }
             else if (e.CommandName == "Cancel")
             {
@@ -100,7 +98,6 @@ namespace Assignment
                 conn.Close();
 
                 Filldata();
-
             }
             else if (e.CommandName == "Delete")
             {
@@ -112,15 +109,7 @@ namespace Assignment
                 conn.Close();
                 Filldata();
             }
-            
-            
-
         }
-
-
-
-
-
 
         protected void fv_add_ItemInserting1(object sender, FormViewInsertEventArgs e)
         {
@@ -137,8 +126,6 @@ namespace Assignment
             conn.Close();
             fv_add.ChangeMode(FormViewMode.ReadOnly);
             Filldata();
-
-
         }
 
         protected void btnInsert_Click(object sender, EventArgs e)
@@ -152,7 +139,39 @@ namespace Assignment
 
         protected void Button2_Click(object sender, EventArgs e)
         {
-            Response.Redirect("ShowSetList.aspx");
+            Response.Redirect("createQuestion.aspx");
+        }
+
+        protected void changePic_Click(object sender, EventArgs e)
+        {
+            
+            //string qid = ((HiddenField)dl_question.FindControl("hdnquestionId")).Value;
+            string connection = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+            SqlConnection conn = new SqlConnection(connection);
+            conn.Open();
+
+            if (!((FileUpload)dl_question.FindControl("FileUpload1")).HasFile)
+            {
+                ((Button)dl_question.FindControl("imageUploadBtn")).Text = "Uploaded";
+                ((Button)dl_question.FindControl("imageUploadBtn")).Enabled = false;
+            }
+
+            int length = ((FileUpload)dl_question.FindControl("FileUpload1")).PostedFile.ContentLength;
+            byte[] pic = new byte[length];
+            HttpPostedFile uploaded = ((FileUpload)dl_question.FindControl("FileUpload1")).PostedFile;
+            uploaded.InputStream.Read(pic, 0, length);
+
+            //change to insert into question table
+            SqlCommand cmd = new SqlCommand("insert into test(id,image) values (@id,@image)", conn);
+            cmd.Parameters.AddWithValue("@id", 77);
+            cmd.Parameters.AddWithValue("@image", pic);
+            cmd.ExecuteNonQuery();
+            conn.Close();
+        }
+
+        protected void uploadPic_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

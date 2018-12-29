@@ -54,7 +54,7 @@
             <EditItemTemplate>
             <table id='<%#Eval("questionId") %>' class="tableclass">
                 <tr>
-                  <td class="question"><b>Question  <%#Eval("indexNo")  %>: <asp:TextBox ID="tbDesc" runat="server" Text='<%#Eval("questionDesc") %>' ></asp:TextBox></b>
+                  <td class="question"><b>Question  <%#Eval("indexNo")  %>: <asp:TextBox ID="tbDesc" runat="server" Text='<%#Eval("questionDesc") %>' width="90%"></asp:TextBox></b>
                   <asp:HiddenField ID="hdnquestionId" Value='<%#Eval("questionId") %>' runat="server" />
                   </td>
                 </tr>
@@ -64,6 +64,14 @@
                           <tr>
                               <td class="auto-style1">
                                   <table class="tblOptions">
+                                      <tr>
+                                          <td>
+                                              
+                                              <br />
+                                              <asp:FileUpload ID="FileUpload1" runat="server" />
+                                              <asp:Button CssClass="button" ID="changePic" runat="server" Text="Change Image" onClick="changePic_Click"/>
+                                          </td>
+                                      </tr>
                                       <tr>
                                           <td>Option1:<asp:TextBox ID="tbOption1" runat="server" GroupName='<%#Eval("QuestionId") %>' Text='<%#Eval("Option1") %>' />
                                           </td>
@@ -100,6 +108,7 @@
 
              <ItemTemplate>
                       <table id='<%#Eval("questionId") %>' class="tableclass">
+                         
                                                         <tr>
                                                             <td class="question"><b>Question  <%# Container.ItemIndex + 1 %> :<%#Eval("questionDesc") %></b><asp:HiddenField ID="hdnquestionId" Value='<%#Eval("questionId") %>' runat="server" />
                                                             </td>
@@ -110,6 +119,12 @@
                                                                     <tr>
                                                                         <td>
                                                                             <table class="tblOptions">
+                                                                                <tr>
+                                                                                    <td>
+                                                                                        <%#Eval("Image") %>
+                                                                                        IMAGE HERE
+                                                                                    </td>
+                                                                                </tr>
                                                                                 <tr>
                                                                                     <td>
                                                                                         <asp:RadioButton ID="rdOption1" runat="server" GroupName='<%#Eval("QuestionId") %>' Text='<%#Eval("Option1") %>' Enabled="false" />
@@ -135,13 +150,12 @@
                                                                                         Answer:<asp:Label ID="lblAnswer" runat="server" Text='<%#Eval("SampleAns") %>'></asp:Label>
                                                                                     </td>
                                                                                 </tr>
-                                                             
                                                                                 <tr>
                                                                                     <td>
-                                                                                        <asp:Button CssClass="button" ID="btnEdit" runat="server" Text="Edit" CommandName="Edit"/>
-                                                                                        <asp:Button CssClass="button" ID="imageUpload" runat="server" Text="Insert Image" CommandName="Upload"/>
-                                                                                        <asp:FileUpload ID="Upload1" runat="server" />
+                                                                                        <asp:Button CssClass="button" ID="btnEdit" runat="server" Text="Edit Question" CommandName="Edit"/>
+                                                                                        
                                                                                     </td>
+                                                                                    
                                                                                 </tr>
                                                              
                                                                             </table>
@@ -162,7 +176,7 @@
                 <InsertItemTemplate>
                            <table>
                       <tr>
-                      <td class="question"><b>Question  <%#Eval("indexNo")  %>: <asp:TextBox ID="tbNewDesc" runat="server" Text=' '></asp:TextBox></b>
+                      <td class="question"><b>Question  <%#Eval("indexNo")  %>: <asp:TextBox ID="tbNewDesc" runat="server" width="90%"></asp:TextBox></b>
                        
                             </td>
                                  </tr>
@@ -172,6 +186,12 @@
                                                  <tr>
                                                        <td class="auto-style1">
                                                   <table>
+                                                      <tr>
+                                          <td>
+                                              <asp:FileUpload ID="FileUpload2" runat="server" />
+                                              <asp:Button CssClass="button" ID="uploadPic" runat="server" Text="Insert Image" onclick="uploadPic_Click"/>
+                                          </td>
+                                      </tr>
                                                                                 <tr>
                                                                                     <td>
                                                                                         Option1:<asp:TextBox ID="tbNewOption1" runat="server" GroupName='<%#Eval("QuestionId") %>' Text='<%#Eval("Option1") %>' />
