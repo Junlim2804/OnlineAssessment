@@ -21,9 +21,6 @@
          
     <!-- Right-sided navbar links -->
     <div class="w3-right w3-hide-small">
-         <asp:HyperLink ID="aboutlink" runat="server" CssClass="w3-bar-item w3-button" NavigateUrl="~/About.aspx">ABOUT</asp:HyperLink>
-         <asp:HyperLink ID="HyperLink1" runat="server" CssClass="w3-bar-item w3-button" NavigateUrl="~/Contact.aspx">CONTACT</asp:HyperLink>
-
         <asp:LinkButton ID="LinkButton1" runat="server"  OnClick="LinkButton1_Click">
         <asp:LoginName CssClass="w3-bar-item w3-button" ID="LoginName1" runat="server"/>
         </asp:LinkButton>

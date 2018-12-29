@@ -40,24 +40,6 @@ namespace OnlineAssessementSite {
         protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
-        /// aboutlink control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink aboutlink;
-        
-        /// <summary>
-        /// HyperLink1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink HyperLink1;
-        
-        /// <summary>
         /// LinkButton1 control.
         /// </summary>
         /// <remarks>
