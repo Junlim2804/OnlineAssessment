@@ -12,6 +12,7 @@ namespace OnlineAssessementSite
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            Session["username"] = null;
             if (Roles.IsUserInRole(Login1.UserName, "student") || Roles.IsUserInRole(Login1.UserName, "lecturer"))
             {
                 if (!IsPostBack) {Response.Redirect("Homepage.aspx"); }
@@ -32,6 +33,7 @@ namespace OnlineAssessementSite
 
         protected void Login1_LoggedIn(object sender, EventArgs e)
         {
+            Session["username"] = Login1.UserName;
             if (Roles.IsUserInRole(Login1.UserName, "student"))
             {
 
@@ -39,7 +41,9 @@ namespace OnlineAssessementSite
             }
             else if (Roles.IsUserInRole(Login1.UserName, "lecturer"))
                 Response.Redirect("PageLecturers/lecture.aspx");
-     
+
+           
+          
         }
     }
 }
