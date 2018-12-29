@@ -12,7 +12,12 @@ namespace OnlineAssessementSite
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Roles.IsUserInRole(Login1.UserName, "student") || Roles.IsUserInRole(Login1.UserName, "lecturer"))
+            {
+                if (!IsPostBack) {Response.Redirect("Homepage.aspx"); }
+                
+            }
+            
         }
 
         protected void LinkButton1_Click(object sender, EventArgs e)
