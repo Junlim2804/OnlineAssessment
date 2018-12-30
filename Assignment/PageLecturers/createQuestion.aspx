@@ -69,7 +69,7 @@
                                               
                                               <br />
                                               <asp:FileUpload ID="FileUpload1" runat="server" />
-                                              <asp:Button CssClass="button" ID="changePic" runat="server" Text="Change Image" onClick="changePic_Click"/>
+                                              <asp:Button CssClass="button" ID="changePic" runat="server" Text="Change Image" onClick="uploadPic_Click"/>
                                           </td>
                                       </tr>
                                       <tr>
@@ -121,8 +121,7 @@
                                                                             <table class="tblOptions">
                                                                                 <tr>
                                                                                     <td>
-                                                                                        <%#Eval("Image") %>
-                                                                                        IMAGE HERE
+                                                                                        <asp:Image ID="Image1" runat="server" height="25%" width="25%" ImageUrl='<%#"data:Image/jpg;base64,"+Convert.ToBase64String((byte[])Eval("Image")) %>'/>
                                                                                     </td>
                                                                                 </tr>
                                                                                 <tr>

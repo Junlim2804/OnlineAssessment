@@ -62,9 +62,15 @@
                                                  <tr>
                                                        <td class="auto-style1">
                                                   <table class="tblOptions">
+                                                      <tr>
+                                                                                    <td>
+                                                                                        <asp:FileUpload ID="FileUpload2" runat="server" /><br />
+                                                                                        <asp:Label ID="Label2" runat="server"></asp:Label>
+                                                                                    </td>
+                                                                                </tr>
                                                                                 <tr>
                                                                                     <td>
-                                                                                        Sample Answer:<asp:TextBox ID="tbAnswer" runat="server" Text='<%#Eval("SampleAns") %>'></asp:TextBox>
+                                                                                        Sample Answer:<asp:TextBox ID="tbAnswer" runat="server" Text='<%#Eval("SampleAns") %>' Width="90%"></asp:TextBox>
                                                                                     </td>
                                                                                 </tr>
                                                              
@@ -97,6 +103,11 @@
                                                                             <table class="tblOptions">
                                                                                 <tr>
                                                                                     <td>
+                                                                                        <asp:Image ID="Image1" runat="server" height="25%" width="25%" ImageUrl='<%#"data:Image/jpg;base64,"+Convert.ToBase64String((byte[])Eval("Image")) %>'/>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>
                                                                                         Sample Answer:<asp:Label ID="lblAnswer" runat="server" Text='<%#Eval("SampleAns") %>'></asp:Label>
                                                                                     </td>
                                                                                 </tr>
@@ -125,7 +136,7 @@
                 <InsertItemTemplate>
                            <table>
                       <tr>
-                      <td class="question"><b>Question: <asp:TextBox ID="tbNewDesc" runat="server" Text=' '></asp:TextBox></b>
+                      <td class="question"><b>Question: <asp:TextBox ID="tbNewDesc" runat="server" width="90%"></asp:TextBox></b>
                        
                             </td>
                                  </tr>
@@ -135,6 +146,12 @@
                                                  <tr>
                                                        <td class="auto-style1">
                                                   <table>
+                                                      <tr>
+                                                          <td>
+                                                              <asp:FileUpload ID="FileUpload1" runat="server" /><br />
+                                                              <asp:Label ID="Label1" runat="server" ></asp:Label>
+                                                          </td>
+                                                      </tr>
                                                                                 <tr>
                                                                                     <td>
                                                                                         Sample Answer:<asp:TextBox ID="tbNewAnswer" runat="server" Text='<%#Eval("SampleAns") %>'></asp:TextBox>
