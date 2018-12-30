@@ -1,7 +1,7 @@
-﻿<%@ Page Language="C#" %>
-<%@ Import Namespace="System.Web.Security" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+﻿<%@ Page Language="C#" MasterPageFile="~/LayoutPage.Master" AutoEventWireup="true" CodeBehind="realchangepassword.aspx.cs" Inherits="OnlineAssessementSite.realchangepassword" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <title>Change Password</title>
 <script runat="server">
 
 public void ChangePassword_OnClick(object sender, EventArgs args)
@@ -40,18 +40,15 @@ public void ChangePassword_OnClick(object sender, EventArgs args)
 
 
 </script>
-<html xmlns="http://www.w3.org/1999/xhtml" >
-<head>
-<title>Change Password</title>
-</head>
-<body>
+    </asp:Content>
 
-<form id="form1" runat="server">
-  <h3>Change Password for <%=User.Identity.Name%></h3>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <div style="margin:25%">
+  <h3> Change Password for <%=User.Identity.Name%></h3>
 
   <asp:Label id="Msg" ForeColor="maroon" runat="server" />
 
-  <table cellpadding="3" border="0">
+  <table border="0">
     <tr>
       <td>Old Password:</td>
       <td><asp:Textbox id="OldPasswordTextbox" runat="server" TextMode="Password" /></td>
@@ -84,7 +81,6 @@ public void ChangePassword_OnClick(object sender, EventArgs args)
                       OnClick="ChangePassword_OnClick" runat="server" /></td>
     </tr>
   </table>
-</form>
 
-</body>
-</html>
+        </div>
+ </asp:Content>
