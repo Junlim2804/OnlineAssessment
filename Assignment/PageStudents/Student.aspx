@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/LayoutPage.Master" AutoEventWireup="true" CodeBehind="Student.aspx.cs" Inherits="OnlineAssessementSite.Student" %>
+<%@ Register TagPrefix="studentSide" TagName="studentSide" Src="studentSideNav.ascx" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <link rel="stylesheet" type="text/css" href="../CSS/Student.css"/>
@@ -10,42 +11,28 @@
     min-height: 100%;
 }
     </style>
- <header class="bgimg w3-display-container w3-grayscale-min" id="home">
-   
+ 
 
+<header class="bgimg w3-display-container w3-grayscale-min" id="home">
 <div class="w3-container" style="padding:128px 16px" id="about">
-
-    
-  <div class="auto-style1" style="padding:48px">
-      
-    <span class="w3-jumbo w3-animate-top">Student Details</span><br> </div>
-
+<div class="auto-style1" style="padding:48px">
+<span class="w3-jumbo w3-animate-top">Student Details</span><br> 
+</div>
 </div> 
- </header> 
+</header> 
 
 <section>
-  <nav>
-    <div class="sidenav">
-        <ul>
-     
-
-          <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/PageStudents/test.aspx">Assessment</asp:HyperLink>
-          <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/PageStudents/ShowResult.aspx">Achievement</asp:HyperLink>
-          <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="~/PageStudents/Student.aspx">Personal Information</asp:HyperLink>
-         
-          
-        
-    </ul>
-
-    </div>
-  </nav>
+  
+<nav>
+<div class="sidenav">
+<studentSide:studentSide ID="log" Runat="Server"/>
+</div>
+</nav>
   
   
-    <div class="infobox">
-     
-         
-             <asp:DataList ID="DataList1" runat="server" DataKeyField="stuId" OnItemCommand="DataList1_ItemCommand" OnSelectedIndexChanged="DataList1_SelectedIndexChanged"  >
-                <EditItemTemplate>
+<div class="infobox">         
+<asp:DataList ID="DataList1" runat="server" DataKeyField="stuId" OnItemCommand="DataList1_ItemCommand" OnSelectedIndexChanged="DataList1_SelectedIndexChanged"  >
+<EditItemTemplate>
                    
                          <asp:Label ID="lblStudId" runat="server" Text="Student ID"></asp:Label>
                          <asp:TextBox ID="txtStudId" runat="server"  Text='<%# Eval("stuId") %> ' Enabled="False"  />

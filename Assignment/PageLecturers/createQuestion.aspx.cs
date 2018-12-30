@@ -21,8 +21,8 @@ namespace Assignment
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
-           paperSet= Request.QueryString["SETID"];
+            Page.MaintainScrollPositionOnPostBack = true;
+            paperSet = Request.QueryString["SETID"];
            
            
             if (!IsPostBack)
@@ -72,9 +72,7 @@ namespace Assignment
                 SetFocus(e.Item);
                 Filldata();
                 //TextBox a=e.Item.FindControl("tbDesc") as TextBox;
-                //a.Focus();
-                
-               
+                //a.Focus();    
             }
             else if (e.CommandName == "Cancel")
             {
@@ -100,7 +98,6 @@ namespace Assignment
                 conn.Close();
 
                 Filldata();
-
             }
             else if (e.CommandName == "Delete")
             {
@@ -112,13 +109,31 @@ namespace Assignment
                 conn.Close();
                 Filldata();
             }
+            /*else if(e.CommandName == "Upload")
+            {
+                string qid = ((HiddenField)dl_question.FindControl("hdnquestionId")).Value;
+                string connection = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+                SqlConnection conn = new SqlConnection(connection);
+                conn.Open();
 
+                if (!((FileUpload)dl_question.FindControl("FileUpload1")).HasFile)
+                {
+                    //no file
+                }
+
+                int length = ((FileUpload)dl_question.FindControl("FileUpload1")).PostedFile.ContentLength;
+                byte[] pic = new byte[length];
+                HttpPostedFile uploaded = ((FileUpload)dl_question.FindControl("FileUpload1")).PostedFile;
+                uploaded.InputStream.Read(pic, 0, length);
+
+                //change to insert into question table
+                SqlCommand cmd = new SqlCommand("insert into test(id,image) values (@id,@image)", conn);
+                cmd.Parameters.AddWithValue("@id", 77); //qid
+                cmd.Parameters.AddWithValue("@image", pic);
+                cmd.ExecuteNonQuery();
+                conn.Close();
+            }*/
         }
-
-
-
-
-
 
         protected void fv_add_ItemInserting1(object sender, FormViewInsertEventArgs e)
         {
@@ -128,15 +143,20 @@ namespace Assignment
             string newOption3 = ((TextBox)fv_add.Row.FindControl("tbNewOption3")).Text;
             string newOption4 = ((TextBox)fv_add.Row.FindControl("tbNewOption4")).Text;
             string newAnswer = ((TextBox)fv_add.Row.FindControl("tbNewAnswer")).Text;
-            SqlCommand cmd = new SqlCommand("Insert into question(questionDesc,Option1,Option2,Option3,Option4,sampleAns,setID) " +
-                "values('" + newDesc + "','" + newOption1 + "','" + newOption2 + "','" + newOption3 + "','" + newOption4 + "','" + newAnswer + "','"+paperSet+"')", conn);
+
+            int length = ((FileUpload)fv_add.Row.FindControl("FileUpload2")).PostedFile.ContentLength;
+            byte[] pic = new byte[length];
+            HttpPostedFile uploaded = ((FileUpload)fv_add.Row.FindControl("FileUpload2")).PostedFile;
+            uploaded.InputStream.Read(pic, 0, length);
+
+            SqlCommand cmd = new SqlCommand("Insert into question(questionDesc,Option1,Option2,Option3,Option4,sampleAns,setID,image) " +
+                "values('" + newDesc + "','" + newOption1 + "','" + newOption2 + "','" + newOption3 + "','" + newOption4 + "','" + newAnswer + "','"+paperSet+"',@image)", conn);
             conn.Open();
+            cmd.Parameters.AddWithValue("@image", pic);
             cmd.ExecuteNonQuery();
             conn.Close();
             fv_add.ChangeMode(FormViewMode.ReadOnly);
             Filldata();
-
-
         }
 
         protected void btnInsert_Click(object sender, EventArgs e)
@@ -150,7 +170,35 @@ namespace Assignment
 
         protected void Button2_Click(object sender, EventArgs e)
         {
-            Response.Redirect("ShowSetList.aspx");
+            Response.Redirect("createQuestion.aspx");
         }
+
+        protected void uploadPic_Click(object sender, EventArgs e)
+        {
+            /*
+            //string qid = ((HiddenField)dl_question.FindControl("hdnquestionId")).Value;
+            string connection = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+            SqlConnection conn = new SqlConnection(connection);
+            conn.Open();
+
+            /*if (!((FileUpload)dl_question.FindControl("FileUpload1")).HasFile)
+            {
+                //no file
+            }*/
+            /*
+            int length = ((FileUpload)dl_question.FindControl("FileUpload12")).PostedFile.ContentLength;
+            byte[] pic = new byte[length];
+            HttpPostedFile uploaded = ((FileUpload)dl_question.FindControl("FileUpload2")).PostedFile;
+            uploaded.InputStream.Read(pic, 0, length);
+
+            //change to insert into question table
+            SqlCommand cmd = new SqlCommand("insert into test(id,image) values (@id,@image)", conn);
+            cmd.Parameters.AddWithValue("@id", 77); //qid
+            cmd.Parameters.AddWithValue("@image", pic);
+            cmd.ExecuteNonQuery();
+            conn.Close();*/
+        }
+
+        
     }
 }

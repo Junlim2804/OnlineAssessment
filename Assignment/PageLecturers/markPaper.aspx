@@ -110,7 +110,7 @@ where questionid=@questionid and stuId=@stuID
             </asp:SqlDataSource>
             </div>
             <div id="below">
-&nbsp;<asp:Button CssClass="button" ID="btnSubmit" runat="server" Text="Submit" OnClick="btnSubmit_Click" />
+&nbsp;<asp:Button CssClass="button" ID="btnSubmit" runat="server" Text="Send Results" OnClick="btnSubmit_Click" />
                             </div>
 
-</asp:Content>
+    </asp:Content>

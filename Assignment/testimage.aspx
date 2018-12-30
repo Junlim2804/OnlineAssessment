@@ -19,11 +19,11 @@
                     
                     <asp:TemplateField HeaderText="Image">
                         <ItemTemplate>
+                            
                             <asp:Image ID="Image1" runat="server" height="1000px" width="300px" 
-                                ImageUrl='<%#"data:Image/jpg;base64,"+Convert.ToBase64String((byte[])Eval("Image")) %>'/>
+    ImageUrl='<%#"data:Image/jpg;base64,"+Convert.ToBase64String((byte[])Eval("Image")) %>'/>
 
-
-
+                            
                             </ItemTemplate>
 
                     </asp:TemplateField>

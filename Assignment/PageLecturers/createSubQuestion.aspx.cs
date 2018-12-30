@@ -16,6 +16,7 @@ namespace Assignment
         SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["CaringWow"].ToString());
         protected void Page_Load(object sender, EventArgs e)
         {
+            Page.MaintainScrollPositionOnPostBack = true;
 
             if (!IsPostBack)
             {
@@ -23,6 +24,18 @@ namespace Assignment
                 Filldata();
                 
             }
+
+            /*if (((FileUpload)fv_add.Row.FindControl("FileUpload1")).HasFile)
+            {
+                System.IO.Stream fs = ((FileUpload)fv_add.Row.FindControl("FileUpload1")).PostedFile.InputStream;
+                System.IO.BinaryReader br = new System.IO.BinaryReader(fs);
+                Byte[] bytes = br.ReadBytes((Int32)fs.Length);
+                string base64String = Convert.ToBase64String(bytes, 0, bytes.Length);
+                ((Image)fv_add.Row.FindControl("Image1")).ImageUrl = "data:image/png;base64," + base64String;
+                ((Image)fv_add.Row.FindControl("Image1")).Visible = true;
+            }*/
+
+
         }
 
 
@@ -62,15 +75,25 @@ namespace Assignment
             }
             else if (e.CommandName == "Update")
             {
+                /*if (!((FileUpload)fv_add.Row.FindControl("FileUpload2")).HasFile)
+                {
+                    ((Label)fv_add.Row.FindControl("Label2")).Text = "No yet upload";
+                }*/
+
+                int length = ((FileUpload)fv_add.Row.FindControl("FileUpload2")).PostedFile.ContentLength;
+                byte[] pic = new byte[length];
+                HttpPostedFile uploaded = ((FileUpload)fv_add.Row.FindControl("FileUpload2")).PostedFile;
+                uploaded.InputStream.Read(pic, 0, length);
 
                 string newDesc = ((TextBox)e.Item.FindControl("tbDesc")).Text;
-
                 string newAnswer = ((TextBox)e.Item.FindControl("tbAnswer")).Text;
                 string qid = ((HiddenField)e.Item.FindControl("hdnquestionId")).Value;
 
                 SqlCommand cmd = new SqlCommand("update question set questionDesc='" + newDesc +
-                   "',sampleAns='" + newAnswer + "' where questionID='" + qid + "';", conn);
+                   "',sampleAns='" + newAnswer + "', image=@image where questionID='" + qid + "';", conn);
+                
                 conn.Open();
+                cmd.Parameters.AddWithValue("@image", pic);
                 cmd.ExecuteNonQuery();
                 dl_question.EditItemIndex = -1;
                 conn.Close();
@@ -96,19 +119,25 @@ namespace Assignment
 
         protected void fv_add_ItemInserting(object sender, FormViewInsertEventArgs e)
         {
+            
+            
+            int length = ((FileUpload)fv_add.Row.FindControl("FileUpload1")).PostedFile.ContentLength;
+            byte[] pic = new byte[length];
+            HttpPostedFile uploaded = ((FileUpload)fv_add.Row.FindControl("FileUpload1")).PostedFile;
+            uploaded.InputStream.Read(pic, 0, length);
+
             string newDesc = ((TextBox)fv_add.Row.FindControl("tbNewDesc")).Text;
-    
-         
             string newAnswer = ((TextBox)fv_add.Row.FindControl("tbNewAnswer")).Text;
-            SqlCommand cmd = new SqlCommand("Insert into question(questionDesc,sampleAns,setID) " +
-                "values('" + newDesc + "','" + newAnswer + "','"+paperset+"')", conn);
+
             conn.Open();
+            SqlCommand cmd = new SqlCommand("Insert into question(questionDesc,sampleAns,setID,image) " +
+                "values('" + newDesc + "','" + newAnswer + "','"+paperset+"', @image)", conn);
+            cmd.Parameters.AddWithValue("@image", pic);
+            //open here
             cmd.ExecuteNonQuery();
             conn.Close();
             fv_add.ChangeMode(FormViewMode.ReadOnly);
             Filldata();
-
-
         }
 
         protected void btnInsert_Click(object sender, EventArgs e)
