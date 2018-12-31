@@ -64,6 +64,7 @@
                                                   <table class="tblOptions">
                                                       <tr>
                                                                                     <td>
+                                                                                        <asp:Image ID="Image1" runat="server" height="25%" width="25%" Visible='<%#Eval("Image")!=DBNull.Value %>' ImageUrl='<%#(Eval("Image")!=DBNull.Value)?"data:Image/jpg;base64,"+Convert.ToBase64String((byte[])Eval("Image")):"~/Image/brain1.png" %>'/>
                                                                                         <asp:FileUpload ID="FileUpload2" runat="server" /><br />
                                                                                         <asp:Label ID="Label2" runat="server"></asp:Label>
                                                                                     </td>
@@ -103,7 +104,7 @@
                                                                             <table class="tblOptions">
                                                                                 <tr>
                                                                                     <td>
-                                                                                        <asp:Image ID="Image1" runat="server" height="25%" width="25%" ImageUrl='<%#"data:Image/jpg;base64,"+Convert.ToBase64String((byte[])Eval("Image")) %>'/>
+                                                                                        <asp:Image ID="Image1" runat="server" height="25%" width="25%" Visible='<%#Eval("Image")!=DBNull.Value %>' ImageUrl='<%#(Eval("Image")!=DBNull.Value)?"data:Image/jpg;base64,"+Convert.ToBase64String((byte[])Eval("Image")):"~/Image/brain1.png" %>'/>
                                                                                     </td>
                                                                                 </tr>
                                                                                 <tr>
@@ -159,7 +160,8 @@
                                                                                 </tr>
                                                              
                                                                                 <tr>
-                                                                                    <td>  <asp:Button CssClass="button" ID="btnInsert" runat="server" Text="Add Question" OnClick="btnInsert_Click" CommandName="Insert" /> 
+                                                                                    <td>  <asp:Button CssClass="button" ID="btnInsert" runat="server" Text="Add Question" OnClick="btnInsert_Click" CommandName="Insert" />
+                                                                                        
                                                                                         </td>
                                                                                 </tr>
                                                              

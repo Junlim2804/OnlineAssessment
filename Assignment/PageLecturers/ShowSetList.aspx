@@ -101,25 +101,53 @@
    
      <div class="infobox">
           <h2><b>Assessment Set</b></h2>
+         <!--<asp:DataList ID="DataList1" runat="server"  CellPadding="4" RepeatColumns="3" DataKeyField="setID" DataSourceID="SqlDataSource1" BackColor="White" BorderColor="#3366CC" BorderStyle="None" BorderWidth="1px" GridLines="Both" >
+             <FooterStyle BackColor="#99CCCC" ForeColor="#003399" />
+             <HeaderStyle BackColor="#003399" Font-Bold="True" ForeColor="#CCCCFF" />
+             <ItemStyle BackColor="White" ForeColor="#003399" />
+             <ItemTemplate>
+                 SET:
+                 <asp:Label ID="setIDLabel" runat="server" Text='<%# Eval("setID") %>' />
+                 <br />
+                 MODE:
+                 <asp:Label ID="modeLabel" runat="server" Text='<%# Eval("mode") %>' />
+                 <br />
+                 DURATION:
+                 <asp:Label ID="durationLabel" runat="server" Text='<%# Eval("duration") %>' />
+                 <br />
+                 SUBJECT:
+                 <asp:Label ID="subjectIDLabel" runat="server" Text='<%# Eval("subjectID") %>' />
+                 <br />
+                 TYPE:
+                 <asp:Label ID="typeLabel" runat="server" Text='<%# Eval("type") %>' />
+                 <br />
+                 <asp:Button ID="Button1" runat="server" Text="View Set" />
+                 <br />
+             </ItemTemplate>
+             <SelectedItemStyle BackColor="#009999" Font-Bold="True" ForeColor="#CCFF99" />
+         </asp:DataList>--->
+
+           
             <table id="outer" class="auto-style1">
                 <tr>
                     <td class="auto-style2">
-                        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="setID" DataSourceID="SqlDataSource1" AllowPaging="True" Width="940px">
+                     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="setID" DataSourceID="SqlDataSource1" AllowPaging="True" Width="940px">
                             <Columns>
-                                <asp:CommandField ShowSelectButton="True" />
-                                <asp:BoundField DataField="setID" HeaderText="Set ID" ReadOnly="True" SortExpression="setID" InsertVisible="False" />
-                                <asp:BoundField DataField="mode" HeaderText="Mode" SortExpression="mode" />
-                                <asp:BoundField DataField="duration" HeaderText="Duration" SortExpression="duration" />
-                                <asp:BoundField DataField="subjectID" HeaderText="Subject ID" SortExpression="subjectID" />
-                                <asp:BoundField DataField="type" HeaderText="Type" SortExpression="type" />
-                                <asp:BoundField DataField="expiredDate" DataFormatString="{0:d}" HeaderText="Expired Date" SortExpression="expiredDate" />
+                                <asp:BoundField DataField="setID" HeaderText="setID" ReadOnly="True" SortExpression="setID" InsertVisible="False" />
+                                <asp:BoundField DataField="mode" HeaderText="mode" SortExpression="mode" />
+                                <asp:BoundField DataField="duration" HeaderText="duration" SortExpression="duration" />
+                                <asp:BoundField DataField="subjectID" HeaderText="subjectID" SortExpression="subjectID" />
+                                <asp:BoundField DataField="type" HeaderText="type" SortExpression="type" />
+                                <asp:CheckBoxField DataField="available" HeaderText="available" SortExpression="available" />
+                                <asp:BoundField DataField="expiredDate" HeaderText="expiredDate" SortExpression="expiredDate" />
                             </Columns>
                         </asp:GridView>
                     </td>
                     </tr>
                 </table>
-        
+              
     <br />
+             
     <div  id="edit">
                         <asp:FormView ID="fv_set" runat="server" CssClass="auto-style3" DataSourceID="SqlDataSource2" OnPageIndexChanging="fv_set_PageIndexChanging">
                             <EditItemTemplate>

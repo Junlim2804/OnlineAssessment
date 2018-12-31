@@ -75,14 +75,14 @@ namespace Assignment
             }
             else if (e.CommandName == "Update")
             {
-                /*if (!((FileUpload)fv_add.Row.FindControl("FileUpload2")).HasFile)
+                if (!((FileUpload)e.Item.FindControl("FileUpload2")).HasFile)
                 {
-                    ((Label)fv_add.Row.FindControl("Label2")).Text = "No yet upload";
-                }*/
+                    ((Label)e.Item.FindControl("Label2")).Text = "No yet upload";
+                }
 
-                int length = ((FileUpload)fv_add.Row.FindControl("FileUpload2")).PostedFile.ContentLength;
+                int length = ((FileUpload)e.Item.FindControl("FileUpload2")).PostedFile.ContentLength;
                 byte[] pic = new byte[length];
-                HttpPostedFile uploaded = ((FileUpload)fv_add.Row.FindControl("FileUpload2")).PostedFile;
+                HttpPostedFile uploaded = ((FileUpload)e.Item.FindControl("FileUpload2")).PostedFile;
                 uploaded.InputStream.Read(pic, 0, length);
 
                 string newDesc = ((TextBox)e.Item.FindControl("tbDesc")).Text;
@@ -119,8 +119,6 @@ namespace Assignment
 
         protected void fv_add_ItemInserting(object sender, FormViewInsertEventArgs e)
         {
-            
-            
             int length = ((FileUpload)fv_add.Row.FindControl("FileUpload1")).PostedFile.ContentLength;
             byte[] pic = new byte[length];
             HttpPostedFile uploaded = ((FileUpload)fv_add.Row.FindControl("FileUpload1")).PostedFile;
