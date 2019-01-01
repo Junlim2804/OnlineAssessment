@@ -7,19 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace OnlineAssessementSite {
+namespace Assignment {
     
     
-    public partial class Student {
-        
-        /// <summary>
-        /// log control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Assignment.studentSideNav log;
+    public partial class lecturerProfile {
         
         /// <summary>
         /// DataList1 control.
@@ -29,14 +20,5 @@ namespace OnlineAssessementSite {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DataList DataList1;
-        
-        /// <summary>
-        /// LoginName1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LoginName LoginName1;
     }
 }

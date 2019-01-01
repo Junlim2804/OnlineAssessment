@@ -5,9 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace Assignment.PageLecturers
+namespace Assignment
 {
-    public partial class lecSideNav : System.Web.UI.UserControl
+    public partial class lecturerHeader : System.Web.UI.UserControl
     {
         protected void Page_Load(object sender, EventArgs e)
         {

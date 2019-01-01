@@ -10,7 +10,7 @@
 namespace Assignment {
     
     
-    public partial class studentSideNav {
+    public partial class siteURL {
         
         /// <summary>
         /// HyperLink4 control.

@@ -34,15 +34,17 @@ namespace OnlineAssessementSite
 
             using (SqlConnection myConnection = new SqlConnection(connectionString))
             {
-                SqlCommand mycommand = new SqlCommand("proc_register", myConnection);
-                mycommand.CommandType = CommandType.StoredProcedure;
-                mycommand.Parameters.Add("@stuid", SqlDbType.VarChar).Value = stuid.Text;
+
+
+                try {
+
+                 SqlCommand mycommand = new SqlCommand("proc_register", myConnection);
+                 mycommand.CommandType = CommandType.StoredProcedure;
+                 mycommand.Parameters.Add("@stuid", SqlDbType.VarChar).Value = stuid.Text;
                 mycommand.Parameters.Add("@userid", SqlDbType.UniqueIdentifier).Value = newStudentID;
                 mycommand.Parameters.Add("@stuemail", SqlDbType.VarChar).Value = stuemail.Text;
                 mycommand.Parameters.Add("@stuname", SqlDbType.VarChar).Value = stuname.Text;
                 mycommand.Parameters.Add("@stuhpno", SqlDbType.VarChar).Value = stuhpNo.Text;
-
-
                 myConnection.Open();
 
                 if (mycommand.ExecuteNonQuery() == 1)
@@ -55,8 +57,16 @@ namespace OnlineAssessementSite
                     Roles.AddUserToRole(stuid.Text, "student");
                 }
                 myConnection.Close();
+
             }
+                catch (SqlException ex)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "myconfirm", "confirm('Database Error!')", true);
+            
+            }
+
         }
+    }
     }
 
 }

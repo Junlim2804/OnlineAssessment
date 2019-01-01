@@ -4,21 +4,19 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
-using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace OnlineAssessementSite
+namespace Assignment
 {
-    public partial class lecture : System.Web.UI.Page
+    public partial class lecturerProfile : System.Web.UI.UserControl
     {
-
         static string username;
         SqlConnection conn = new SqlConnection("Data Source=(LocalDB)\\ MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\CaringWow.mdf;Integrated Security=True");
         protected void Page_Load(object sender, EventArgs e)
         {
-            MembershipUser u = Membership.GetUser(User.Identity.Name);
-            username = u.UserName;
+            //MembershipUser u = Membership.GetUser(User.Identity.Name);
+            username = (String)Session["username"];
             if (!IsPostBack)
                 filldata();
         }
@@ -56,7 +54,7 @@ namespace OnlineAssessementSite
                 string txtLecName = ((TextBox)e.Item.FindControl("txtLecName")).Text;
                 string txtLecEmail = ((TextBox)e.Item.FindControl("txtLecEmail")).Text;
                 string txtLecHpNo = ((TextBox)e.Item.FindControl("txtLecHpNo")).Text;
-          
+
                 SqlCommand cmd = new SqlCommand("update lecturer set lecname ='" + txtLecName + "', lecemail ='" + txtLecEmail + "',lechpno ='" + txtLecHpNo +
                    "'where lecid='" + txtLecId + "'", conn);
                 conn.Open();

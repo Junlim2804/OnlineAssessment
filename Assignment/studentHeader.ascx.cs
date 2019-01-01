@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace Assignment
 {
-    public partial class studentSideNav : System.Web.UI.UserControl
+    public partial class siteURL : System.Web.UI.UserControl
     {
         protected void Page_Load(object sender, EventArgs e)
         {

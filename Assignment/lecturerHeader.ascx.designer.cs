@@ -7,19 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Assignment.PageLecturers {
+namespace Assignment {
     
     
-    public partial class lecSideNav {
-        
-        /// <summary>
-        /// hpSet control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink hpSet;
+    public partial class lecturerHeader {
         
         /// <summary>
         /// hpPersonalInfo control.
@@ -29,6 +20,15 @@ namespace Assignment.PageLecturers {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink hpPersonalInfo;
+        
+        /// <summary>
+        /// hpSet control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink hpSet;
         
         /// <summary>
         /// HyperLink2 control.
