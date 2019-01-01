@@ -45,6 +45,21 @@
 
 
     </style>
+
+    <script type="text/javascript">
+    function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#Image1').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+    </script>
 <br /> <br /><br /><br />
     <h2><b>Create Subjective Question</b></h2>
         <div>
@@ -65,7 +80,7 @@
                                                       <tr>
                                                                                     <td>
                                                                                         <asp:Image ID="Image1" runat="server" height="25%" width="25%" Visible='<%#Eval("Image")!=DBNull.Value %>' ImageUrl='<%#(Eval("Image")!=DBNull.Value)?"data:Image/jpg;base64,"+Convert.ToBase64String((byte[])Eval("Image")):"~/Image/brain1.png" %>'/>
-                                                                                        <asp:FileUpload ID="FileUpload2" runat="server" /><br />
+                                                                                        <asp:FileUpload ID="FileUpload2" runat="server" onchange="readURL(this);"/> <br />
                                                                                         <asp:Label ID="Label2" runat="server"></asp:Label>
                                                                                     </td>
                                                                                 </tr>
@@ -149,6 +164,7 @@
                                                   <table>
                                                       <tr>
                                                           <td>
+                                                              <asp:Image ID="Image1" runat="server" height="25%" width="25%" Visible='<%#Eval("Image")!=DBNull.Value %>' ImageUrl='<%#(Eval("Image")!=DBNull.Value)?"data:Image/jpg;base64,"+Convert.ToBase64String((byte[])Eval("Image")):"~/Image/brain1.png" %>'/>
                                                               <asp:FileUpload ID="FileUpload1" runat="server" /><br />
                                                               <asp:Label ID="Label1" runat="server" ></asp:Label>
                                                           </td>

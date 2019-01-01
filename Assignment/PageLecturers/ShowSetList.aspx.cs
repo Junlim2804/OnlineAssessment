@@ -320,5 +320,15 @@ namespace Assignment
         {
 
         }
+
+        protected void viewSetBtn_Click(object sender, EventArgs e)
+        {
+            Label lbType = (Label)DataList1.FindControl("typeLabel");
+            Label setID = (Label)DataList1.FindControl("setIDLabel");
+            if (lbType.Text == "obj")
+                Response.Redirect("createQuestion.aspx?SETID=" + setID);
+            else
+                Response.Redirect("createSubQuestion.aspx?SETID=" + setID);
+        }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -24,7 +25,6 @@ namespace Assignment
                 Filldata();
                 
             }
-
             /*if (((FileUpload)fv_add.Row.FindControl("FileUpload1")).HasFile)
             {
                 System.IO.Stream fs = ((FileUpload)fv_add.Row.FindControl("FileUpload1")).PostedFile.InputStream;
@@ -34,11 +34,7 @@ namespace Assignment
                 ((Image)fv_add.Row.FindControl("Image1")).ImageUrl = "data:image/png;base64," + base64String;
                 ((Image)fv_add.Row.FindControl("Image1")).Visible = true;
             }*/
-
-
         }
-
-
 
         protected void Filldata()
         {
@@ -55,7 +51,6 @@ namespace Assignment
             fv_add.DataBind();
 
         }
-
 
         protected void DataList1_ItemCommand(object source, DataListCommandEventArgs e)
         {
@@ -84,6 +79,7 @@ namespace Assignment
                 byte[] pic = new byte[length];
                 HttpPostedFile uploaded = ((FileUpload)e.Item.FindControl("FileUpload2")).PostedFile;
                 uploaded.InputStream.Read(pic, 0, length);
+                e.Item.FindControl("Image1").Visible = true;
 
                 string newDesc = ((TextBox)e.Item.FindControl("tbDesc")).Text;
                 string newAnswer = ((TextBox)e.Item.FindControl("tbAnswer")).Text;
@@ -114,15 +110,13 @@ namespace Assignment
 
         }
 
-
-
-
         protected void fv_add_ItemInserting(object sender, FormViewInsertEventArgs e)
         {
             int length = ((FileUpload)fv_add.Row.FindControl("FileUpload1")).PostedFile.ContentLength;
             byte[] pic = new byte[length];
             HttpPostedFile uploaded = ((FileUpload)fv_add.Row.FindControl("FileUpload1")).PostedFile;
             uploaded.InputStream.Read(pic, 0, length);
+            fv_add.Row.FindControl("Image1").Visible = true;
 
             string newDesc = ((TextBox)fv_add.Row.FindControl("tbNewDesc")).Text;
             string newAnswer = ((TextBox)fv_add.Row.FindControl("tbNewAnswer")).Text;
@@ -150,7 +144,9 @@ namespace Assignment
 
         protected void Button2_Click(object sender, EventArgs e)
         {
-            Response.Redirect("ShowSetList.aspx");
+            Response.Redirect("createSubQuestion.aspx");
         }
+
+       
     }
 }

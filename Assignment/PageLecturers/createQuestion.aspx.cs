@@ -81,6 +81,16 @@ namespace Assignment
             }
             else if (e.CommandName == "Update")
             {
+                if (!((FileUpload)e.Item.FindControl("FileUpload2")).HasFile)
+                {
+                    ((Label)e.Item.FindControl("Label2")).Text = "No yet upload";
+                }
+
+                int length = ((FileUpload)e.Item.FindControl("FileUpload2")).PostedFile.ContentLength;
+                byte[] pic = new byte[length];
+                HttpPostedFile uploaded = ((FileUpload)e.Item.FindControl("FileUpload2")).PostedFile;
+                uploaded.InputStream.Read(pic, 0, length);
+
                 string newDesc = ((TextBox)e.Item.FindControl("tbDesc")).Text;
                 string newOption1 = ((TextBox)e.Item.FindControl("tbOption1")).Text;
                 string newOption2 = ((TextBox)e.Item.FindControl("tbOption2")).Text;
@@ -91,8 +101,9 @@ namespace Assignment
 
                 SqlCommand cmd = new SqlCommand("update question set questionDesc='"+newDesc+
                     "',Option1='"+newOption1+"',Option2='"+newOption2+"',Option3='"+newOption3
-                    +"',Option4='"+newOption4+"',sampleAns='"+newAnswer+"' where questionID='"+qid+"';", conn);
+                    +"',Option4='"+newOption4+"',sampleAns='"+newAnswer+"', image=@image where questionID='"+qid+"';", conn);
                 conn.Open();
+                cmd.Parameters.AddWithValue("@image", pic);
                 cmd.ExecuteNonQuery();
                 dl_question.EditItemIndex = -1;
                 conn.Close();
@@ -109,30 +120,6 @@ namespace Assignment
                 conn.Close();
                 Filldata();
             }
-            /*else if(e.CommandName == "Upload")
-            {
-                string qid = ((HiddenField)dl_question.FindControl("hdnquestionId")).Value;
-                string connection = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
-                SqlConnection conn = new SqlConnection(connection);
-                conn.Open();
-
-                if (!((FileUpload)dl_question.FindControl("FileUpload1")).HasFile)
-                {
-                    //no file
-                }
-
-                int length = ((FileUpload)dl_question.FindControl("FileUpload1")).PostedFile.ContentLength;
-                byte[] pic = new byte[length];
-                HttpPostedFile uploaded = ((FileUpload)dl_question.FindControl("FileUpload1")).PostedFile;
-                uploaded.InputStream.Read(pic, 0, length);
-
-                //change to insert into question table
-                SqlCommand cmd = new SqlCommand("insert into test(id,image) values (@id,@image)", conn);
-                cmd.Parameters.AddWithValue("@id", 77); //qid
-                cmd.Parameters.AddWithValue("@image", pic);
-                cmd.ExecuteNonQuery();
-                conn.Close();
-            }*/
         }
 
         protected void fv_add_ItemInserting1(object sender, FormViewInsertEventArgs e)
@@ -144,9 +131,9 @@ namespace Assignment
             string newOption4 = ((TextBox)fv_add.Row.FindControl("tbNewOption4")).Text;
             string newAnswer = ((TextBox)fv_add.Row.FindControl("tbNewAnswer")).Text;
 
-            int length = ((FileUpload)fv_add.Row.FindControl("FileUpload2")).PostedFile.ContentLength;
+            int length = ((FileUpload)fv_add.Row.FindControl("FileUpload1")).PostedFile.ContentLength;
             byte[] pic = new byte[length];
-            HttpPostedFile uploaded = ((FileUpload)fv_add.Row.FindControl("FileUpload2")).PostedFile;
+            HttpPostedFile uploaded = ((FileUpload)fv_add.Row.FindControl("FileUpload1")).PostedFile;
             uploaded.InputStream.Read(pic, 0, length);
 
             SqlCommand cmd = new SqlCommand("Insert into question(questionDesc,Option1,Option2,Option3,Option4,sampleAns,setID,image) " +

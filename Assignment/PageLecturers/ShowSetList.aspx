@@ -101,34 +101,37 @@
    
      <div class="infobox">
           <h2><b>Assessment Set</b></h2>
-         <!--<asp:DataList ID="DataList1" runat="server"  CellPadding="4" RepeatColumns="3" DataKeyField="setID" DataSourceID="SqlDataSource1" BackColor="White" BorderColor="#3366CC" BorderStyle="None" BorderWidth="1px" GridLines="Both" >
+         <asp:DataList ID="DataList1" runat="server"  CellSpacing="4" CellPadding="4" RepeatColumns="3" DataKeyField="setID" DataSourceID="SqlDataSource1" BackColor="White" BorderColor="#3366CC" BorderStyle="None" BorderWidth="1px" GridLines="Both" width="80%">
              <FooterStyle BackColor="#99CCCC" ForeColor="#003399" />
              <HeaderStyle BackColor="#003399" Font-Bold="True" ForeColor="#CCCCFF" />
              <ItemStyle BackColor="White" ForeColor="#003399" />
              <ItemTemplate>
-                 SET:
+                 setID:
                  <asp:Label ID="setIDLabel" runat="server" Text='<%# Eval("setID") %>' />
                  <br />
-                 MODE:
+                 mode:
                  <asp:Label ID="modeLabel" runat="server" Text='<%# Eval("mode") %>' />
                  <br />
-                 DURATION:
+                 duration:
                  <asp:Label ID="durationLabel" runat="server" Text='<%# Eval("duration") %>' />
                  <br />
-                 SUBJECT:
+                 subjectID:
                  <asp:Label ID="subjectIDLabel" runat="server" Text='<%# Eval("subjectID") %>' />
                  <br />
-                 TYPE:
+                 type:
                  <asp:Label ID="typeLabel" runat="server" Text='<%# Eval("type") %>' />
                  <br />
-                 <asp:Button ID="Button1" runat="server" Text="View Set" />
+                 available:
+                 <asp:Label ID="availableLabel" runat="server" Text='<%# Eval("available") %>' />
+                 <br />
+                 <asp:Button ID="viewSetBtn" runat="server" Text="View Set" OnClick="viewSetBtn_Click"/>
                  <br />
              </ItemTemplate>
              <SelectedItemStyle BackColor="#009999" Font-Bold="True" ForeColor="#CCFF99" />
-         </asp:DataList>--->
+         </asp:DataList>
 
            
-            <table id="outer" class="auto-style1">
+            <!----<table id="outer" class="auto-style1">
                 <tr>
                     <td class="auto-style2">
                      <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="setID" DataSourceID="SqlDataSource1" AllowPaging="True" Width="940px">
@@ -139,12 +142,11 @@
                                 <asp:BoundField DataField="subjectID" HeaderText="subjectID" SortExpression="subjectID" />
                                 <asp:BoundField DataField="type" HeaderText="type" SortExpression="type" />
                                 <asp:CheckBoxField DataField="available" HeaderText="available" SortExpression="available" />
-                                <asp:BoundField DataField="expiredDate" HeaderText="expiredDate" SortExpression="expiredDate" />
                             </Columns>
                         </asp:GridView>
                     </td>
                     </tr>
-                </table>
+                </table>--->
               
     <br />
              
@@ -330,7 +332,7 @@
         </div>
     <br />
         
-    <h2><b>Available Set</b></h2>
+    <!---<h2><b>Available Set</b></h2>
     
         
         <table  class="auto-style1">
@@ -351,11 +353,11 @@
                         </asp:GridView>
                     </td>
                 </tr>
-            </table>
+            </table>---->
         </div>
         </section>
 
-            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT * FROM [paperset]"></asp:SqlDataSource>
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT p.setID, p.mode, p.duration, p.subjectID, p.type, p.available FROM paperset AS p INNER JOIN subject AS s ON p.subjectID = s.subjectID WHERE (s.CourseCode = 'RSF')"></asp:SqlDataSource>
 
             <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT * FROM [paperset] WHERE ([setID] = @setID)" DeleteCommand="DELETE FROM [paperset] WHERE [setID] = @setID"
                 InsertCommand="INSERT INTO [paperset] ( [mode], [duration], [subjectID], [type],expiredDate) VALUES ( @mode, @duration, @subjectID, @type,@ExpiredDate)"
