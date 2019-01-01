@@ -80,7 +80,7 @@ namespace OnlineAssessementSite
 
             if (newPassword != null)
             {
-                Msg.Text = "Password reset. Your new password is sent to your registered email." + Server.HtmlEncode(newPassword);
+                Msg.Text = "Password reset. Your new password is sent to your registered email.";
                 try
                 {
                     System.Net.Mail.MailMessage obj = new System.Net.Mail.MailMessage();
