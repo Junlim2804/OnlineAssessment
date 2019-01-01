@@ -21,7 +21,7 @@
 <nav>
 <div class="sidenav">
 <ul>   
-<asp:HyperLink ID="hpPersonalInfo" runat="server" NavigateUrl="PersonalInformation.aspx">Personal Information</asp:HyperLink>
+<asp:HyperLink ID="hpPersonalInfo" runat="server" NavigateUrl="~/PersonalInformation.aspx">Personal Information</asp:HyperLink>
 <asp:HyperLink ID="hpSet" runat="server" NavigateUrl="~/PageLecturers/ShowSetList.aspx">Create Examination Set</asp:HyperLink>
 <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/PageLecturers/LecturerShow.aspx">Mark Paper</asp:HyperLink>        
 </ul>

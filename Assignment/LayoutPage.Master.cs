@@ -17,19 +17,8 @@ namespace OnlineAssessementSite
 
         protected void LinkButton1_Click(object sender, EventArgs e)
         {
-            String username = (String)Session["username"];
-            if (Session["username"] != null)
-            {
-                
-                if (Roles.IsUserInRole(username, "student"))
-                {
 
-                    Response.Redirect("Student.aspx");
-                }
-                else if (Roles.IsUserInRole(username, "lecturer"))
-                    Response.Redirect("lecture.aspx");
-            }
-
+            Response.Redirect("~/PersonalInformation.aspx");
         }
 
         protected void LoginStatus1_LoggingOut(object sender, LoginCancelEventArgs e)

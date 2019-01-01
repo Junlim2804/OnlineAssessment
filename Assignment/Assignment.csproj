@@ -84,6 +84,8 @@
     <Content Include="emailResult.aspx" />
     <Content Include="Image\lecBack.jpg" />
     <Content Include="Image\studBack.jpg" />
+    <Content Include="lecturerHeader.ascx" />
+    <Content Include="lecturerProfile.ascx" />
     <Content Include="PageLecturers\LecturerShow.aspx" />
     <Content Include="PageLecturers\markPaper.aspx" />
     <Content Include="PageStudents\complete.aspx" />
@@ -113,6 +115,7 @@
     <Content Include="MainCreateAccountPage.aspx" />
     <Content Include="Mainpage.aspx" />
     <Content Include="PageStudents\PreviewQuestion.aspx" />
+    <Content Include="PersonalInformation.aspx" />
     <Content Include="realchangepassword.aspx" />
     <Content Include="recoveryByemail.aspx" />
     <Content Include="resetPassword.aspx" />
@@ -124,6 +127,8 @@
     <Content Include="old\studentLogin.aspx" />
     <Content Include="PageStudents\test.aspx" />
     <Content Include="PageStudents\subComplete.aspx" />
+    <Content Include="studentHeader.ascx" />
+    <Content Include="studentProfile.ascx" />
     <Content Include="test upload image.aspx" />
     <Content Include="testimage.aspx" />
     <Content Include="Web.config">
@@ -144,6 +149,20 @@
     </Compile>
     <Compile Include="emailResult.aspx.designer.cs">
       <DependentUpon>emailResult.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="lecturerHeader.ascx.cs">
+      <DependentUpon>lecturerHeader.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="lecturerHeader.ascx.designer.cs">
+      <DependentUpon>lecturerHeader.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="lecturerProfile.ascx.cs">
+      <DependentUpon>lecturerProfile.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="lecturerProfile.ascx.designer.cs">
+      <DependentUpon>lecturerProfile.ascx</DependentUpon>
     </Compile>
     <Compile Include="PageLecturers\LecturerShow.aspx.cs">
       <DependentUpon>LecturerShow.aspx</DependentUpon>
@@ -243,6 +262,13 @@
     <Compile Include="PageStudents\PreviewQuestion.aspx.designer.cs">
       <DependentUpon>PreviewQuestion.aspx</DependentUpon>
     </Compile>
+    <Compile Include="PersonalInformation.aspx.cs">
+      <DependentUpon>PersonalInformation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PersonalInformation.aspx.designer.cs">
+      <DependentUpon>PersonalInformation.aspx</DependentUpon>
+    </Compile>
     <Compile Include="realchangepassword.aspx.cs">
       <DependentUpon>realchangepassword.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -320,6 +346,20 @@
     </Compile>
     <Compile Include="PageStudents\subComplete.aspx.designer.cs">
       <DependentUpon>subComplete.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="studentHeader.ascx.cs">
+      <DependentUpon>studentHeader.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="studentHeader.ascx.designer.cs">
+      <DependentUpon>studentHeader.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="studentProfile.ascx.cs">
+      <DependentUpon>studentProfile.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="studentProfile.ascx.designer.cs">
+      <DependentUpon>studentProfile.ascx</DependentUpon>
     </Compile>
     <Compile Include="test upload image.aspx.cs">
       <DependentUpon>test upload image.aspx</DependentUpon>
