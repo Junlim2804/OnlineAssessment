@@ -101,25 +101,55 @@
    
      <div class="infobox">
           <h2><b>Assessment Set</b></h2>
-            <table id="outer" class="auto-style1">
+         <asp:DataList ID="DataList1" runat="server"  CellSpacing="4" CellPadding="4" RepeatColumns="3" DataKeyField="setID" DataSourceID="SqlDataSource1" BackColor="White" BorderColor="#3366CC" BorderStyle="None" BorderWidth="1px" GridLines="Both" width="80%">
+             <FooterStyle BackColor="#99CCCC" ForeColor="#003399" />
+             <HeaderStyle BackColor="#003399" Font-Bold="True" ForeColor="#CCCCFF" />
+             <ItemStyle BackColor="White" ForeColor="#003399" />
+             <ItemTemplate>
+                 setID:
+                 <asp:Label ID="setIDLabel" runat="server" Text='<%# Eval("setID") %>' />
+                 <br />
+                 mode:
+                 <asp:Label ID="modeLabel" runat="server" Text='<%# Eval("mode") %>' />
+                 <br />
+                 duration:
+                 <asp:Label ID="durationLabel" runat="server" Text='<%# Eval("duration") %>' />
+                 <br />
+                 subjectID:
+                 <asp:Label ID="subjectIDLabel" runat="server" Text='<%# Eval("subjectID") %>' />
+                 <br />
+                 type:
+                 <asp:Label ID="typeLabel" runat="server" Text='<%# Eval("type") %>' />
+                 <br />
+                 available:
+                 <asp:Label ID="availableLabel" runat="server" Text='<%# Eval("available") %>' />
+                 <br />
+                 <asp:Button ID="viewSetBtn" runat="server" Text="View Set" OnClick="viewSetBtn_Click"/>
+                 <br />
+             </ItemTemplate>
+             <SelectedItemStyle BackColor="#009999" Font-Bold="True" ForeColor="#CCFF99" />
+         </asp:DataList>
+
+           
+            <!----<table id="outer" class="auto-style1">
                 <tr>
                     <td class="auto-style2">
-                        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="setID" DataSourceID="SqlDataSource1" AllowPaging="True" Width="940px">
+                     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="setID" DataSourceID="SqlDataSource1" AllowPaging="True" Width="940px">
                             <Columns>
-                                <asp:CommandField ShowSelectButton="True" />
-                                <asp:BoundField DataField="setID" HeaderText="Set ID" ReadOnly="True" SortExpression="setID" InsertVisible="False" />
-                                <asp:BoundField DataField="mode" HeaderText="Mode" SortExpression="mode" />
-                                <asp:BoundField DataField="duration" HeaderText="Duration" SortExpression="duration" />
-                                <asp:BoundField DataField="subjectID" HeaderText="Subject ID" SortExpression="subjectID" />
-                                <asp:BoundField DataField="type" HeaderText="Type" SortExpression="type" />
-                                <asp:BoundField DataField="expiredDate" DataFormatString="{0:d}" HeaderText="Expired Date" SortExpression="expiredDate" />
+                                <asp:BoundField DataField="setID" HeaderText="setID" ReadOnly="True" SortExpression="setID" InsertVisible="False" />
+                                <asp:BoundField DataField="mode" HeaderText="mode" SortExpression="mode" />
+                                <asp:BoundField DataField="duration" HeaderText="duration" SortExpression="duration" />
+                                <asp:BoundField DataField="subjectID" HeaderText="subjectID" SortExpression="subjectID" />
+                                <asp:BoundField DataField="type" HeaderText="type" SortExpression="type" />
+                                <asp:CheckBoxField DataField="available" HeaderText="available" SortExpression="available" />
                             </Columns>
                         </asp:GridView>
                     </td>
                     </tr>
-                </table>
-        
+                </table>--->
+              
     <br />
+             
     <div  id="edit">
                         <asp:FormView ID="fv_set" runat="server" CssClass="auto-style3" DataSourceID="SqlDataSource2" OnPageIndexChanging="fv_set_PageIndexChanging">
                             <EditItemTemplate>
@@ -302,7 +332,7 @@
         </div>
     <br />
         
-    <h2><b>Available Set</b></h2>
+    <!---<h2><b>Available Set</b></h2>
     
         
         <table  class="auto-style1">
@@ -323,11 +353,11 @@
                         </asp:GridView>
                     </td>
                 </tr>
-            </table>
+            </table>---->
         </div>
         </section>
 
-            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT * FROM [paperset]"></asp:SqlDataSource>
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT p.setID, p.mode, p.duration, p.subjectID, p.type, p.available FROM paperset AS p INNER JOIN subject AS s ON p.subjectID = s.subjectID WHERE (s.CourseCode = 'RSF')"></asp:SqlDataSource>
 
             <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT * FROM [paperset] WHERE ([setID] = @setID)" DeleteCommand="DELETE FROM [paperset] WHERE [setID] = @setID"
                 InsertCommand="INSERT INTO [paperset] ( [mode], [duration], [subjectID], [type],expiredDate) VALUES ( @mode, @duration, @subjectID, @type,@ExpiredDate)"
