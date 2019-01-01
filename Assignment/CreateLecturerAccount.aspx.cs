@@ -39,27 +39,39 @@ namespace OnlineAssessementSite
 
             using (SqlConnection myConnection = new SqlConnection(connectionString))
             {
-                SqlCommand mycommand = new SqlCommand("proc_register_lecturer", myConnection);
-                mycommand.CommandType = CommandType.StoredProcedure;
-                mycommand.Parameters.Add("@lecId", SqlDbType.VarChar).Value = lecId.Text;
-                mycommand.Parameters.Add("@userid", SqlDbType.UniqueIdentifier).Value = newStudentID;
-                mycommand.Parameters.Add("@lecEmail", SqlDbType.VarChar).Value = lecEmail.Text;
-                mycommand.Parameters.Add("@lecname", SqlDbType.VarChar).Value = lecname.Text;
-                mycommand.Parameters.Add("@lechpno", SqlDbType.VarChar).Value = lechpNo.Text;
 
-
-                myConnection.Open();
-
-                if (mycommand.ExecuteNonQuery() == 1)
+                try
                 {
-                    string createRole = "lecturer";
-                    if (!Roles.RoleExists(createRole))
+
+                    SqlCommand mycommand = new SqlCommand("proc_register_lecturer", myConnection);
+                    mycommand.CommandType = CommandType.StoredProcedure;
+                    mycommand.Parameters.Add("@lecId", SqlDbType.VarChar).Value = lecId.Text;
+                    mycommand.Parameters.Add("@userid", SqlDbType.UniqueIdentifier).Value = newStudentID;
+                    mycommand.Parameters.Add("@lecEmail", SqlDbType.VarChar).Value = lecEmail.Text;
+                    mycommand.Parameters.Add("@lecname", SqlDbType.VarChar).Value = lecname.Text;
+                    mycommand.Parameters.Add("@lechpno", SqlDbType.VarChar).Value = lechpNo.Text;
+
+
+                    myConnection.Open();
+
+                    if (mycommand.ExecuteNonQuery() == 1)
                     {
-                        Roles.CreateRole(createRole);
+                        string createRole = "lecturer";
+                        if (!Roles.RoleExists(createRole))
+                        {
+                            Roles.CreateRole(createRole);
+                        }
+                        Roles.AddUserToRole(lecId.Text, "lecturer");
                     }
-                    Roles.AddUserToRole(lecId.Text, "lecturer");
+                    myConnection.Close();
+
                 }
-                myConnection.Close();
+                catch (SqlException ex)
+                {
+                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "confirm('Database Error!')", true);
+                    Response.Redirect("CreateLecturerAccount.aspx");
+                }
+
             }
         }
     }
