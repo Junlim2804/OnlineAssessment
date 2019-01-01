@@ -157,7 +157,7 @@ namespace Assignment
 
         protected void Button2_Click(object sender, EventArgs e)
         {
-            Response.Redirect("createQuestion.aspx");
+            Response.Redirect("ShowSetList.aspx");
         }
 
         protected void uploadPic_Click(object sender, EventArgs e)

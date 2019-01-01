@@ -40,7 +40,7 @@ namespace Assignment
         protected void Filldata()
         {
 
-            string sql = "Select ql.questionID,questionDesc,sampleAns,studAns from question q,questionList ql where stuId ='"+stuid+"' and q.setID ="+setid+" and ql.questionID = q.questionID";
+            string sql = "Select ql.questionID,questionDesc,sampleAns,studAns from question q,questionList ql where stuId ='"+stuid+"' and q.setID ='"+setid+"' and ql.questionID = q.questionID;";
             SqlDataAdapter da = new SqlDataAdapter(sql, ConfigurationManager.ConnectionStrings["CaringWow"].ToString());
             DataSet ds = new DataSet();
             da.Fill(ds);
@@ -49,7 +49,7 @@ namespace Assignment
           
 
         }
-        protected void updateData()
+        protected int updateData()
         {
             SqlCommand cmd = new SqlCommand();
             conn.Open();
@@ -71,12 +71,13 @@ namespace Assignment
                 cmd.ExecuteNonQuery();
                 
             }
-            String sqlmark="Update StudentSetList set mark="+totalmark+ "  where setID =" + setid + " and stuId = '" + stuid + "'";
+            String sqlmark="Update StudentSetList set mark="+totalmark+ "  where setID ='" + setid + "' and stuId = '" + stuid + "';";
            cmd = new SqlCommand(sqlmark, conn);
 
 
             cmd.ExecuteNonQuery();
             conn.Close();
+            return totalmark;
         }
 
         protected void DataList1_SelectedIndexChanged(object sender, EventArgs e)
@@ -87,7 +88,8 @@ namespace Assignment
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
 
-            updateData();
+            int mark = updateData();
+            
             //Msg.Text = "Password reset. Your new password is sent to your registered email." + Server.HtmlEncode(newPassword);
             try
             {
@@ -104,7 +106,7 @@ namespace Assignment
                 obj.Priority = System.Net.Mail.MailPriority.High;
                 obj.Subject = "Result for XXX";
                 string date = DateTime.Now.ToString();
-                //obj.Body = "Your new password is " + Server.HtmlEncode(newPassword) + ". Please proceed to change your password to prevent others from using your account.";
+                obj.Body = "Your mark for XXX is " + mark;
                 serverobj.Send(obj);
             }
             catch (Exception ex)

@@ -101,7 +101,8 @@
    
      <div class="infobox">
           <h2><b>Assessment Set</b></h2>
-         <asp:DataList ID="DataList1" runat="server"  CellSpacing="4" CellPadding="4" RepeatColumns="3" DataKeyField="setID" DataSourceID="SqlDataSource1" BackColor="White" BorderColor="#3366CC" BorderStyle="None" BorderWidth="1px" GridLines="Both" width="80%">
+         <asp:DataList ID="DataList1" runat="server"  CellSpacing="4" CellPadding="4" RepeatColumns="3" RepeatDirection="Horizontal" DataKeyField="setID" DataSourceID="SqlDataSource1" 
+             BackColor="White" BorderColor="#3366CC" BorderStyle="None" BorderWidth="2px" GridLines="Both" width="80%" OnItemCommand="DataList1_ItemCommand">
              <FooterStyle BackColor="#99CCCC" ForeColor="#003399" />
              <HeaderStyle BackColor="#003399" Font-Bold="True" ForeColor="#CCCCFF" />
              <ItemStyle BackColor="White" ForeColor="#003399" />
@@ -124,10 +125,12 @@
                  available:
                  <asp:Label ID="availableLabel" runat="server" Text='<%# Eval("available") %>' />
                  <br />
-                 <asp:Button ID="viewSetBtn" runat="server" Text="View Set" OnClick="viewSetBtn_Click"/>
+                 <asp:Button ID="viewSetBtn" runat="server" Text="View Set" CommandName="View" />
                  <br />
              </ItemTemplate>
-             <SelectedItemStyle BackColor="#009999" Font-Bold="True" ForeColor="#CCFF99" />
+             <SelectedItemTemplate>
+                 how is this ??
+             </SelectedItemTemplate>
          </asp:DataList>
 
            
@@ -357,7 +360,11 @@
         </div>
         </section>
 
-            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT p.setID, p.mode, p.duration, p.subjectID, p.type, p.available FROM paperset AS p INNER JOIN subject AS s ON p.subjectID = s.subjectID WHERE (s.CourseCode = 'RSF')"></asp:SqlDataSource>
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT p.setID, p.subjectID, p.type, p.duration, p.mode, p.available FROM paperset AS p INNER JOIN subject AS s ON p.subjectID = s.subjectID INNER JOIN lecturer AS l ON s.CourseCode = l.teachCourse WHERE l.lecId = @personID">
+                <SelectParameters>
+                    <asp:SessionParameter Name="personID" SessionField="username" />
+                </SelectParameters>
+        </asp:SqlDataSource>
 
             <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT * FROM [paperset] WHERE ([setID] = @setID)" DeleteCommand="DELETE FROM [paperset] WHERE [setID] = @setID"
                 InsertCommand="INSERT INTO [paperset] ( [mode], [duration], [subjectID], [type],expiredDate) VALUES ( @mode, @duration, @subjectID, @type,@ExpiredDate)"

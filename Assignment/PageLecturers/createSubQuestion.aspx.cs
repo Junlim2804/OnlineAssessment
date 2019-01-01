@@ -25,6 +25,8 @@ namespace Assignment
                 Filldata();
                 
             }
+
+            
             /*if (((FileUpload)fv_add.Row.FindControl("FileUpload1")).HasFile)
             {
                 System.IO.Stream fs = ((FileUpload)fv_add.Row.FindControl("FileUpload1")).PostedFile.InputStream;
@@ -35,6 +37,8 @@ namespace Assignment
                 ((Image)fv_add.Row.FindControl("Image1")).Visible = true;
             }*/
         }
+
+       
 
         protected void Filldata()
         {
@@ -70,14 +74,14 @@ namespace Assignment
             }
             else if (e.CommandName == "Update")
             {
-                if (!((FileUpload)e.Item.FindControl("FileUpload2")).HasFile)
+                if (!((FileUpload)e.Item.FindControl("FileUpload1")).HasFile)
                 {
                     ((Label)e.Item.FindControl("Label2")).Text = "No yet upload";
                 }
 
-                int length = ((FileUpload)e.Item.FindControl("FileUpload2")).PostedFile.ContentLength;
+                int length = ((FileUpload)e.Item.FindControl("FileUpload1")).PostedFile.ContentLength;
                 byte[] pic = new byte[length];
-                HttpPostedFile uploaded = ((FileUpload)e.Item.FindControl("FileUpload2")).PostedFile;
+                HttpPostedFile uploaded = ((FileUpload)e.Item.FindControl("FileUpload1")).PostedFile;
                 uploaded.InputStream.Read(pic, 0, length);
                 e.Item.FindControl("Image1").Visible = true;
 
@@ -112,20 +116,20 @@ namespace Assignment
 
         protected void fv_add_ItemInserting(object sender, FormViewInsertEventArgs e)
         {
-            int length = ((FileUpload)fv_add.Row.FindControl("FileUpload1")).PostedFile.ContentLength;
+            int length = ((FileUpload)fv_add.Row.FindControl("FileUpload2")).PostedFile.ContentLength;
             byte[] pic = new byte[length];
-            HttpPostedFile uploaded = ((FileUpload)fv_add.Row.FindControl("FileUpload1")).PostedFile;
+            HttpPostedFile uploaded = ((FileUpload)fv_add.Row.FindControl("FileUpload2")).PostedFile;
             uploaded.InputStream.Read(pic, 0, length);
-            fv_add.Row.FindControl("Image1").Visible = true;
+            //fv_add.Row.FindControl("Image1").Visible = true;
 
             string newDesc = ((TextBox)fv_add.Row.FindControl("tbNewDesc")).Text;
             string newAnswer = ((TextBox)fv_add.Row.FindControl("tbNewAnswer")).Text;
 
-            conn.Open();
             SqlCommand cmd = new SqlCommand("Insert into question(questionDesc,sampleAns,setID,image) " +
                 "values('" + newDesc + "','" + newAnswer + "','"+paperset+"', @image)", conn);
+            
             cmd.Parameters.AddWithValue("@image", pic);
-            //open here
+            conn.Open();
             cmd.ExecuteNonQuery();
             conn.Close();
             fv_add.ChangeMode(FormViewMode.ReadOnly);
@@ -144,7 +148,7 @@ namespace Assignment
 
         protected void Button2_Click(object sender, EventArgs e)
         {
-            Response.Redirect("createSubQuestion.aspx");
+            Response.Redirect("ShowSetList.aspx");
         }
 
        

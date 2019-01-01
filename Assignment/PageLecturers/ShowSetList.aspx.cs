@@ -14,9 +14,12 @@ namespace Assignment
     {
         public static string subjID="";
         public static string modeid = "";
+
         SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["CaringWow"].ToString());
         protected void Page_Load(object sender, EventArgs e)
         {
+            string personID = Session["username"].ToString();
+            
             Page.MaintainScrollPositionOnPostBack = true;
             if (IsPostBack)
             {
@@ -57,18 +60,14 @@ namespace Assignment
             Calendar CalExp = (Calendar)fv_set.FindControl("CalExp");
             for (int i = 0; i < rblType.Items.Count; i++)
             {
-
                 if (rblType.Items[i].Selected)
                 {
 
                     type = rblType.Items[i].Value;
                     break;
-
                 }
-
             }
-
-
+            
             for (int i = 0; i < ddlSubList.Items.Count; i++)
             {
 
@@ -81,12 +80,9 @@ namespace Assignment
                 }
 
             }
-
-
+            
             String duration = ((TextBox)fv_set.FindControl("tbDuration")).Text;
-
-
-
+            
             subjID = subjectID;
            
             e.Command.Parameters[0].Value = duration; 
@@ -94,11 +90,7 @@ namespace Assignment
             e.Command.Parameters[2].Value = type;
             e.Command.Parameters[3].Value = CalExp.SelectedDate;
             e.Command.Parameters[4].Value = GridView1.SelectedValue;
-
-           
             
-
-
 
         }
 
@@ -110,6 +102,7 @@ namespace Assignment
         protected void btnAdd_Click(object sender, EventArgs e)
         {
             fv_set.ChangeMode(FormViewMode.Insert);
+            
         }
 
         protected void btnInsertClick(object sender, EventArgs e)
@@ -321,14 +314,29 @@ namespace Assignment
 
         }
 
-        protected void viewSetBtn_Click(object sender, EventArgs e)
+        protected void DataList1_ItemCommand(object source, DataListCommandEventArgs e)
         {
-            Label lbType = (Label)DataList1.FindControl("typeLabel");
-            Label setID = (Label)DataList1.FindControl("setIDLabel");
-            if (lbType.Text == "obj")
-                Response.Redirect("createQuestion.aspx?SETID=" + setID);
-            else
-                Response.Redirect("createSubQuestion.aspx?SETID=" + setID);
+            if (e.CommandName == "View")
+            {
+                string setID = DataList1.DataKeys[e.Item.ItemIndex].ToString();
+                string lbType =((Label)e.Item.FindControl("typeLabel")).Text;
+
+
+                if (lbType == "obj")
+                  Response.Redirect("createQuestion.aspx?SETID=" + setID);
+                else if (lbType == "sub")
+                  Response.Redirect("createSubQuestion.aspx?SETID=" + setID);
+            }
+        }
+
+                protected void DataList1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        protected void DataList1_SelectedIndexChanged1(object sender, EventArgs e)
+        {
+
         }
     }
 }

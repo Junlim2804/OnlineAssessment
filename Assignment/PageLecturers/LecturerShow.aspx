@@ -33,28 +33,41 @@
     </style>
 
         <br /><br /><br /><br />
-        <table id="upper" class="auto-style1">
-            <tr>
-                <td class="auto-style2">Subject<asp:DropDownList ID="ddlSubject" runat="server" AutoPostBack="True" DataSourceID="SqlDataSource2" DataTextField="subjectName" DataValueField="subjectID" OnSelectedIndexChanged="ddlSubject_SelectedIndexChanged">
-                    </asp:DropDownList>
-                </td>
-                <td class="auto-style2">Set<asp:DropDownList ID="ddlSet" runat="server" AutoPostBack="True" DataSourceID="SqlDataSource1" DataTextField="setID" DataValueField="setID">
-                    </asp:DropDownList>
-                </td>
-                <td class="auto-style2"></td>
-            </tr>
-            <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-            </tr>
-        </table>
+        
         <br />
+
+             <asp:DataList ID="DataList1" runat="server"  CellSpacing="4" CellPadding="4" RepeatColumns="3" DataKeyField="setID" DataSourceID="SqlDataSource1" BackColor="White" BorderColor="#3366CC" BorderStyle="None" BorderWidth="1px" GridLines="Both" width="80%">
+             <FooterStyle BackColor="#99CCCC" ForeColor="#003399" />
+             <HeaderStyle BackColor="#003399" Font-Bold="True" ForeColor="#CCCCFF" />
+             <ItemStyle BackColor="White" ForeColor="#003399" />
+             <ItemTemplate>
+                 setID:
+                 <asp:Label ID="setIDLabel" runat="server" Text='<%# Eval("setID") %>' />
+                 <br />
+                 mode:
+                 <asp:Label ID="modeLabel" runat="server" Text='<%# Eval("mode") %>' />
+                 <br />
+                 duration:
+                 <asp:Label ID="durationLabel" runat="server" Text='<%# Eval("duration") %>' />
+                 <br />
+                 subjectID:
+                 <asp:Label ID="subjectIDLabel" runat="server" Text='<%# Eval("subjectID") %>' />
+                 <br />
+                 type:
+                 <asp:Label ID="typeLabel" runat="server" Text='<%# Eval("type") %>' />
+                 <br />
+                 <asp:Button ID="markBtn" runat="server" Text="Mark Paper" OnClick="markBtn_Click"/>
+                 <br />
+                 <asp:Button ID="resultBtn" runat="server" Text="View Result" OnClick="resultBtn_Click"/>
+                 <br />
+             </ItemTemplate>
+             <SelectedItemStyle BackColor="#009999" Font-Bold="True" ForeColor="#CCFF99" />
+         </asp:DataList>
+
+
+
+
+
     
     <div id="grid" >
         <h2><b>Students Results</b></h2>
@@ -77,10 +90,7 @@
         </table>
         </div>
         <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [subjectID], [subjectName] FROM [subject]"></asp:SqlDataSource>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [setID] FROM [paperset] WHERE ([subjectID] = @subjectID)">
-            <SelectParameters>
-                <asp:ControlParameter ControlID="ddlSubject" Name="subjectID" PropertyName="SelectedValue" Type="String" />
-            </SelectParameters>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT p.setID, p.mode, p.duration, p.subjectID, p.type FROM paperset AS p INNER JOIN subject AS s ON p.subjectID = s.subjectID WHERE (s.CourseCode = 'RSF')">
         </asp:SqlDataSource>
         <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT * FROM [StudentSetList] WHERE ([setID] = @setID)">
             <SelectParameters>

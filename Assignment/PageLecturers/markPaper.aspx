@@ -61,7 +61,7 @@
                             <th class="auto-style4"><asp:HiddenField ID="hdnquestionId" Value='<%#Eval("questionId") %>' runat="server" /></th>
                         </tr>
                         <tr>
-                            <td class="auto-style7">SampleAnswer</td>
+                            <td class="auto-style7">Sample Answer</td>
                             <td class="auto-style4">Student Answer</td>
                         </tr>
                         <tr>

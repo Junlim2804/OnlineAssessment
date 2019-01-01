@@ -46,20 +46,46 @@
 
     </style>
 
-    <script type="text/javascript">
-    function readURL(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        function showpreview(input,id) {
 
-        reader.onload = function (e) {
-            $('#Image1').attr('src', e.target.result);
+            if (input.files[0]) {
+                var reader = new FileReader();
+                //var image = document.getElementById("%=dl_question.FindControl("Image1").ClientID%>");
+                var str = id.substring(0, 32) + "Image" + id.substring(42, id.length);
+                console.log(id);
+                console.log(id.length);
+                console.log(id.substring(43,id.length - 1));
+                console.log(str);
+                reader.onload = function (e) {
+                    $("#"+str).css('visibility', 'visible');
+                    $("#"+str).attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
         }
 
-        reader.readAsDataURL(input.files[0]);
-    }
-}
+        function showpreview2(input,id) {
 
+            if (input.files[0]) {
+                var reader = new FileReader();
+                //var image = document.getElementById("%=dl_question.FindControl("Image1").ClientID%>");
+                var str = id.substring(0, 27) + "Image" + id.substring(37, id.length);
+                console.log(id);
+                console.log(id.length);
+                console.log(id.substring(38,id.length - 1));
+                console.log(str);
+                reader.onload = function (e) {
+                    $("#"+str).css('visibility', 'visible');
+                    $("#"+str).attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
     </script>
+
+
 <br /> <br /><br /><br />
     <h2><b>Create Subjective Question</b></h2>
         <div>
@@ -79,9 +105,10 @@
                                                   <table class="tblOptions">
                                                       <tr>
                                                                                     <td>
+                                                                                        
+                                                                                        <asp:FileUpload ID="FileUpload1" runat="server" onchange="showpreview(this,this.id)"/> <br />
                                                                                         <asp:Image ID="Image1" runat="server" height="25%" width="25%" Visible='<%#Eval("Image")!=DBNull.Value %>' ImageUrl='<%#(Eval("Image")!=DBNull.Value)?"data:Image/jpg;base64,"+Convert.ToBase64String((byte[])Eval("Image")):"~/Image/brain1.png" %>'/>
-                                                                                        <asp:FileUpload ID="FileUpload2" runat="server" onchange="readURL(this);"/> <br />
-                                                                                        <asp:Label ID="Label2" runat="server"></asp:Label>
+                                                                                        
                                                                                     </td>
                                                                                 </tr>
                                                                                 <tr>
@@ -164,14 +191,14 @@
                                                   <table>
                                                       <tr>
                                                           <td>
-                                                              <asp:Image ID="Image1" runat="server" height="25%" width="25%" Visible='<%#Eval("Image")!=DBNull.Value %>' ImageUrl='<%#(Eval("Image")!=DBNull.Value)?"data:Image/jpg;base64,"+Convert.ToBase64String((byte[])Eval("Image")):"~/Image/brain1.png" %>'/>
-                                                              <asp:FileUpload ID="FileUpload1" runat="server" /><br />
-                                                              <asp:Label ID="Label1" runat="server" ></asp:Label>
+                                                              
+                                                              <asp:FileUpload ID="FileUpload2" runat="server" onchange="showpreview2(this,this.id)"/><br />
+                                                              <asp:Image ID="Image2" runat="server" height="25%" width="25%" />
                                                           </td>
                                                       </tr>
                                                                                 <tr>
                                                                                     <td>
-                                                                                        Sample Answer:<asp:TextBox ID="tbNewAnswer" runat="server" Text='<%#Eval("SampleAns") %>'></asp:TextBox>
+                                                                                        Sample Answer:<asp:TextBox ID="tbNewAnswer" runat="server"></asp:TextBox>
                                                                                     </td>
                                                                                 </tr>
                                                              
