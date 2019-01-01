@@ -28,5 +28,10 @@ namespace OnlineAssessementSite
             Session.RemoveAll();
      
         }
+
+        protected void LinkButton2_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Homepage.aspx");
+        }
     }
 }
