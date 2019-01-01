@@ -17,7 +17,7 @@
 
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
-    <asp:CreateUserWizard ID="CreateUserWizard1" runat="server" ContinueDestinationPageUrl="PageStudents/Student.aspx" FinishDestinationPageUrl="~/LoginPage.aspx" OnCreatedUser="CreateUserWizard1_CreatedUser" >
+    <asp:CreateUserWizard ID="CreateUserWizard1" runat="server" ContinueDestinationPageUrl="~/PersonalInformation.aspx" FinishDestinationPageUrl="~/LoginPage.aspx" OnCreatedUser="CreateUserWizard1_CreatedUser" >
         <WizardSteps>
             <asp:CreateUserWizardStep ID="RegisterStudent1" runat="server">
                 <ContentTemplate>
@@ -71,7 +71,16 @@
                                                 <asp:RegularExpressionValidator ID="regexEmailValid" runat="server" ForeColor="Red" ValidationExpression="\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"
                                                     ControlToValidate="Email" ErrorMessage="Invalid Email Format"></asp:RegularExpressionValidator>
                                             </div>
-                         
+
+                                              <div class="form-group">
+                                                 Course:
+                                                <asp:DropDownList ID="Course" runat="server" Width="414px">
+                                                    <asp:ListItem>RSF</asp:ListItem>
+                                                    <asp:ListItem>RDT</asp:ListItem>
+                                                  
+                                                </asp:DropDownList>
+                                              </div>
+
                                             <div class="form-group form-button">
                                                 <asp:Button ID="signup" runat="server" CssClass="form-submit" Text="Register" CommandName="MoveNext" />
                                                 

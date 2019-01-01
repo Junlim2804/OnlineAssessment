@@ -12,12 +12,20 @@
         .auto-style1 {
             height: 119px;
         }
+        .auto-style2 {
+            position: relative;
+            margin-bottom: 25px;
+            overflow: hidden;
+            left: 19px;
+            top: 0px;
+            width: 431px;
+        }
     </style>
 </asp:Content>
 
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
-    <asp:CreateUserWizard ID="CreateUserWizard1" runat="server" OnCreatedUser="CreateUserWizard1_CreatedUser" ContinueDestinationPageUrl="PageLecturers/lecture.aspx">
+    <asp:CreateUserWizard ID="CreateUserWizard1" runat="server" OnCreatedUser="CreateUserWizard1_CreatedUser" ContinueDestinationPageUrl="~/PersonalInformation.aspx">
         <WizardSteps>
             <asp:CreateUserWizardStep ID="RegisterLecturer1" runat="server">
                 <ContentTemplate>
@@ -28,6 +36,7 @@
                                     <div class="signup-form">
                                         <h2 class="form-title">Sign up as Lecturer</h2>
                                         <div class="register-form" id="register-form">
+
                                             <div class="form-group">
 
                                                 <asp:TextBox ID="UserName" runat="server" placeholder="User Name"></asp:TextBox>
@@ -46,7 +55,7 @@
                                                 <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" ControlToValidate="Password" ErrorMessage="Password is required." ToolTip="Password is required." ValidationGroup="CreateUserWizard1">
                                                   *</asp:RequiredFieldValidator>
                                                 <asp:Literal ID="ErrorMessage" runat="server" EnableViewState="False"></asp:Literal>
-                           <asp:RegularExpressionValidator ID="PasswordRegularExpression" runat="server" ForeColor="Red" ErrorMessage="Enter password with 8-10 digits with at least one numberic number" ControlToValidate="Password" 
+                                         <asp:RegularExpressionValidator ID="PasswordRegularExpression" runat="server" ForeColor="Red" ErrorMessage="Enter password with 8-10 digits with at least one numberic number" ControlToValidate="Password" 
                                             ValidationExpression="(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{8,10})$" ></asp:RegularExpressionValidator> 
                                             </div>
                                             <div class="form-group">
@@ -56,6 +65,8 @@
                                                 <asp:CompareValidator ID="PasswordCompare" runat="server" ControlToCompare="Password" ControlToValidate="ConfirmPassword" Display="Dynamic" ErrorMessage="The Password and Confirmation Password must match." ValidationGroup="CreateUserWizard1"></asp:CompareValidator>
 
                                             </div>
+
+
                                             <div class="form-group">
                                                 <asp:TextBox ID="HpNo" runat="server" placeholder="Handphone No"></asp:TextBox>
                                                 <asp:RequiredFieldValidator ID="HpNoRequired" runat="server" ControlToValidate="HpNo" ErrorMessage="Handphone No is required." ToolTip="Handphone No is required." ValidationGroup="CreateUserWizard1">
@@ -63,6 +74,7 @@
                                         <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ErrorMessage="Enter valid Phone number" ControlToValidate="HpNo" 
                                             ValidationExpression="\d{10,11}" ></asp:RegularExpressionValidator> 
                                             </div>
+                                            
                                             <div class="form-group">
                                                 <asp:TextBox ID="Email" runat="server" placeholder="Email"></asp:TextBox>
                                                 <asp:RequiredFieldValidator ID="LecEmailRequired" runat="server" ControlToValidate="Email" ErrorMessage="Lecture Email is required." ToolTip="Lecture Email is required." ValidationGroup="CreateUserWizard1">
@@ -70,7 +82,15 @@
                                                 <asp:RegularExpressionValidator ID="regexEmailValid" runat="server" ValidationExpression="\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"
                                                     ControlToValidate="Email" ErrorMessage="Invalid Email Format"></asp:RegularExpressionValidator>
                                             </div>
-                           
+
+                                                <div class="form-group">
+                                                 Course:
+                                                <asp:DropDownList ID="Course" runat="server" Width="414px">
+                                                    <asp:ListItem>RSF</asp:ListItem>
+                                                    <asp:ListItem>RDT</asp:ListItem>
+                                                  
+                                                </asp:DropDownList>
+                                              </div>
                                             <div class="form-group form-button">
                                                 <asp:Button ID="signup" runat="server" CssClass="form-submit" Text="Register" CommandName="MoveNext" />
 

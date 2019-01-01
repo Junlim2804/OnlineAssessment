@@ -30,7 +30,8 @@ namespace OnlineAssessementSite
             TextBox stupassword = (TextBox)RegisterStudent1.ContentTemplateContainer.FindControl("Password");
             TextBox stuemail = (TextBox)RegisterStudent1.ContentTemplateContainer.FindControl("Email");
             TextBox stuhpNo = (TextBox)RegisterStudent1.ContentTemplateContainer.FindControl("HpNo");
-
+            DropDownList course = (DropDownList)RegisterStudent1.ContentTemplateContainer.FindControl("Course");
+            Session["username"] = stuid.Text;
 
             using (SqlConnection myConnection = new SqlConnection(connectionString))
             {
@@ -45,6 +46,7 @@ namespace OnlineAssessementSite
                 mycommand.Parameters.Add("@stuemail", SqlDbType.VarChar).Value = stuemail.Text;
                 mycommand.Parameters.Add("@stuname", SqlDbType.VarChar).Value = stuname.Text;
                 mycommand.Parameters.Add("@stuhpno", SqlDbType.VarChar).Value = stuhpNo.Text;
+                mycommand.Parameters.Add("@courseCode", SqlDbType.VarChar).Value = course.SelectedItem.ToString();
                 myConnection.Open();
 
                 if (mycommand.ExecuteNonQuery() == 1)
