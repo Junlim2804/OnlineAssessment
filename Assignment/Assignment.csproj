@@ -81,6 +81,7 @@
     <Content Include="App_Data\CaringWow_log.ldf">
       <DependentUpon>CaringWow.mdf</DependentUpon>
     </Content>
+    <Content Include="emailResult.aspx" />
     <Content Include="Image\lecBack.jpg" />
     <Content Include="Image\studBack.jpg" />
     <Content Include="PageLecturers\lecSideNav.ascx" />
@@ -140,6 +141,13 @@
     </Compile>
     <Compile Include="About.aspx.designer.cs">
       <DependentUpon>About.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="emailResult.aspx.cs">
+      <DependentUpon>emailResult.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="emailResult.aspx.designer.cs">
+      <DependentUpon>emailResult.aspx</DependentUpon>
     </Compile>
     <Compile Include="PageLecturers\lecSideNav.ascx.cs">
       <DependentUpon>lecSideNav.ascx</DependentUpon>
