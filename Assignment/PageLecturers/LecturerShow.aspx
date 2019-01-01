@@ -1,7 +1,7 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/LayoutPage.Master" AutoEventWireup="true" CodeBehind="LecturerShow.aspx.cs" Inherits="Assignment.LecturerShow" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <link rel="stylesheet" type="text/css" href="CSS/Student.css">
+    <link rel="stylesheet" type="text/css" href="../CSS/Student.css">
     <style type="text/css">
 
 
@@ -30,7 +30,35 @@
             background-color:#1A237E;
             color:white;
         }
+
+                .bgimg {
+    background-position: center;
+    background-size: cover;
+    background-image: url("/Image/lecBack.jpg");
+    min-height: 100%;
+}
     </style>
+ <header class="bgimg w3-display-container w3-grayscale-min" id="home">
+<div class="w3-container" style="padding:128px 16px" id="about">    
+<div class="auto-style1" style="padding:48px">    
+ <span class="w3-jumbo w3-animate-top">Mark Paper</span><br> </div>
+
+</div> 
+ </header>
+
+
+  <nav>
+    <div class="sidenav">
+        <ul>
+     
+<asp:HyperLink ID="hpPersonalInfo" runat="server" NavigateUrl="../PersonalInformation.aspx">Personal Information</asp:HyperLink>
+<asp:HyperLink ID="hpSet" runat="server" NavigateUrl="~/PageLecturers/ShowSetList.aspx">Create Examination Set</asp:HyperLink>
+<asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/PageLecturers/LecturerShow.aspx">Mark Paper</asp:HyperLink>     
+
+    </ul>
+
+    </div>
+  </nav>
 
         <br /><br /><br /><br />
         
@@ -72,7 +100,7 @@
     <div id="grid" >
         <h2><b>Students Results</b></h2>
         
-    <table class="auto-style3" style="align-content:center">
+    <table class="auto-style3"  style="margin-left:30%">
         
         <tr>
 

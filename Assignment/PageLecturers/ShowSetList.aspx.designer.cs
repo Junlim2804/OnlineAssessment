@@ -13,15 +13,6 @@ namespace Assignment {
     public partial class ShowSetList {
         
         /// <summary>
-        /// hpSet control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink hpSet;
-        
-        /// <summary>
         /// hpPersonalInfo control.
         /// </summary>
         /// <remarks>
@@ -31,13 +22,22 @@ namespace Assignment {
         protected global::System.Web.UI.WebControls.HyperLink hpPersonalInfo;
         
         /// <summary>
-        /// markPaper control.
+        /// hpSet control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink markPaper;
+        protected global::System.Web.UI.WebControls.HyperLink hpSet;
+        
+        /// <summary>
+        /// HyperLink2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink HyperLink2;
         
         /// <summary>
         /// DataList1 control.
