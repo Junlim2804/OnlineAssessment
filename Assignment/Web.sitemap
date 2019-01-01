@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+  
+  <siteMapNode url="Student.aspx" title="Personal Student Details" roles="student">
+
+      <siteMapNode url="ShowResult.aspx" title="Achievement" roles="student" />
+
+      <siteMapNode url="ShowResult.aspx" title="Question" roles="student"/>
+
+
+    </siteMapNode>
+
+    <siteMapNode url="lecturer.aspx" title="Personal Lecturer Details"  roles="lecturer" >
+
+      <siteMapNode url="ShowSetList.aspx" title="Create question paper" roles="lecturer" />
+
+      <siteMapNode url="markPapper.aspx" title="Mark paper" roles="lecturer" />
+
+     
+  </siteMapNode>
+</siteMap>

@@ -60,15 +60,22 @@ namespace OnlineAssessementSite
                    string txtStudEmail = ((TextBox)e.Item.FindControl("txtStudEmail")).Text;
                    string txtStudHpNo = ((TextBox)e.Item.FindControl("txtStudHpNo")).Text;
                 string txtStudCourse = ((DropDownList)e.Item.FindControl("DropDownList1")).SelectedValue;
-                  
-                   SqlCommand cmd = new SqlCommand("update student set stuname ='" + txtStudName + "', stuemail ='" + txtStudEmail + "', stuhpno ='" + txtStudHpNo +
-                       "',courseCode ='" + txtStudCourse +"'where stuid='" + txtStudId+"'",conn);
-                   conn.Open();
-                   cmd.ExecuteNonQuery();
-                   DataList1.EditItemIndex = -1;
-                   conn.Close();
+                try
+                {
+                    SqlCommand cmd = new SqlCommand("update student set stuname ='" + txtStudName + "', stuemail ='" + txtStudEmail + "', stuhpno ='" + txtStudHpNo +
+                  "',courseCode ='" + txtStudCourse + "'where stuid='" + txtStudId + "'", conn);
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    DataList1.EditItemIndex = -1;
+                    conn.Close();
 
-                   filldata();
+                    filldata();
+                }
+                catch (SqlException ex)
+                {
+                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Database Error!')", true);
+                }
+
                  
                }
                
