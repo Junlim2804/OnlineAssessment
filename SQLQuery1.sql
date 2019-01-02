@@ -1,0 +1,1 @@
+﻿SELECT * FROM aspnet_Membership WHERE USERID='7749c03e-ea01-4d05-b756-eaffeb71efa4'

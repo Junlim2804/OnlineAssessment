@@ -114,19 +114,24 @@
                                               </td>
                                       </tr>
                                       <tr>
-                                          <td>Option1:<asp:TextBox ID="tbOption1" runat="server" GroupName='<%#Eval("QuestionId") %>' Text='<%#Eval("Option1") %>' />
+                                          <td>Option1:
+                                              <asp:TextBox ID="tbOption1" runat="server" GroupName='<%#Eval("QuestionId") %>' Text='<%#Eval("Option1") %>' />
+                                               <asp:RequiredFieldValidator runat="server" id="reqName" controltovalidate="tbOption1" forecolor="Red" errormessage="Answer cannot be null!" />
                                           </td>
                                       </tr>
                                       <tr>
                                           <td>Option2:<asp:TextBox ID="tbOption2" runat="server" GroupName='<%#Eval("QuestionId") %>' Text='<%#Eval("Option2") %>' />
+                                              <asp:RequiredFieldValidator runat="server" id="RequiredFieldValidator1" controltovalidate="tbOption2" forecolor="Red" errormessage="Answer cannot be null!" />
                                           </td>
                                       </tr>
                                       <tr>
                                           <td>Option3:<asp:TextBox ID="tbOption3" runat="server" GroupName='<%#Eval("QuestionId") %>' Text='<%#Eval("Option3") %>' />
+                                              <asp:RequiredFieldValidator runat="server" id="RequiredFieldValidator2" controltovalidate="tbOption3" forecolor="Red" errormessage="Answer cannot be null!" />
                                           </td>
                                       </tr>
                                       <tr>
                                           <td>Option4:<asp:TextBox ID="tbOption4" runat="server" GroupName='<%#Eval("QuestionId") %>' Text='<%#Eval("Option4") %>' />
+                                              <asp:RequiredFieldValidator runat="server" id="RequiredFieldValidator3" controltovalidate="tbOption4" forecolor="Red" errormessage="Answer cannot be null!" />
                                           </td>
                                       </tr>
                                       <tr>
