@@ -16,13 +16,19 @@ namespace Assignment
                 Control ctrlControl;
                 if (registerUser == "stuRegister")
                 {
+                h.Text = "Register As Student";
                     ctrlControl = LoadControl("CreateStudentInfo.ascx");
                   
                 }
-                else 
+                else if(registerUser == "stuLecturer")
                 {
-                    ctrlControl = LoadControl("CreateLecturer.ascx");
-                }
+                h.Text = "Register As Lecturer";
+                ctrlControl = LoadControl("CreateLecturer.ascx");
+            }
+            else
+            {
+                ctrlControl = LoadControl("CreateStudentInfo.ascx");
+            }
        
 
                 div1.Controls.Add(ctrlControl);

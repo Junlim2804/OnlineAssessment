@@ -13,6 +13,15 @@ namespace Assignment {
     public partial class TestingCreate {
         
         /// <summary>
+        /// h control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label h;
+        
+        /// <summary>
         /// div1 control.
         /// </summary>
         /// <remarks>
