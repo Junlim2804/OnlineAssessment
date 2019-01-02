@@ -131,6 +131,7 @@
     <Content Include="studentProfile.ascx" />
     <Content Include="test upload image.aspx" />
     <Content Include="testimage.aspx" />
+    <Content Include="TestingCreate.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -374,6 +375,13 @@
     </Compile>
     <Compile Include="testimage.aspx.designer.cs">
       <DependentUpon>testimage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TestingCreate.aspx.cs">
+      <DependentUpon>TestingCreate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TestingCreate.aspx.designer.cs">
+      <DependentUpon>TestingCreate.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
