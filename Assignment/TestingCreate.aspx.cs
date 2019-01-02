@@ -11,26 +11,35 @@ namespace Assignment
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            try { 
             HttpCookie ck = Request.Cookies["registerUser"];
             string test = ck["rg"].ToString(); //stuRegister
-                string registerUser = Request.Cookies["registerUser"].Value.ToString(); //rg=stuRegister
+                //string registerUser = Request.Cookies["registerUser"].Value.ToString(); //rg=stuRegister
                 Control ctrlControl;
                 if (test == "stuRegister")
                 {
                 h.Text = "Register As Student";
+                    HttpCookie Cookie = new HttpCookie("registerUser");
+                    Cookie.Expires = DateTime.Now.AddDays(-1d);
+                    Response.Cookies.Add(Cookie);
                     ctrlControl = LoadControl("CreateStudentInfo.ascx");
-                HttpCookie Cookie = new HttpCookie("registerUser");
-                Cookie.Expires = DateTime.Now.AddDays(-1d);
-                Response.Cookies.Add(Cookie);
+
 
             }
                 else /*if(registerUser == "lecLecturer")*/
                 {
                 h.Text = "Register As Lecturer";
-                ctrlControl = LoadControl("CreateLecturerInfo.ascx");
-                HttpCookie Cookie = new HttpCookie("registerUser");
-                Cookie.Expires = DateTime.Now.AddDays(-1d);
-                Response.Cookies.Add(Cookie);
+                    HttpCookie Cookie = new HttpCookie("registerUser");
+                    Cookie.Expires = DateTime.Now.AddDays(-1d);
+                    Response.Cookies.Add(Cookie);
+                    ctrlControl = LoadControl("CreateLecturerInfo.ascx");
+
+                }
+                div1.Controls.Add(ctrlControl);
+            }
+            catch(Exception ex)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "myconfirm", "confirm('Cookies Null Error!')", true);
             }
             //else
             //{
@@ -39,9 +48,9 @@ namespace Assignment
             //    Cookie.Expires = DateTime.Now.AddDays(-1d);
             //    Response.Cookies.Add(Cookie);
             //}
-       
 
-                div1.Controls.Add(ctrlControl);
+
+           
             
         }
     }

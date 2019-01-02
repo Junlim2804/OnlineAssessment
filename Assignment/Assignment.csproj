@@ -92,9 +92,7 @@
     <Content Include="PageLecturers\markPaper.aspx" />
     <Content Include="PageStudents\complete.aspx" />
     <Content Include="Contact.aspx" />
-    <Content Include="CreateLecturerAccount.aspx" />
     <Content Include="PageLecturers\createQuestion.aspx" />
-    <Content Include="CreateStudentAccount.aspx" />
     <Content Include="PageLecturers\createSubQuestion.aspx" />
     <Content Include="CSS\Homepage.css" />
     <Content Include="CSS\Icon.css" />
@@ -209,26 +207,12 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
-    <Compile Include="CreateLecturerAccount.aspx.cs">
-      <DependentUpon>CreateLecturerAccount.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="CreateLecturerAccount.aspx.designer.cs">
-      <DependentUpon>CreateLecturerAccount.aspx</DependentUpon>
-    </Compile>
     <Compile Include="PageLecturers\createQuestion.aspx.cs">
       <DependentUpon>createQuestion.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="PageLecturers\createQuestion.aspx.designer.cs">
       <DependentUpon>createQuestion.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="CreateStudentAccount.aspx.cs">
-      <DependentUpon>CreateStudentAccount.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="CreateStudentAccount.aspx.designer.cs">
-      <DependentUpon>CreateStudentAccount.aspx</DependentUpon>
     </Compile>
     <Compile Include="PageLecturers\createSubQuestion.aspx.cs">
       <DependentUpon>createSubQuestion.aspx</DependentUpon>
