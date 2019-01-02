@@ -63,8 +63,9 @@
         <br /><br /><br /><br />
         
         <br />
-
-             <asp:DataList ID="DataList1" runat="server"  CellSpacing="4" CellPadding="4" RepeatColumns="3" DataKeyField="setID" DataSourceID="SqlDataSource1" BackColor="White" BorderColor="#3366CC" BorderStyle="None" BorderWidth="1px" GridLines="Both" width="80%">
+     <div class="infobox">
+             <asp:DataList ID="DataList1" runat="server"  CellSpacing="4" CellPadding="4" RepeatColumns="3" RepeatDirection="Horizontal" DataKeyField="setID" DataSourceID="SqlDataSource1" 
+                 BackColor="White" BorderColor="#3366CC" BorderStyle="None" BorderWidth="1px" GridLines="Both" width="80%" OnItemCommand="DataList1_ItemCommand">
              <FooterStyle BackColor="#99CCCC" ForeColor="#003399" />
              <HeaderStyle BackColor="#003399" Font-Bold="True" ForeColor="#CCCCFF" />
              <ItemStyle BackColor="White" ForeColor="#003399" />
@@ -84,16 +85,15 @@
                  type:
                  <asp:Label ID="typeLabel" runat="server" Text='<%# Eval("type") %>' />
                  <br />
-                 <asp:Button ID="markBtn" runat="server" Text="Mark Paper" OnClick="markBtn_Click"/>
+                 <asp:Button ID="markBtn" runat="server" Text="Mark Paper" CommandName="Mark"/>
                  <br />
-                 <asp:Button ID="resultBtn" runat="server" Text="View Result" OnClick="resultBtn_Click"/>
+                 <asp:Button ID="resultBtn" runat="server" Text="View Result" CommandName="Result"/>
                  <br />
              </ItemTemplate>
-             <SelectedItemStyle BackColor="#009999" Font-Bold="True" ForeColor="#CCFF99" />
          </asp:DataList>
 
 
-
+    </div>
 
 
     
@@ -101,15 +101,12 @@
         <h2><b>Students Results</b></h2>
         
     <table class="auto-style3"  style="margin-left:30%">
-        
         <tr>
-
             <td>
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="stuID,setID" DataSourceID="SqlDataSource3" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" Width="478px">
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="stuID,setID" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" Width="478px" AllowPaging="True" AllowSorting="True">
             <Columns>
-                <asp:CommandField ShowSelectButton="True" />
-                <asp:BoundField DataField="stuID" HeaderText="StuID" ReadOnly="True" SortExpression="stuID" />
                 <asp:BoundField DataField="setID" HeaderText="SetID" ReadOnly="True" SortExpression="setID" />
+                <asp:BoundField DataField="stuID" HeaderText="StuID" ReadOnly="True" SortExpression="stuID" />
                 <asp:BoundField DataField="mark" HeaderText="Mark" SortExpression="mark" />
             </Columns>
         </asp:GridView>
@@ -117,12 +114,16 @@
             </tr>
         </table>
         </div>
+
         <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [subjectID], [subjectName] FROM [subject]"></asp:SqlDataSource>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT p.setID, p.mode, p.duration, p.subjectID, p.type FROM paperset AS p INNER JOIN subject AS s ON p.subjectID = s.subjectID WHERE (s.CourseCode = 'RSF')">
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT p.setID, p.subjectID, p.type, p.duration, p.mode, p.available FROM paperset AS p INNER JOIN subject AS s ON p.subjectID = s.subjectID INNER JOIN lecturer AS l ON s.CourseCode = l.teachCourse WHERE l.lecId = @personID">
+            <SelectParameters>
+                <asp:SessionParameter Name="personID" SessionField="username" />
+            </SelectParameters>
         </asp:SqlDataSource>
         <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT * FROM [StudentSetList] WHERE ([setID] = @setID)">
             <SelectParameters>
-                <asp:ControlParameter ControlID="ddlSet" Name="setID" PropertyName="SelectedValue" Type="Int32" />
+                <asp:Parameter Name="setID" Type="Int32" />
             </SelectParameters>
         </asp:SqlDataSource>
         <br />

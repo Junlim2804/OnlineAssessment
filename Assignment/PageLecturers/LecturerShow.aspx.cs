@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -11,7 +13,7 @@ namespace Assignment
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            //string personID = Session["username"].ToString();
         }
 
         /*protected void ddlSubject_SelectedIndexChanged(object sender, EventArgs e)
@@ -30,14 +32,31 @@ namespace Assignment
 
         }*/
 
-        protected void markBtn_Click(object sender, EventArgs e)
+        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+
         }
 
-        protected void resultBtn_Click(object sender, EventArgs e)
+        protected void DataList1_ItemCommand(object source, DataListCommandEventArgs e)
         {
-            GridView1.Visible = true;
+            if(e.CommandName == "Mark")
+            {
+
+            }
+            else if (e.CommandName == "Result")
+            {
+                string setID = DataList1.DataKeys[e.Item.ItemIndex].ToString();
+                SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["CaringWow"].ToString());
+                string sql = "SELECT * FROM [StudentSetList] WHERE ([setID] = @setID)";
+                conn.Open();
+                SqlCommand command = new SqlCommand(sql, conn);
+                
+                command.Parameters.AddWithValue("@setID", setID);
+                SqlDataReader results = command.ExecuteReader();
+                GridView1.DataSource = results;
+                conn.Close();
+                GridView1.Visible = true;
+            }
         }
     }
 }

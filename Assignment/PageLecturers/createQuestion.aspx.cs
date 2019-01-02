@@ -81,14 +81,14 @@ namespace Assignment
             }
             else if (e.CommandName == "Update")
             {
-                if (!((FileUpload)e.Item.FindControl("FileUpload2")).HasFile)
+                if (!((FileUpload)e.Item.FindControl("FileUpload1")).HasFile)
                 {
                     ((Label)e.Item.FindControl("Label2")).Text = "No yet upload";
                 }
 
-                int length = ((FileUpload)e.Item.FindControl("FileUpload2")).PostedFile.ContentLength;
+                int length = ((FileUpload)e.Item.FindControl("FileUpload1")).PostedFile.ContentLength;
                 byte[] pic = new byte[length];
-                HttpPostedFile uploaded = ((FileUpload)e.Item.FindControl("FileUpload2")).PostedFile;
+                HttpPostedFile uploaded = ((FileUpload)e.Item.FindControl("FileUpload1")).PostedFile;
                 uploaded.InputStream.Read(pic, 0, length);
 
                 string newDesc = ((TextBox)e.Item.FindControl("tbDesc")).Text;
@@ -131,9 +131,9 @@ namespace Assignment
             string newOption4 = ((TextBox)fv_add.Row.FindControl("tbNewOption4")).Text;
             string newAnswer = ((TextBox)fv_add.Row.FindControl("tbNewAnswer")).Text;
 
-            int length = ((FileUpload)fv_add.Row.FindControl("FileUpload1")).PostedFile.ContentLength;
+            int length = ((FileUpload)fv_add.Row.FindControl("FileUpload2")).PostedFile.ContentLength;
             byte[] pic = new byte[length];
-            HttpPostedFile uploaded = ((FileUpload)fv_add.Row.FindControl("FileUpload1")).PostedFile;
+            HttpPostedFile uploaded = ((FileUpload)fv_add.Row.FindControl("FileUpload2")).PostedFile;
             uploaded.InputStream.Read(pic, 0, length);
 
             SqlCommand cmd = new SqlCommand("Insert into question(questionDesc,Option1,Option2,Option3,Option4,sampleAns,setID,image) " +

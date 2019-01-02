@@ -115,12 +115,9 @@
                  available:
                  <asp:Label ID="availableLabel" runat="server" Text='<%# Eval("available") %>' />
                  <br />
-                 <asp:Button ID="viewSetBtn" runat="server" Text="View Set" CommandName="View" />
+                 <asp:Button ID="viewSetBtn" runat="server" Text="View Question" CommandName="View" />
                  <br />
              </ItemTemplate>
-             <SelectedItemTemplate>
-                 how is this ??
-             </SelectedItemTemplate>
          </asp:DataList>
 
            
@@ -144,7 +141,7 @@
     <br />
              
     <div  id="edit">
-                        <asp:FormView ID="fv_set" runat="server" CssClass="auto-style3" DataSourceID="SqlDataSource2" OnPageIndexChanging="fv_set_PageIndexChanging">
+                        <asp:FormView ID="fv_set" runat="server" CssClass="auto-style3" DataSourceID="SqlDataSource2" OnPageIndexChanging="fv_set_PageIndexChanging" >
                             <EditItemTemplate>
                                   <table class="auto-style1">
                                     <tr>
@@ -254,7 +251,7 @@
                                          </tr>
                                       <tr>
                                           <td>
-                                              <asp:Button CssClass="button" ID="btnInsert" runat="server" OnClick="btnInsertClick" Text="Confirm" />
+                                              <asp:Button CssClass="button" ID="btnInsert" runat="server" OnClick="btnInsertClick" Text="Confirm"/>
                                           </td>
                                           <td class="auto-style6">
                                               <asp:Button CssClass="button" ID="btnCancel" runat="server" Text="Cancel" OnClick="btnCancel_Click" />
