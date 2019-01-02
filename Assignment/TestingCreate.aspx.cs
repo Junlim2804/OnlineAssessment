@@ -12,8 +12,8 @@ namespace Assignment
         protected void Page_Load(object sender, EventArgs e)
         {
             HttpCookie ck = Request.Cookies["registerUser"];
-            string test = ck["rg"].ToString();
-                string registerUser = Request.Cookies["registerUser"].Value.ToString();
+            string test = ck["rg"].ToString(); //stuRegister
+                string registerUser = Request.Cookies["registerUser"].Value.ToString(); //rg=stuRegister
                 Control ctrlControl;
                 if (test == "stuRegister")
                 {
