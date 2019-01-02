@@ -83,7 +83,7 @@ namespace Assignment
             {
                 if (!((FileUpload)e.Item.FindControl("FileUpload1")).HasFile)
                 {
-                    ((Label)e.Item.FindControl("Label2")).Text = "No yet upload";
+                    ((Label)e.Item.FindControl("Label1")).Text = "No yet upload";
                 }
 
                 int length = ((FileUpload)e.Item.FindControl("FileUpload1")).PostedFile.ContentLength;
