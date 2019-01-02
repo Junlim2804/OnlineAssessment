@@ -225,6 +225,9 @@
                                         <th>Duration</th>
                                         <td class="auto-style6">
                                             <asp:TextBox ID="tbDuration" Text='<%# Eval("duration") %>' runat="server"></asp:TextBox>
+                                            <asp:RequiredFieldValidator runat="server" id="tbDurationid" controltovalidate="tbDuration" forecolor="Red" errormessage="Duration cannot be blank!" />
+                                              <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" forecolor="Red" ErrorMessage="Enter 2 or 3 digits!" ControlToValidate="tbDuration" 
+                                            ValidationExpression="\d{2,3}" ></asp:RegularExpressionValidator> 
                                         </td>
                                         <td rowspan="4">
                                             <asp:ListBox ID="blStudent" runat="server" AutoPostBack="True" OnSelectedIndexChanged="blStudent_SelectedIndexChanged" Visible="False" Height="126px" Width="213px"></asp:ListBox>
