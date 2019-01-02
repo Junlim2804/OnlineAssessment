@@ -96,7 +96,10 @@
             <EditItemTemplate>
             <table id='<%#Eval("questionId") %>' class="tableclass">
                 <tr>
-                  <td class="question"><b>Question  <%#Eval("indexNo")  %>: <asp:TextBox ID="tbDesc" runat="server" Text='<%#Eval("questionDesc") %>' width="90%"></asp:TextBox></b>
+                  <td class="question">
+                      <b>Question  <%#Eval("indexNo")  %>:
+                          <asp:TextBox ID="tbDesc" runat="server" Text='<%#Eval("questionDesc") %>' width="90%"></asp:TextBox></b>
+                        <asp:RequiredFieldValidator runat="server" id="RequiredFieldValidator4" controltovalidate="tbDesc" forecolor="Red" errormessage="Question cannot be blank!" />
                   <asp:HiddenField ID="hdnquestionId" Value='<%#Eval("questionId") %>' runat="server" />
                   </td>
                 </tr>
@@ -114,23 +117,29 @@
                                               </td>
                                       </tr>
                                       <tr>
-                                          <td>Option1:<asp:TextBox ID="tbOption1" runat="server" GroupName='<%#Eval("QuestionId") %>' Text='<%#Eval("Option1") %>' />
+                                          <td>Option1:
+                                              <asp:TextBox ID="tbOption1" runat="server" GroupName='<%#Eval("QuestionId") %>' Text='<%#Eval("Option1") %>' />
+                                               <asp:RequiredFieldValidator runat="server" id="reqName" controltovalidate="tbOption1" forecolor="Red" errormessage="Answer cannot be blank!" />
                                           </td>
                                       </tr>
                                       <tr>
                                           <td>Option2:<asp:TextBox ID="tbOption2" runat="server" GroupName='<%#Eval("QuestionId") %>' Text='<%#Eval("Option2") %>' />
+                                              <asp:RequiredFieldValidator runat="server" id="RequiredFieldValidator1" controltovalidate="tbOption2" forecolor="Red" errormessage="Answer cannot be blank!" />
                                           </td>
                                       </tr>
                                       <tr>
                                           <td>Option3:<asp:TextBox ID="tbOption3" runat="server" GroupName='<%#Eval("QuestionId") %>' Text='<%#Eval("Option3") %>' />
+                                              <asp:RequiredFieldValidator runat="server" id="RequiredFieldValidator2" controltovalidate="tbOption3" forecolor="Red" errormessage="Answer cannot be blank!" />
                                           </td>
                                       </tr>
                                       <tr>
                                           <td>Option4:<asp:TextBox ID="tbOption4" runat="server" GroupName='<%#Eval("QuestionId") %>' Text='<%#Eval("Option4") %>' />
+                                              <asp:RequiredFieldValidator runat="server" id="RequiredFieldValidator3" controltovalidate="tbOption4" forecolor="Red" errormessage="Answer cannot be blank!" />
                                           </td>
                                       </tr>
                                       <tr>
                                           <td>Answer:<asp:TextBox ID="tbAnswer" runat="server" Text='<%#Eval("SampleAns") %>'></asp:TextBox>
+                                             <asp:RequiredFieldValidator runat="server" id="RequiredFieldValidator5" controltovalidate="tbAnswer" forecolor="Red" errormessage="Sample Answer cannot be blank!" />   
                                           </td>
                                       </tr>
                                       <tr>
@@ -151,7 +160,10 @@
                       <table id='<%#Eval("questionId") %>' class="tableclass">
                          
                                                         <tr>
-                                                            <td class="question"><b>Question  <%# Container.ItemIndex + 1 %> :<%#Eval("questionDesc") %></b><asp:HiddenField ID="hdnquestionId" Value='<%#Eval("questionId") %>' runat="server" />
+                                                            <td class="question"><b>Question  <%# Container.ItemIndex + 1 %> :<%#Eval("questionDesc") %>
+
+                                                                                 </b><asp:HiddenField ID="hdnquestionId" Value='<%#Eval("questionId") %>' runat="server" />
+                                                        
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -216,7 +228,9 @@
                 <InsertItemTemplate>
                            <table>
                       <tr>
-                      <td class="question"><b>Question  <%#Eval("indexNo")  %>: <asp:TextBox ID="tbNewDesc" runat="server" width="90%"></asp:TextBox></b>
+                      <td class="question"><b>Question  <%#Eval("indexNo")  %>: 
+                          <asp:TextBox ID="tbNewDesc" runat="server" width="90%"></asp:TextBox></b>
+                           <asp:RequiredFieldValidator runat="server" id="RequiredFieldValidator4" controltovalidate="tbNewDesc" forecolor="Red" errormessage="Question cannot be blank!" />
                        
                             </td>
                                  </tr>
@@ -236,26 +250,32 @@
                                                                                 <tr>
                                                                                     <td>
                                                                                         Option1:<asp:TextBox ID="tbNewOption1" runat="server" GroupName='<%#Eval("QuestionId") %>' Text='<%#Eval("Option1") %>' />
+                                                                                        <asp:RequiredFieldValidator runat="server" id="reqName" controltovalidate="tbNewOption1" forecolor="Red" errormessage="Answer cannot be blank!" />
                                                                                     </td>
                                                                                 </tr>
                                                                                 <tr>
                                                                                     <td>
                                                                                         Option2:<asp:TextBox ID="tbNewOption2" runat="server" GroupName='<%#Eval("QuestionId") %>' Text='<%#Eval("Option2") %>' />
+                                                                                        <asp:RequiredFieldValidator runat="server" id="RequiredFieldValidator6" controltovalidate="tbNewOption2" forecolor="Red" errormessage="Answer cannot be blank!" />
+
                                                                                     </td>
                                                                                 </tr>
                                                                                 <tr>
                                                                                     <td>
                                                                                         Option3:<asp:TextBox ID="tbNewOption3" runat="server" GroupName='<%#Eval("QuestionId") %>' Text='<%#Eval("Option3") %>' />
+                                                                                         <asp:RequiredFieldValidator runat="server" id="RequiredFieldValidator7" controltovalidate="tbNewOption3" forecolor="Red" errormessage="Answer cannot be blank!" />
                                                                                     </td>
                                                                                 </tr>
                                                                                 <tr>
                                                                                     <td>
                                                                                         Option4:<asp:TextBox ID="tbNewOption4" runat="server" GroupName='<%#Eval("QuestionId") %>' Text='<%#Eval("Option4") %>' />
+                                                                                         <asp:RequiredFieldValidator runat="server" id="RequiredFieldValidator8" controltovalidate="tbNewOption4" forecolor="Red" errormessage="Answer cannot be blank!" />
                                                                                     </td>
                                                                                 </tr>
                                                                                 <tr>
                                                                                     <td>
                                                                                         Answer:<asp:TextBox ID="tbNewAnswer" runat="server" Text='<%#Eval("SampleAns") %>'></asp:TextBox>
+                                                                                         <asp:RequiredFieldValidator runat="server" id="RequiredFieldValidator9" controltovalidate="tbNewAnswer" forecolor="Red" errormessage="Sample Answer cannot be blank!" />
                                                                                     </td>
                                                                                 </tr>
                                                              

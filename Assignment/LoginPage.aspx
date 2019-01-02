@@ -45,20 +45,19 @@
 
                                 <asp:TextBox ID="UserName" runat="server" Placeholder="User Name"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="UserNameRequired" runat="server" ControlToValidate="UserName"
-                                    ErrorMessage="User Name is required." ToolTip="User Name is required." ValidationGroup="Login1">
+                                    ErrorMessage="User Name is required." forecolor="Red" ToolTip="User Name is required." ValidationGroup="Login1">
                                         *User name is required</asp:RequiredFieldValidator>
 
-                                <%--  <input type="text" name="your_name" id="your_name" placeholder="Your Name" />--%>
+                             
                             </div>
                             <div class="form-group">
                                
 
                                 <asp:TextBox ID="Password" runat="server" TextMode="Password" Placeholder="Password"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" ControlToValidate="Password"
-                                    ErrorMessage="Password is required." ToolTip="Password is required." ValidationGroup="Login1" >
+                                    ErrorMessage="Password is required." forecolor="Red"  ToolTip="Password is required." ValidationGroup="Login1" >
                                         *Password is required</asp:RequiredFieldValidator>
 
-                                <%--<input type="password" name="your_pass" id="your_pass" placeholder="Password" />--%>
                             </div>
                          
                             <div class="form-group form-button">

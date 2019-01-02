@@ -96,7 +96,8 @@
              <EditItemTemplate>
              <table id='<%#Eval("questionId") %>' class="tableclass">
                       <tr>
-                      <td class="question"><b>Question  <%#Container.ItemIndex+1%>: <asp:TextBox ID="tbDesc" runat="server" Text='<%#Eval("questionDesc") %>'></asp:TextBox></b>
+                      <td class="question"><b>Question  <%#Container.ItemIndex+1%>: <asp:TextBox ID="tbDesc" runat="server" Text='<%#Eval("questionDesc") %>'></asp:TextBox>
+                           <asp:RequiredFieldValidator runat="server" id="RequiredFieldValidator4" controltovalidate="tbDesc" forecolor="Red" errormessage="Question cannot be blank!" /></b>
                        <asp:HiddenField ID="hdnquestionId" Value='<%#Eval("questionId") %>' runat="server" />
                             </td>
                                  </tr>
@@ -116,6 +117,7 @@
                                                                                 <tr>
                                                                                     <td>
                                                                                         Sample Answer:<asp:TextBox ID="tbAnswer" runat="server" Text='<%#Eval("SampleAns") %>' Width="90%"></asp:TextBox>
+                                                                                        <asp:RequiredFieldValidator runat="server" id="RequiredFieldValidator1" controltovalidate="tbAnswer" forecolor="Red" errormessage="Sample Answer cannot be blank!" />
                                                                                     </td>
                                                                                 </tr>
                                                              
@@ -181,7 +183,9 @@
                 <InsertItemTemplate>
                            <table>
                       <tr>
-                      <td class="question"><b>Question: <asp:TextBox ID="tbNewDesc" runat="server" width="90%"></asp:TextBox></b>
+                      <td class="question"><b>Question: <asp:TextBox ID="tbNewDesc" runat="server" width="90%"></asp:TextBox>
+                            <asp:RequiredFieldValidator runat="server" id="RequiredFieldValidator2" controltovalidate="tbNewDesc" forecolor="Red" errormessage="Question cannot be blank!" />
+                                           </b>
                        
                             </td>
                                  </tr>
@@ -202,6 +206,7 @@
                                                                                 <tr>
                                                                                     <td>
                                                                                         Sample Answer:<asp:TextBox ID="tbNewAnswer" runat="server"></asp:TextBox>
+                                                                                         <asp:RequiredFieldValidator runat="server" id="RequiredFieldValidator1" controltovalidate="tbNewAnswer" forecolor="Red" errormessage="Sample Answer cannot be blank!" />
                                                                                     </td>
                                                                                 </tr>
                                                              

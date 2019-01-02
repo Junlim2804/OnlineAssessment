@@ -20,7 +20,7 @@ namespace Assignment
 
         protected void LinkButton1_Click(object sender, EventArgs e)
         {
-            Response.Redirect("LoginPage.aspx");
+            Response.Redirect("~/LoginPage.aspx");
         }
 
         protected void CreateUserWizard1_CreatedUser(object sender, EventArgs e)

@@ -22,13 +22,14 @@
                                                 <asp:TextBox ID="StudentName" runat="server" placeholder="Student Name"></asp:TextBox>
                                                 <asp:RequiredFieldValidator ID="StudentNameRequired" runat="server" ControlToValidate="StudentName" ForeColor="Red" ErrorMessage="Student Name is required." ToolTip="Student Name is required." ValidationGroup="CreateUserWizard1">
                                                   *</asp:RequiredFieldValidator>
-                                              
+                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" forecolor="Red"  ErrorMessage="Enter only characters!" ControlToValidate="StudentName" 
+                           ValidationExpression="^[a-zA-Z\s]+$" ></asp:RegularExpressionValidator>                                    
                                             </div>
                                             <div class="form-group">
                                                 <asp:TextBox ID="Password" runat="server" TextMode="Password" placeholder="Password"></asp:TextBox>
                                                 <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" ControlToValidate="Password" ForeColor="Red"  ErrorMessage="Password is required." ToolTip="Password is required." ValidationGroup="CreateUserWizard1">
                                                   *</asp:RequiredFieldValidator>
-                                              <asp:RegularExpressionValidator ID="PasswordRegularExpression" runat="server" ForeColor="Red" ErrorMessage="Enter password with 8-10 digits with at least one numberic number" ControlToValidate="Password" 
+                                              <asp:RegularExpressionValidator ID="PasswordRegularExpression" runat="server" ForeColor="Red" ErrorMessage="Enter password with 8-10 alphanumeric(characters & number)!" ControlToValidate="Password" 
                                             ValidationExpression="(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{8,10})$" ></asp:RegularExpressionValidator> 
                                                 <asp:Literal ID="ErrorMessage" runat="server" EnableViewState="False"></asp:Literal>
                                              
