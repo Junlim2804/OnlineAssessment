@@ -10,6 +10,8 @@
                          <br />
                          <asp:Label ID="lblLecName" runat="server" Text="Name"></asp:Label>
                          <asp:TextBox ID="txtLecName" runat="server" Text='<%# Eval("lecname") %>' />
+                        <asp:RequiredFieldValidator ID="NameRequired" runat="server" ControlToValidate="txtLecName" ForeColor="Red" ErrorMessage="Lecturer Name is required." ToolTip="Student Name is required.">
+                           *Lecturer Name is required</asp:RequiredFieldValidator>
                             <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" forecolor="Red"  ErrorMessage="Enter only characters!" ControlToValidate="txtLecName" 
                            ValidationExpression="^[a-zA-Z\s]+$" ></asp:RegularExpressionValidator> 
                          <br />
@@ -19,10 +21,14 @@
                     <br />
                          <asp:Label ID="lblLecEmail" runat="server" Text="E-mail"></asp:Label>
                          <asp:TextBox ID="txtLecEmail" runat="server" Text='<%# Eval("lecemail") %>' />
+                       <asp:RequiredFieldValidator ID="EmailRequired" runat="server" ControlToValidate="txtLecEmail" ForeColor="Red" ErrorMessage="Email is required." ToolTip="Student Email is required.">
+                           *Lecturer Email is required</asp:RequiredFieldValidator>
                          <asp:RegularExpressionValidator ID="regexEmailValid" runat="server" ValidationExpression="\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ControlToValidate="txtLecEmail" ErrorMessage="Invalid Email Format"></asp:RegularExpressionValidator>
                         <br />
                          <asp:Label ID="lblLecHpNo" runat="server" Text="Telephone Number"></asp:Label>
                          <asp:TextBox ID="txtLecHpNo" runat="server" Text='<%# Eval("lechpNo") %>' />
+                                       <asp:RequiredFieldValidator ID="HpNoRequired" runat="server" ControlToValidate="txtLecHpNo" ForeColor="Red" ErrorMessage="Handphone No is required." ToolTip="Student Email is required.">
+                           *Handphone No is required</asp:RequiredFieldValidator>
                            <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ErrorMessage="Enter valid Phone number" ControlToValidate="txtLecHpNo" 
                            ValidationExpression="\d{10,11}" ></asp:RegularExpressionValidator> 
                          <br />
