@@ -19,9 +19,9 @@ namespace Assignment
                 if (test == "stuRegister")
                 {
                 h.Text = "Register As Student";
-                    HttpCookie Cookie = new HttpCookie("registerUser");
-                    Cookie.Expires = DateTime.Now.AddDays(-1d);
-                    Response.Cookies.Add(Cookie);
+                    //HttpCookie Cookie = new HttpCookie("registerUser");
+                    //Cookie.Expires = DateTime.Now.AddDays(-1d);
+                    //Response.Cookies.Add(Cookie);
                     ctrlControl = LoadControl("CreateStudentInfo.ascx");
 
 
@@ -29,9 +29,9 @@ namespace Assignment
                 else /*if(registerUser == "lecLecturer")*/
                 {
                 h.Text = "Register As Lecturer";
-                    HttpCookie Cookie = new HttpCookie("registerUser");
-                    Cookie.Expires = DateTime.Now.AddDays(-1d);
-                    Response.Cookies.Add(Cookie);
+                    //HttpCookie Cookie = new HttpCookie("registerUser");
+                    //Cookie.Expires = DateTime.Now.AddDays(-1d);
+                    //Response.Cookies.Add(Cookie);
                     ctrlControl = LoadControl("CreateLecturerInfo.ascx");
 
                 }
