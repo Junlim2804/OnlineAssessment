@@ -102,7 +102,6 @@ namespace Assignment
         protected void btnAdd_Click(object sender, EventArgs e)
         {
             fv_set.ChangeMode(FormViewMode.Insert);
-            
         }
 
         protected void btnInsertClick(object sender, EventArgs e)
@@ -139,8 +138,8 @@ namespace Assignment
             }
             conn.Close();
 
-            GridView1.DataBind();
-         fv_set.ChangeMode(FormViewMode.ReadOnly);
+            DataList1.DataBind();
+            fv_set.ChangeMode(FormViewMode.ReadOnly);
             
         }
         protected void SqlDataSource2_Inserting(object sender, SqlDataSourceCommandEventArgs e)
@@ -238,9 +237,6 @@ namespace Assignment
             e.Command.Parameters[0].Value = GridView2.SelectedValue;
             else
             e.Command.Parameters[0].Value = GridView1.SelectedValue;
-
-           
-
         }
 
         protected void btnTerminate_Click(object sender, EventArgs e)
@@ -265,7 +261,6 @@ namespace Assignment
             {
                 msg.Text = "Student ID NOT EXISTS";
                 msg.EnableViewState = true;
-
             }
             else
             {
@@ -276,12 +271,10 @@ namespace Assignment
                 blStud.Items.Add(li);
             }
 
-           
             conn.Close();
                 
         }
 
-      
 
         protected void rblMode_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -321,7 +314,6 @@ namespace Assignment
                 string setID = DataList1.DataKeys[e.Item.ItemIndex].ToString();
                 string lbType =((Label)e.Item.FindControl("typeLabel")).Text;
 
-
                 if (lbType == "obj")
                   Response.Redirect("createQuestion.aspx?SETID=" + setID);
                 else if (lbType == "sub")
@@ -329,14 +321,12 @@ namespace Assignment
             }
         }
 
-                protected void DataList1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-        }
 
         protected void DataList1_SelectedIndexChanged1(object sender, EventArgs e)
         {
 
         }
+
+
     }
 }
