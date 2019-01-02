@@ -87,10 +87,24 @@ namespace Assignment
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-
+            string email;
             int mark = updateData();
-            
-            //Msg.Text = "Password reset. Your new password is sent to your registered email." + Server.HtmlEncode(newPassword);
+
+            using (SqlConnection myConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["CaringWow"].ToString()))
+            {
+                SqlCommand mycommand = new SqlCommand("proc_getEmail", myConnection);
+                mycommand.CommandType = CommandType.StoredProcedure;
+                mycommand.Parameters.Add("@stuid", SqlDbType.VarChar).Value =stuid;
+
+
+
+                myConnection.Open();
+                email = mycommand.ExecuteScalar().ToString();
+
+                myConnection.Close();
+            }
+
+
             try
             {
                 System.Net.Mail.MailMessage obj = new System.Net.Mail.MailMessage();
@@ -102,9 +116,9 @@ namespace Assignment
                 serverobj.EnableSsl = true;
                 obj = new System.Net.Mail.MailMessage();
                 obj.From = new MailAddress("caringwow@outlook.com", "Reset Password", System.Text.Encoding.UTF8);
-                //obj.To.Add(u.Email);
+                obj.To.Add(email);
                 obj.Priority = System.Net.Mail.MailPriority.High;
-                obj.Subject = "Result for XXX";
+                obj.Subject = "Result for Exam SET CODE"+setid;
                 string date = DateTime.Now.ToString();
                 obj.Body = "Your mark for XXX is " + mark;
                 serverobj.Send(obj);
