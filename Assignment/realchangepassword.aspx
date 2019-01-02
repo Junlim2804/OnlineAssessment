@@ -53,7 +53,13 @@ public void ChangePassword_OnClick(object sender, EventArgs args)
       <td><asp:Textbox id="PasswordTextbox" runat="server" TextMode="Password" /></td>
       <td><asp:RequiredFieldValidator id="PasswordRequiredValidator" runat="server"
                                       ControlToValidate="PasswordTextbox" ForeColor="red"
-                                      Display="Static" ErrorMessage="Required" /></td>
+                                      Display="Static" ErrorMessage="Required" />
+
+                 <asp:RegularExpressionValidator ID="PasswordRegularExpression" runat="server" ForeColor="Red" 
+           ErrorMessage="Enter password with 8-10 characters & number!" ControlToValidate="PasswordTextbox" 
+        ValidationExpression="(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{8,10})$" ></asp:RegularExpressionValidator> 
+      </td>
+
     </tr>
     <tr>
       <td>Confirm Password:</td>

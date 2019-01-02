@@ -28,7 +28,7 @@
                                                 <asp:TextBox ID="Password" runat="server" TextMode="Password" placeholder="Password"></asp:TextBox>
                                                 <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" ControlToValidate="Password" ForeColor="Red"  ErrorMessage="Password is required." ToolTip="Password is required." ValidationGroup="CreateUserWizard1">
                                                   *</asp:RequiredFieldValidator>
-                                              <asp:RegularExpressionValidator ID="PasswordRegularExpression" runat="server" ForeColor="Red" ErrorMessage="Enter password with 8-10 digits with at least one numberic number" ControlToValidate="Password" 
+                                              <asp:RegularExpressionValidator ID="PasswordRegularExpression" runat="server" ForeColor="Red" ErrorMessage="Enter password with 8-10 alphanumeric(characters & number)!" ControlToValidate="Password" 
                                             ValidationExpression="(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{8,10})$" ></asp:RegularExpressionValidator> 
                                                 <asp:Literal ID="ErrorMessage" runat="server" EnableViewState="False"></asp:Literal>
                                              
