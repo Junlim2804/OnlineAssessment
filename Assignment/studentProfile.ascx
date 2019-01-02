@@ -8,6 +8,8 @@
                          <br />
                          <asp:Label ID="lblStudName" runat="server" Text="Name"></asp:Label>
                          <asp:TextBox ID="txtStudName" runat="server" Text='<%# Eval("stuname") %>' />
+                         <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" forecolor="Red" ErrorMessage="Enter only characters!" ControlToValidate="txtStudName" 
+                           ValidationExpression="^[a-zA-Z\s]+$" ></asp:RegularExpressionValidator> 
                          <br />
                          <asp:Label ID="lblStudCourse" runat="server" Text="Course"></asp:Label>
                          <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT * FROM [Course]"></asp:SqlDataSource>

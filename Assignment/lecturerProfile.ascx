@@ -10,6 +10,8 @@
                          <br />
                          <asp:Label ID="lblLecName" runat="server" Text="Name"></asp:Label>
                          <asp:TextBox ID="txtLecName" runat="server" Text='<%# Eval("lecname") %>' />
+                            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" forecolor="Red"  ErrorMessage="Enter only characters!" ControlToValidate="txtLecName" 
+                           ValidationExpression="^[a-zA-Z\s]+$" ></asp:RegularExpressionValidator> 
                          <br />
                           <asp:Label ID="lblLecCourse" runat="server" Text="Course"></asp:Label>
                          <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT * FROM [Course]"></asp:SqlDataSource>
@@ -21,6 +23,8 @@
                         <br />
                          <asp:Label ID="lblLecHpNo" runat="server" Text="Telephone Number"></asp:Label>
                          <asp:TextBox ID="txtLecHpNo" runat="server" Text='<%# Eval("lechpNo") %>' />
+                           <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ErrorMessage="Enter valid Phone number" ControlToValidate="txtLecHpNo" 
+                           ValidationExpression="\d{10,11}" ></asp:RegularExpressionValidator> 
                          <br />
 
                          <asp:Button ID="btnEdit" runat="server" CommandName="update" Text="Update"/>

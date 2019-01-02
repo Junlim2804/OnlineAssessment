@@ -22,7 +22,8 @@
                                                 <asp:TextBox ID="StudentName" runat="server" placeholder="Student Name"></asp:TextBox>
                                                 <asp:RequiredFieldValidator ID="StudentNameRequired" runat="server" ControlToValidate="StudentName" ForeColor="Red" ErrorMessage="Student Name is required." ToolTip="Student Name is required." ValidationGroup="CreateUserWizard1">
                                                   *</asp:RequiredFieldValidator>
-                                              
+                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" forecolor="Red"  ErrorMessage="Enter only characters!" ControlToValidate="StudentName" 
+                           ValidationExpression="^[a-zA-Z\s]+$" ></asp:RegularExpressionValidator>                                    
                                             </div>
                                             <div class="form-group">
                                                 <asp:TextBox ID="Password" runat="server" TextMode="Password" placeholder="Password"></asp:TextBox>

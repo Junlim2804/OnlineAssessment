@@ -23,7 +23,8 @@
                                                 <asp:TextBox ID="LecturerName" runat="server" placeholder="Lecturer Name"></asp:TextBox>
                                                 <asp:RequiredFieldValidator ID="LecturerNameRequired" runat="server" ControlToValidate="LecturerName" ErrorMessage="Lecturer Name is required." ToolTip="Lecturer Name is required." ValidationGroup="CreateUserWizard1">
                                                   *</asp:RequiredFieldValidator>
-
+                         <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="Enter only characters!" forecolor="Red" ControlToValidate="LecturerName" 
+                           ValidationExpression="^[a-zA-Z\s]+$" ></asp:RegularExpressionValidator> 
                                             </div>
                                             <div class="form-group">
                                                 <asp:TextBox ID="Password" runat="server" TextMode="Password" placeholder="Password"></asp:TextBox>
