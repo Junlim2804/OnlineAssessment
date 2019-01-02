@@ -19,7 +19,7 @@ namespace OnlineAssessementSite
         {
 
             cookie.Values["rg"] = "stuRegister";
-              cookie.Expires = DateTime.Now.AddMinutes(1);
+              cookie.Expires = DateTime.Now.AddDays(1);
             Response.Cookies.Add(cookie);
             Response.Redirect("~/TestingCreate.aspx");
         }
@@ -27,7 +27,7 @@ namespace OnlineAssessementSite
         protected void LecLoginBtn_Click(object sender, EventArgs e)
         {
             cookie.Values["rg"] = "lecRegister";
-            cookie.Expires = DateTime.Now.AddMinutes(1);
+            cookie.Expires = DateTime.Now.AddDays(1);
             Response.Cookies.Add(cookie);
             Response.Redirect("~/TestingCreate.aspx");
         }
