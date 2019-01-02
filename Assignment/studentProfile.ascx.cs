@@ -19,17 +19,7 @@ namespace Assignment
         {
             //MembershipUser u = Membership.GetUser(User.Identity.Name);
             username = (String)Session["username"];
-            Control ctrlControl;
-            if (Roles.IsUserInRole(username, "student"))
-            {
-                ctrlControl = LoadControl("studentHeader.ascx");
-            }
-            else
-            {
-                ctrlControl = LoadControl("lecturerHeader.ascx");
-            }
 
-  
             if (!IsPostBack)
             {
                 filldata();
@@ -42,8 +32,7 @@ namespace Assignment
             //MembershipUser u = Membership.GetUser(User.Identity.Name);
             username = (String)Session["username"];
 
-            if (Roles.IsUserInRole(username, "student"))
-            {
+       
                 try
                 {
                     string sql = "SELECT * FROM [student] WHERE ([stuId] ='" + username + "')";
@@ -57,23 +46,7 @@ namespace Assignment
                 {
                     ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "confirm('Database Error!')", true);
                 }
-            }
-            else 
-            {
-                try
-                {
-                    string sql = "SELECT * FROM [lecturer] WHERE ([lecId] ='" + username + "')";
-                    SqlDataAdapter da = new SqlDataAdapter(sql, conn);
-                    DataSet ds = new DataSet();
-                    da.Fill(ds);
-                    DataList1.DataSource = ds;
-                    DataList1.DataBind();
-                }
-                catch (SqlException ex)
-                {
-                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "confirm('Database Error!')", true);
-                }
-            }
+            
 
 
         }
