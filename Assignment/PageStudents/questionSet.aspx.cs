@@ -29,17 +29,8 @@ namespace Assignment
             
             setID = (string)(Session["SetID"]);
          
-           
-      
-
-          
-
-
-
-
             if (!IsPostBack)
             {
-                
                 timeLeft = Int32.Parse((string)Session["Duration"]);
                 timeLeft = timeLeft * 60;
                 type = (string)(Session["Type"]);
@@ -51,9 +42,6 @@ namespace Assignment
                 myTimer.Start();
             }
           
-
-
-
         }
 
 

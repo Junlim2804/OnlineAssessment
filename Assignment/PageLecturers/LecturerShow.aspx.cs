@@ -24,8 +24,8 @@ namespace Assignment
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
         {
             GridViewRow row = GridView1.Rows[GridView1.SelectedIndex];
-            string setid = row.Cells[2].Text;
-            string stuid = row.Cells[1].Text;
+            string setid = row.Cells[1].Text;//2
+            string stuid = row.Cells[2].Text;//1
             Session["id"] = stuid;
             Response.Redirect("markPaper.aspx?SETID=" + setid + "&?STUID=" + stuid);
         }

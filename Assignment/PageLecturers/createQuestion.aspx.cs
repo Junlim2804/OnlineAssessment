@@ -29,6 +29,14 @@ namespace Assignment
             {
                 Filldata();
             }
+
+            conn.Open();
+
+            SqlCommand cmd = new SqlCommand("SELECT subjectID, mode, type, duration FROM paperset where setID=@setID", conn);
+            cmd.Parameters.AddWithValue("@setID", paperSet);
+            SqlDataReader read = cmd.ExecuteReader();
+            Label2.Text="??";
+            conn.Close();
         }
 
 
@@ -135,7 +143,7 @@ namespace Assignment
             byte[] pic = new byte[length];
             HttpPostedFile uploaded = ((FileUpload)fv_add.Row.FindControl("FileUpload2")).PostedFile;
             uploaded.InputStream.Read(pic, 0, length);
-
+            
             SqlCommand cmd = new SqlCommand("Insert into question(questionDesc,Option1,Option2,Option3,Option4,sampleAns,setID,image) " +
                 "values('" + newDesc + "','" + newOption1 + "','" + newOption2 + "','" + newOption3 + "','" + newOption4 + "','" + newAnswer + "','"+paperSet+"',@image)", conn);
             conn.Open();
@@ -143,6 +151,7 @@ namespace Assignment
             cmd.ExecuteNonQuery();
             conn.Close();
             fv_add.ChangeMode(FormViewMode.ReadOnly);
+            
             Filldata();
         }
 
@@ -159,33 +168,5 @@ namespace Assignment
         {
             Response.Redirect("ShowSetList.aspx");
         }
-
-        protected void uploadPic_Click(object sender, EventArgs e)
-        {
-            /*
-            //string qid = ((HiddenField)dl_question.FindControl("hdnquestionId")).Value;
-            string connection = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
-            SqlConnection conn = new SqlConnection(connection);
-            conn.Open();
-
-            /*if (!((FileUpload)dl_question.FindControl("FileUpload1")).HasFile)
-            {
-                //no file
-            }*/
-            /*
-            int length = ((FileUpload)dl_question.FindControl("FileUpload12")).PostedFile.ContentLength;
-            byte[] pic = new byte[length];
-            HttpPostedFile uploaded = ((FileUpload)dl_question.FindControl("FileUpload2")).PostedFile;
-            uploaded.InputStream.Read(pic, 0, length);
-
-            //change to insert into question table
-            SqlCommand cmd = new SqlCommand("insert into test(id,image) values (@id,@image)", conn);
-            cmd.Parameters.AddWithValue("@id", 77); //qid
-            cmd.Parameters.AddWithValue("@image", pic);
-            cmd.ExecuteNonQuery();
-            conn.Close();*/
-        }
-
-        
     }
 }

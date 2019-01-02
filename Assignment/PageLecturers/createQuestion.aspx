@@ -87,6 +87,9 @@
 
 <br /> <br /><br /><br />
     <h2><b>Create Objective Question</b></h2>
+    <h4><b>
+        <asp:Label ID="Label2" runat="server" ></asp:Label>
+    </b></h4>
         <div>
         <asp:DataList ID="dl_question" runat="server" OnSelectedIndexChanged="dl_question_SelectedIndexChanged" OnItemCommand="DataList1_ItemCommand">
              

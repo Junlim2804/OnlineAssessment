@@ -120,14 +120,14 @@ namespace Assignment
                 obj.Priority = System.Net.Mail.MailPriority.High;
                 obj.Subject = "Result for Exam SET CODE"+setid;
                 string date = DateTime.Now.ToString();
-                obj.Body = "Your mark for XXX is " + mark;
-                serverobj.Send(obj);
+                obj.Body = "You have been graded !! \n Your mark for XXX is " + mark;
+                //serverobj.Send(obj);
             }
             catch (Exception ex)
             {
                 ex.ToString();
             }
-            Response.Redirect("PageLecturers/LecturerShow.aspx");
+            Response.Redirect("LecturerShow.aspx");
             
         }
 
