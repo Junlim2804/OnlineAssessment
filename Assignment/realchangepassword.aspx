@@ -16,15 +16,7 @@ public void ChangePassword_OnClick(object sender, EventArgs args)
     {
       Msg.Text = "Password changed.";
 
-                 if (Roles.IsUserInRole(u.UserName, "student"))
-            {
-
-                Response.Redirect("Student.aspx");
-            }
-            else if (Roles.IsUserInRole(u.UserName, "lecturer"))
-                Response.Redirect("lecture.aspx");
-            else
-                Response.Redirect("WebForm1.aspx");
+                Response.Redirect("~/PersonalInformation.aspx");
                 
     }
     else
