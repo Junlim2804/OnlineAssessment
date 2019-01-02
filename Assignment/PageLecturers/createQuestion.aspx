@@ -228,8 +228,9 @@
                                                   <table>
                                                       <tr>
                                           <td>
-                                                              <asp:FileUpload ID="FileUpload2" runat="server" onchange="showpreview2(this,this.id)"/><br />
-                                                              <asp:Image ID="Image2" runat="server" height="25%" width="25%" />
+                                              <asp:Image ID="Image2" runat="server" height="25%" width="25%" Visible='<%#Eval("Image")!=DBNull.Value %>'/>
+                                              <asp:FileUpload ID="FileUpload2" runat="server" onchange="showpreview2(this,this.id)"/><br />
+                                                              
                                           </td>
                                       </tr>
                                                                                 <tr>

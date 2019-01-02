@@ -40,6 +40,7 @@
   </nav>
 
         <div class="infobox">
+            <h2><b>Assessment Results</b></h2>
             <table>
                 <tr>
                     <td class="auto-style2">

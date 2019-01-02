@@ -88,6 +88,9 @@
 
 <br /> <br /><br /><br />
     <h2><b>Create Subjective Question</b></h2>
+    <h4><b>
+        <asp:Label ID="Label2" runat="server" ></asp:Label>
+    </b></h4>
         <div>
              <asp:DataList ID="dl_question" runat="server" OnItemCommand="DataList1_ItemCommand" >
              <EditItemTemplate>
@@ -191,8 +194,9 @@
                                                       <tr>
                                                           <td>
                                                               
+                                                              <asp:Image ID="Image2" runat="server" height="25%" width="25%" Visible='<%#Eval("Image")!=DBNull.Value %>' />
                                                               <asp:FileUpload ID="FileUpload2" runat="server" onchange="showpreview2(this,this.id)"/><br />
-                                                              <asp:Image ID="Image2" runat="server" height="25%" width="25%" />
+                                                              
                                                           </td>
                                                       </tr>
                                                                                 <tr>

@@ -129,12 +129,12 @@
                      <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="setID" DataSourceID="SqlDataSource1" AllowPaging="True" Width="940px">
                             <Columns>
                                 <asp:CommandField ShowSelectButton="True" />
-                                <asp:BoundField DataField="setID" HeaderText="setID" ReadOnly="True" SortExpression="setID" InsertVisible="False" />
-                                <asp:BoundField DataField="mode" HeaderText="mode" SortExpression="mode" />
-                                <asp:BoundField DataField="duration" HeaderText="duration" SortExpression="duration" />
-                                <asp:BoundField DataField="subjectID" HeaderText="subjectID" SortExpression="subjectID" />
-                                <asp:BoundField DataField="type" HeaderText="type" SortExpression="type" />
-                                <asp:CheckBoxField DataField="available" HeaderText="available" SortExpression="available" />
+                                <asp:BoundField DataField="setID" HeaderText="Set ID" ReadOnly="True" SortExpression="setID" InsertVisible="False" />
+                                <asp:BoundField DataField="subjectID" HeaderText="Subject ID" SortExpression="subjectID" />
+                                <asp:BoundField DataField="type" HeaderText="Type" SortExpression="type" />
+                                <asp:BoundField DataField="duration" HeaderText="Duration" SortExpression="duration" />
+                                <asp:BoundField DataField="mode" HeaderText="Mode" SortExpression="mode" />
+                                <asp:CheckBoxField DataField="available" HeaderText="Availability" SortExpression="available" />
                             </Columns>
                         </asp:GridView>
                     </td>
@@ -153,29 +153,30 @@
                                             <asp:TextBox ID="tbSetID" Text='<%# Eval("setID")%>' runat="server" Enabled="false"></asp:TextBox>
                                         </td>
                                     </tr>
+                                      <tr>
+                                        <th>SubjectID</th>
+                                        <td>
+                                            <asp:DropDownList ID="ddlSubject" runat="server" AppendDataBoundItems="True" DataTextField="subjectName" DataValueField="subjectID" DataSourceID="SqlDataSource3"></asp:DropDownList>
+                                        </td>
+                                    </tr>
+                                      <tr>
+                                        <th>Type</th>
+                                        <td>
+                                            <asp:RadioButtonList ID="rblType" runat="server">
+                                                 <asp:ListItem Value="Objective" Selected="True" >Objective</asp:ListItem>
+
+                                                    <asp:ListItem Value="Subjective" >Subjective</asp:ListItem>
+                                               
+                                            </asp:RadioButtonList>
+                                        </td>
+                                    </tr>
                                     <tr>
                                         <th>Duration</th>
                                         <td>
                                             <asp:TextBox ID="tbDuration" Text='<%# Eval("duration") %>' runat="server"></asp:TextBox>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <th>SubjectID</th>
-                                        <td>
-                                            <asp:DropDownList ID="ddlSubject" runat="server" AppendDataBoundItems="True" DataTextField="subjectName" DataValueField="subjectID" DataSourceID="SqlDataSource3"></asp:DropDownList>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th>Type</th>
-                                        <td>
-                                            <asp:RadioButtonList ID="rblType" runat="server">
-                                                 <asp:ListItem Value="obj" Selected="True" >Objective</asp:ListItem>
-
-                                                    <asp:ListItem Value="sub" >Subjective</asp:ListItem>
-                                               
-                                            </asp:RadioButtonList>
-                                        </td>
-                                    </tr>
+                                     
                                       <tr>
                                           <th>ExpiredDate</th>
                                           <td>
@@ -202,6 +203,33 @@
                                         </td>
                                         <td></td>
                                     </tr>
+                                         <tr>
+                                        <th>SubjectID</th>
+                                        <td class="auto-style6">
+                                            <asp:DropDownList ID="ddlSubject" runat="server" AppendDataBoundItems="True" DataTextField="subjectName" DataValueField="subjectID" DataSourceID="SqlDataSource3"></asp:DropDownList>
+                                        </td>
+                                    </tr>
+                                    
+                                         <tr>
+                                        <th>Type</th>
+                                        <td class="auto-style6">
+                                            <asp:RadioButtonList ID="rblType" runat="server">
+                                                 <asp:ListItem Value="Objective" Selected="True" >Objective</asp:ListItem>
+
+                                                    <asp:ListItem Value="Subjective" >Subjective</asp:ListItem>
+                                               
+                                            </asp:RadioButtonList>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Duration</th>
+                                        <td class="auto-style6">
+                                            <asp:TextBox ID="tbDuration" Text='<%# Eval("duration") %>' runat="server"></asp:TextBox>
+                                        </td>
+                                        <td rowspan="4">
+                                            <asp:ListBox ID="blStudent" runat="server" AutoPostBack="True" OnSelectedIndexChanged="blStudent_SelectedIndexChanged" Visible="False" Height="126px" Width="213px"></asp:ListBox>
+                                        </td>
+                                    </tr>
                                     <tr>
                                         <th>Mode</th>
                                         <td class="auto-style6">
@@ -220,32 +248,7 @@
                                             <asp:Button ID="btnAddStud" runat="server" OnClick="btnAddStud_Click" Text="ADD" Visible="False" />
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <th>Duration</th>
-                                        <td class="auto-style6">
-                                            <asp:TextBox ID="tbDuration" Text='<%# Eval("duration") %>' runat="server"></asp:TextBox>
-                                        </td>
-                                        <td rowspan="4">
-                                            <asp:ListBox ID="blStudent" runat="server" AutoPostBack="True" OnSelectedIndexChanged="blStudent_SelectedIndexChanged" Visible="False" Height="126px" Width="213px"></asp:ListBox>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th>SubjectID</th>
-                                        <td class="auto-style6">
-                                            <asp:DropDownList ID="ddlSubject" runat="server" AppendDataBoundItems="True" DataTextField="subjectName" DataValueField="subjectID" DataSourceID="SqlDataSource3"></asp:DropDownList>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th>Type</th>
-                                        <td class="auto-style6">
-                                            <asp:RadioButtonList ID="rblType" runat="server">
-                                                 <asp:ListItem Value="obj" Selected="True" >Objective</asp:ListItem>
-
-                                                    <asp:ListItem Value="sub" >Subjective</asp:ListItem>
-                                               
-                                            </asp:RadioButtonList>
-                                        </td>
-                                    </tr>
+                                    
                                          <tr>
                                              <th>ExpiredDate</th>
                                              <td class="auto-style6">
@@ -273,18 +276,6 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th>Mode:</th>
-                                        <td>
-                                            <asp:Label ID="lbMode" Text='<%# Eval("mode")%>' runat="server"></asp:Label>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th>Duration:</th>
-                                        <td>
-                                            <asp:Label ID="lbDuration" Text='<%# Eval("duration")%>' runat="server"></asp:Label>
-                                        </td>
-                                    </tr>
-                                    <tr>
                                         <th>SubjectID:</th>
                                         <td>
                                             <asp:Label ID="lbSubjectID" Text='<%# Eval("subjectID")%>' runat="server"></asp:Label>
@@ -296,6 +287,20 @@
                                             <asp:Label ID="lbType" Text='<%# Eval("type")%>' runat="server"></asp:Label>
                                         </td>
                                     </tr>
+                                    
+                                    <tr>
+                                        <th>Duration:</th>
+                                        <td>
+                                            <asp:Label ID="lbDuration" Text='<%# Eval("duration")%>' runat="server"></asp:Label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Mode:</th>
+                                        <td>
+                                            <asp:Label ID="lbMode" Text='<%# Eval("mode")%>' runat="server"></asp:Label>
+                                        </td>
+                                    </tr>
+                                    
                                     <tr>
                                         <th>ExpiredDate</th>
                                         <td>

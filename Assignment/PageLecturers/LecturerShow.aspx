@@ -37,6 +37,7 @@
     background-image: url("/Image/lecBack.jpg");
     min-height: 100%;
 }
+
     </style>
  <header class="bgimg w3-display-container w3-grayscale-min" id="home">
 <div class="w3-container" style="padding:128px 16px" id="about">    
@@ -61,37 +62,37 @@
   </nav>
 
      <div class="infobox">
-         <h2><b>Assessment Set</b></h2>
+         <h2><b>Published Assessment Sets</b></h2>
              <asp:DataList ID="DataList1" runat="server"  CellSpacing="4" CellPadding="4" RepeatColumns="3" RepeatDirection="Horizontal" DataKeyField="setID" DataSourceID="SqlDataSource1" 
-                 BackColor="White" BorderColor="#3366CC" BorderStyle="None" BorderWidth="1px" GridLines="Both" width="80%" OnItemCommand="DataList1_ItemCommand">
-             <FooterStyle BackColor="#99CCCC" ForeColor="#003399" />
-             <HeaderStyle BackColor="#003399" Font-Bold="True" ForeColor="#CCCCFF" />
-             <ItemStyle BackColor="White" ForeColor="#003399" />
+                 BorderColor="White" BorderWidth="2px" GridLines="Both" width="80%" OnItemCommand="DataList1_ItemCommand" HorizontalAlign="Left" ForeColor="#333333">
+                 <AlternatingItemStyle BackColor="White" />
+             <FooterStyle BackColor="#507CD1" ForeColor="White" Font-Bold="True" />
+             <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+             <ItemStyle BackColor="#EFF3FB" />
              <ItemTemplate>
-                 setID:
+                 Set ID:
                  <asp:Label ID="setIDLabel" runat="server" Text='<%# Eval("setID") %>' />
                  <br />
-                 mode:
-                 <asp:Label ID="modeLabel" runat="server" Text='<%# Eval("mode") %>' />
-                 <br />
-                 duration:
-                 <asp:Label ID="durationLabel" runat="server" Text='<%# Eval("duration") %>' />
-                 <br />
-                 subjectID:
+                 Subject ID:
                  <asp:Label ID="subjectIDLabel" runat="server" Text='<%# Eval("subjectID") %>' />
                  <br />
-                 type:
+                 Type:
                  <asp:Label ID="typeLabel" runat="server" Text='<%# Eval("type") %>' />
                  <br />
-                 <!----<asp:Button ID="markBtn" runat="server" Text="Mark Paper" CommandName="Mark"/>
-                 <br />--->
+                 Duration:
+                 <asp:Label ID="durationLabel" runat="server" Text='<%# Eval("duration") %>' /> minutes
+                <br />
+                 Mode:
+                 <asp:Label ID="modeLabel" runat="server" Text='<%# Eval("mode") %>' />
+                 <br />
                  <asp:Button ID="viewDetailsBtn" runat="server" Text="View Details" CommandName="View"/>
                  <br />
              </ItemTemplate>
+                 <SelectedItemStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
          </asp:DataList>
     </div>
 
-
+    
     
     <div id="grid" >
         <h2><b>Students Results</b></h2>
@@ -114,7 +115,7 @@
         </div>
     
         <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [subjectID], [subjectName] FROM [subject]"></asp:SqlDataSource>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT p.setID, p.subjectID, p.type, p.duration, p.mode, p.available FROM paperset AS p INNER JOIN subject AS s ON p.subjectID = s.subjectID INNER JOIN lecturer AS l ON s.CourseCode = l.teachCourse WHERE l.lecId = @personID">
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT p.setID, p.subjectID, p.type, p.duration, p.mode FROM paperset AS p INNER JOIN subject AS s ON p.subjectID = s.subjectID INNER JOIN lecturer AS l ON s.CourseCode = l.teachCourse WHERE (p.available = 'true') AND (l.lecId = @personID)">
             <SelectParameters>
                 <asp:SessionParameter Name="personID" SessionField="username" />
             </SelectParameters>

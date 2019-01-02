@@ -32,10 +32,13 @@ namespace Assignment
 
             conn.Open();
 
-            SqlCommand cmd = new SqlCommand("SELECT subjectID, mode, type, duration FROM paperset where setID=@setID", conn);
+            SqlCommand cmd = new SqlCommand("SELECT p.subjectID, subjectName, mode FROM paperset p, subject s where setID=@setID", conn);
             cmd.Parameters.AddWithValue("@setID", paperSet);
             SqlDataReader read = cmd.ExecuteReader();
-            Label2.Text="??";
+            while (read.Read())
+            {
+                Label2.Text = "For " + read[0].ToString() + read[1].ToString() + " as " + read[2].ToString() + " paper.";
+            }
             conn.Close();
         }
 

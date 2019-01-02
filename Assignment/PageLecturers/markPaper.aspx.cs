@@ -115,13 +115,13 @@ namespace Assignment
                 serverobj.Host = "smtp.outlook.com";
                 serverobj.EnableSsl = true;
                 obj = new System.Net.Mail.MailMessage();
-                obj.From = new MailAddress("caringwow@outlook.com", "Reset Password", System.Text.Encoding.UTF8);
+                obj.From = new MailAddress("caringwow@outlook.com", "Exam Result", System.Text.Encoding.UTF8);
                 obj.To.Add(email);
                 obj.Priority = System.Net.Mail.MailPriority.High;
-                obj.Subject = "Result for Exam SET CODE"+setid;
+                obj.Subject = "Result for Exam ("+setid +")";
                 string date = DateTime.Now.ToString();
-                obj.Body = "You have been graded !! \n Your mark for XXX is " + mark;
-                //serverobj.Send(obj);
+                obj.Body = "Good day !! \n Your test paper of has been graded !! \n You get " + mark + " out of ";
+                serverobj.Send(obj);
             }
             catch (Exception ex)
             {

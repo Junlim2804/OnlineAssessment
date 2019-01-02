@@ -13,7 +13,7 @@
                          <br />
                           <asp:Label ID="lblLecCourse" runat="server" Text="Course"></asp:Label>
                          <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT * FROM [Course]"></asp:SqlDataSource>
-                     <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource1" DataTextField="CourseCode" DataValueField="CourseCode"></asp:DropDownList>
+                         <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource1" DataTextField="CourseCode" DataValueField="CourseCode" Enabled="False" SelectedValue='<%# Eval("teachCourse") %>' ></asp:DropDownList>
                     <br />
                          <asp:Label ID="lblLecEmail" runat="server" Text="E-mail"></asp:Label>
                          <asp:TextBox ID="txtLecEmail" runat="server" Text='<%# Eval("lecemail") %>' />
@@ -24,7 +24,7 @@
                          <br />
 
                          <asp:Button ID="btnEdit" runat="server" CommandName="update" Text="Update"/>
-                         &nbsp;<asp:Button ID="Button2" runat="server" CommandName="cancel" Text="cancel" />
+                         &nbsp;<asp:Button ID="Button2" runat="server" CommandName="cancel" Text="Cancel" />
                          <br />
                     
                   <br />
@@ -39,7 +39,7 @@
                                         
                      <asp:Label ID="lblLecCourse" runat="server" Text="Course"></asp:Label>
                      <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT * FROM [Course]"></asp:SqlDataSource>
-                      <asp:Textbox ID="tbCode" runat="server" Text='<%# Eval("teachCourse") %>' Enabled="False" select="" ></asp:Textbox>
+                      <asp:Textbox ID="tbCode" runat="server" Text='<%# Eval("teachCourse") %>' Enabled="False" ></asp:Textbox>
                      <br />
                      <asp:Label ID="lblLecEmail" runat="server" Text="E-mail"></asp:Label>
                      <asp:TextBox ID="txtLecEmail" runat="server" Text='<%# Eval("lecemail") %>' Enabled="False" />

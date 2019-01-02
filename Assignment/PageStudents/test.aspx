@@ -123,6 +123,7 @@ where stuid=@stuID and p.setId=ss.setID and p.subjectID=s.subjectID and ss.mark 
     <div class="w3-col 40 m6 w3-margin-bottom">
       <div class="w3-card">
         <div class="w3-container">
+            <br /><br />
           <h3>Subject Selected</h3>
           <p class="w3-opacity"><asp:Label ID="lblSubID" runat="server"></asp:Label></p>
           <p>Question Set ID:<asp:Label ID="lblSet" runat="server"></asp:Label></p>

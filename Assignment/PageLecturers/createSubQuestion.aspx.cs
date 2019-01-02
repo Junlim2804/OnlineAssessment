@@ -18,6 +18,7 @@ namespace Assignment
         protected void Page_Load(object sender, EventArgs e)
         {
             Page.MaintainScrollPositionOnPostBack = true;
+            paperset = Request.QueryString["SETID"];
 
             if (!IsPostBack)
             {
@@ -26,16 +27,17 @@ namespace Assignment
                 
             }
 
-            
-            /*if (((FileUpload)fv_add.Row.FindControl("FileUpload1")).HasFile)
+            conn.Open();
+
+            SqlCommand cmd = new SqlCommand("SELECT p.subjectID, subjectName, mode FROM paperset p, subject s where setID=@setID", conn);
+            cmd.Parameters.AddWithValue("@setID", paperset);
+            SqlDataReader read = cmd.ExecuteReader();
+            while (read.Read())
             {
-                System.IO.Stream fs = ((FileUpload)fv_add.Row.FindControl("FileUpload1")).PostedFile.InputStream;
-                System.IO.BinaryReader br = new System.IO.BinaryReader(fs);
-                Byte[] bytes = br.ReadBytes((Int32)fs.Length);
-                string base64String = Convert.ToBase64String(bytes, 0, bytes.Length);
-                ((Image)fv_add.Row.FindControl("Image1")).ImageUrl = "data:image/png;base64," + base64String;
-                ((Image)fv_add.Row.FindControl("Image1")).Visible = true;
-            }*/
+                Label2.Text = "For " + read[0].ToString() + read[1].ToString() + " as " + read[2].ToString() + " paper.";
+            }
+            conn.Close();
+            
         }
 
        
