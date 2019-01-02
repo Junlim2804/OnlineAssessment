@@ -54,8 +54,10 @@ namespace Assignment
                 string txtLecName = ((TextBox)e.Item.FindControl("txtLecName")).Text;
                 string txtLecEmail = ((TextBox)e.Item.FindControl("txtLecEmail")).Text;
                 string txtLecHpNo = ((TextBox)e.Item.FindControl("txtLecHpNo")).Text;
+                string txtLecCourse = ((DropDownList)e.Item.FindControl("DropDownList1")).SelectedValue;
 
                 SqlCommand cmd = new SqlCommand("update lecturer set lecname ='" + txtLecName + "', lecemail ='" + txtLecEmail + "',lechpno ='" + txtLecHpNo +
+                    "',teachCourse ='"+txtLecCourse+
                    "'where lecid='" + txtLecId + "'", conn);
                 conn.Open();
                 cmd.ExecuteNonQuery();

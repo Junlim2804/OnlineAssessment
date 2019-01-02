@@ -11,6 +11,10 @@
                          <asp:Label ID="lblLecName" runat="server" Text="Name"></asp:Label>
                          <asp:TextBox ID="txtLecName" runat="server" Text='<%# Eval("lecname") %>' />
                          <br />
+                          <asp:Label ID="lblLecCourse" runat="server" Text="Course"></asp:Label>
+                         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT * FROM [Course]"></asp:SqlDataSource>
+                     <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource1" DataTextField="CourseCode" DataValueField="CourseCode"></asp:DropDownList>
+                    <br />
                          <asp:Label ID="lblLecEmail" runat="server" Text="E-mail"></asp:Label>
                          <asp:TextBox ID="txtLecEmail" runat="server" Text='<%# Eval("lecemail") %>' />
                          <asp:RegularExpressionValidator ID="regexEmailValid" runat="server" ValidationExpression="\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ControlToValidate="txtLecEmail" ErrorMessage="Invalid Email Format"></asp:RegularExpressionValidator>
@@ -31,6 +35,11 @@
                      <br />
                      <asp:Label ID="lblLecName" runat="server" Text="Name"></asp:Label>
                      <asp:TextBox ID="txtLecName" runat="server" Text='<%# Eval("lecname") %>' Enabled="False"/>
+                     <br />
+                                        
+                     <asp:Label ID="lblLecCourse" runat="server" Text="Course"></asp:Label>
+                     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT * FROM [Course]"></asp:SqlDataSource>
+                      <asp:Textbox ID="tbCode" runat="server" Text='<%# Eval("teachCourse") %>' Enabled="False" select="" ></asp:Textbox>
                      <br />
                      <asp:Label ID="lblLecEmail" runat="server" Text="E-mail"></asp:Label>
                      <asp:TextBox ID="txtLecEmail" runat="server" Text='<%# Eval("lecemail") %>' Enabled="False" />
