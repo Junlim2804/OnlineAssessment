@@ -11,24 +11,34 @@ namespace Assignment
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-         
+            HttpCookie ck = Request.Cookies["registerUser"];
+            string test = ck["rg"].ToString();
                 string registerUser = Request.Cookies["registerUser"].Value.ToString();
                 Control ctrlControl;
-                if (registerUser == "stuRegister")
+                if (test == "stuRegister")
                 {
                 h.Text = "Register As Student";
                     ctrlControl = LoadControl("CreateStudentInfo.ascx");
-                  
-                }
-                else if(registerUser == "stuLecturer")
+                HttpCookie Cookie = new HttpCookie("registerUser");
+                Cookie.Expires = DateTime.Now.AddDays(-1d);
+                Response.Cookies.Add(Cookie);
+
+            }
+                else /*if(registerUser == "lecLecturer")*/
                 {
                 h.Text = "Register As Lecturer";
-                ctrlControl = LoadControl("CreateLecturer.ascx");
+                ctrlControl = LoadControl("CreateLecturerInfo.ascx");
+                HttpCookie Cookie = new HttpCookie("registerUser");
+                Cookie.Expires = DateTime.Now.AddDays(-1d);
+                Response.Cookies.Add(Cookie);
             }
-            else
-            {
-                ctrlControl = LoadControl("CreateStudentInfo.ascx");
-            }
+            //else
+            //{
+            //    ctrlControl = LoadControl("CreateLecturerInfo.ascx");
+            //    HttpCookie Cookie = new HttpCookie("registerUser");
+            //    Cookie.Expires = DateTime.Now.AddDays(-1d);
+            //    Response.Cookies.Add(Cookie);
+            //}
        
 
                 div1.Controls.Add(ctrlControl);

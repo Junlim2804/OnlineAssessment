@@ -9,6 +9,7 @@ namespace OnlineAssessementSite
 {
     public partial class WebForm1 : System.Web.UI.Page
     {
+        HttpCookie cookie = new HttpCookie("registerUser");
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -16,17 +17,16 @@ namespace OnlineAssessementSite
 
         protected void StuLoginBtn_Click(object sender, EventArgs e)
         {
-            String registerUser = "stuRegister";
-            HttpCookie cookie = new HttpCookie("registerUser", registerUser);
-            cookie.Expires = DateTime.Now.AddMinutes(1);
+
+            cookie.Values["rg"] = "stuRegister";
+              cookie.Expires = DateTime.Now.AddMinutes(1);
             Response.Cookies.Add(cookie);
             Response.Redirect("~/TestingCreate.aspx");
         }
 
         protected void LecLoginBtn_Click(object sender, EventArgs e)
         {
-            String registerUser = "lecRegister";
-            HttpCookie cookie = new HttpCookie("registerUser", registerUser);
+            cookie.Values["rg"] = "lecRegister";
             cookie.Expires = DateTime.Now.AddMinutes(1);
             Response.Cookies.Add(cookie);
             Response.Redirect("~/TestingCreate.aspx");
