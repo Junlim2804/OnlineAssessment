@@ -23,7 +23,7 @@ namespace Assignment
 
             using (SqlConnection myConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["CaringWow"].ToString()))
             {
-                SqlCommand mycommand = new SqlCommand("proc_register", myConnection);
+                SqlCommand mycommand = new SqlCommand("proc_getEmail", myConnection);
                 mycommand.CommandType = CommandType.StoredProcedure;
                 mycommand.Parameters.Add("@stuid", SqlDbType.VarChar).Value = username;
          
@@ -36,7 +36,7 @@ namespace Assignment
             }
 
             Label1.Text = "<h2>Thank you for completing the test !! <br />You have answered " + s + " question(s) correctly !!" +
-            "<br />You can leave this page now.</h2>";
+            "<br />You can leave this page now</h2>";
 
             try
             {
