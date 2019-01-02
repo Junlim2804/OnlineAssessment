@@ -319,6 +319,11 @@ namespace Assignment
                 else if (lbType == "sub")
                   Response.Redirect("createSubQuestion.aspx?SETID=" + setID);
             }
+            else if (e.CommandName == "Check")
+            {
+                string setID = DataList1.DataKeys[e.Item.ItemIndex].ToString();
+                fv_set.Visible = true;
+            }
         }
 
 

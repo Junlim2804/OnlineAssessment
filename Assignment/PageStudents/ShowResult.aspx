@@ -43,10 +43,9 @@
             <table>
                 <tr>
                     <td class="auto-style2">
-                        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="stuID,subjectID" Height="264px" Width="318px" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" CellPadding="4" ForeColor="#333333" GridLines="None" >
+                        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="stuID,subjectID" Height="264px" Width="318px" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" CellPadding="4" ForeColor="#333333" GridLines="None" AllowPaging="True" >
                             <AlternatingRowStyle BackColor="White" />
                             <Columns>
-                                <asp:CommandField ShowSelectButton="True" />
                                 <asp:BoundField DataField="setID" HeaderText="Set ID" SortExpression="subjectID" ReadOnly="True" />
                                 <asp:BoundField DataField="subjectID" HeaderText="Subject Code" />
                                 <asp:BoundField DataField="type" HeaderText="Type" />
@@ -63,6 +62,11 @@
                             <SortedDescendingCellStyle BackColor="#E9EBEF" />
                             <SortedDescendingHeaderStyle BackColor="#4870BE" />
                         </asp:GridView>
+                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString2 %>" SelectCommand="SELECT s.setID, p.subjectID, p.mode, p.type, s.mark FROM StudentSetList AS s INNER JOIN paperset AS p ON s.setID = p.setID WHERE (s.stuID = @stuID)">
+                            <SelectParameters>
+                                <asp:SessionParameter Name="stuID" SessionField="username" Type="String" />
+                            </SelectParameters>
+                        </asp:SqlDataSource>
                     </td>
                     <td class="auto-style4">
                         <br />

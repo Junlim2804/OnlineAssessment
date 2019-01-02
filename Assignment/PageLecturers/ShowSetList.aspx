@@ -91,7 +91,7 @@
    
      <div class="infobox">
           <h2><b>Assessment Set</b></h2>
-         <asp:DataList ID="DataList1" runat="server"  CellSpacing="4" CellPadding="4" RepeatColumns="3" RepeatDirection="Horizontal" DataKeyField="setID" DataSourceID="SqlDataSource1" 
+         <!-----<asp:DataList ID="DataList1" runat="server"  CellSpacing="4" CellPadding="4" RepeatColumns="3" RepeatDirection="Horizontal" DataKeyField="setID" DataSourceID="SqlDataSource1" 
              BackColor="White" BorderColor="#3366CC" BorderStyle="None" BorderWidth="2px" GridLines="Both" width="80%" OnItemCommand="DataList1_ItemCommand">
              <FooterStyle BackColor="#99CCCC" ForeColor="#003399" />
              <HeaderStyle BackColor="#003399" Font-Bold="True" ForeColor="#CCCCFF" />
@@ -117,15 +117,18 @@
                  <br />
                  <asp:Button ID="viewSetBtn" runat="server" Text="View Question" CommandName="View" />
                  <br />
+                 <asp:Button ID="checkDetailBtn" runat="server" Text="Check Set" CommandName="Check" />
+                 <br />
              </ItemTemplate>
-         </asp:DataList>
+         </asp:DataList>---->
 
            
-            <!----<table id="outer" class="auto-style1">
+            <table id="outer" class="auto-style1">
                 <tr>
                     <td class="auto-style2">
                      <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="setID" DataSourceID="SqlDataSource1" AllowPaging="True" Width="940px">
                             <Columns>
+                                <asp:CommandField ShowSelectButton="True" />
                                 <asp:BoundField DataField="setID" HeaderText="setID" ReadOnly="True" SortExpression="setID" InsertVisible="False" />
                                 <asp:BoundField DataField="mode" HeaderText="mode" SortExpression="mode" />
                                 <asp:BoundField DataField="duration" HeaderText="duration" SortExpression="duration" />
@@ -136,7 +139,7 @@
                         </asp:GridView>
                     </td>
                     </tr>
-                </table>--->
+                </table>
               
     <br />
              

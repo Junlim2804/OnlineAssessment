@@ -19,7 +19,7 @@ namespace Assignment
         /*protected void ddlSubject_SelectedIndexChanged(object sender, EventArgs e)
         {
             ddlSet.DataBind();
-        }
+        }*/
 
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -28,25 +28,23 @@ namespace Assignment
             string stuid = row.Cells[1].Text;
             Session["id"] = stuid;
             Response.Redirect("markPaper.aspx?SETID=" + setid + "&?STUID=" + stuid);
-
-
-        }*/
-
-        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
+
+
 
         protected void DataList1_ItemCommand(object source, DataListCommandEventArgs e)
         {
-            if(e.CommandName == "Mark")
+            string setID = DataList1.DataKeys[e.Item.ItemIndex].ToString();
+            /*if (e.CommandName == "Mark")
             {
-
-            }
-            else if (e.CommandName == "Result")
+                //Response.Redirect("markPaper.aspx?SETID=" + setID);// "&?STUID=" + stuid);
+            }*/
+            if (e.CommandName == "View")
             {
-                string setID = DataList1.DataKeys[e.Item.ItemIndex].ToString();
-                SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["CaringWow"].ToString());
+                Session["setID"] = setID;
+                GridView1.DataBind();
+                Page.SetFocus(GridView1);
+                /*SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["CaringWow"].ToString());
                 string sql = "SELECT * FROM [StudentSetList] WHERE ([setID] = @setID)";
                 conn.Open();
                 SqlCommand command = new SqlCommand(sql, conn);
@@ -54,8 +52,7 @@ namespace Assignment
                 command.Parameters.AddWithValue("@setID", setID);
                 SqlDataReader results = command.ExecuteReader();
                 GridView1.DataSource = results;
-                conn.Close();
-                GridView1.Visible = true;
+                conn.Close();*/
             }
         }
     }

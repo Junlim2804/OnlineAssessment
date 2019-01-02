@@ -60,9 +60,6 @@
     </div>
   </nav>
 
-        <br /><br /><br /><br />
-        
-        <br />
      <div class="infobox">
          <h2><b>Assessment Set</b></h2>
              <asp:DataList ID="DataList1" runat="server"  CellSpacing="4" CellPadding="4" RepeatColumns="3" RepeatDirection="Horizontal" DataKeyField="setID" DataSourceID="SqlDataSource1" 
@@ -86,14 +83,12 @@
                  type:
                  <asp:Label ID="typeLabel" runat="server" Text='<%# Eval("type") %>' />
                  <br />
-                 <asp:Button ID="markBtn" runat="server" Text="Mark Paper" CommandName="Mark"/>
-                 <br />
-                 <asp:Button ID="resultBtn" runat="server" Text="View Result" CommandName="Result"/>
+                 <!----<asp:Button ID="markBtn" runat="server" Text="Mark Paper" CommandName="Mark"/>
+                 <br />--->
+                 <asp:Button ID="viewDetailsBtn" runat="server" Text="View Details" CommandName="View"/>
                  <br />
              </ItemTemplate>
          </asp:DataList>
-
-
     </div>
 
 
@@ -104,8 +99,10 @@
     <table class="auto-style3"  style="margin-left:30%">
         <tr>
             <td>
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="stuID,setID" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" Width="478px" AllowPaging="True" AllowSorting="True">
+                <asp:Label ID="Label1" runat="server" ></asp:Label>
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="stuID,setID" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" Width="478px" AllowPaging="True" AllowSorting="True" DataSourceID="SqlDataSource3">
             <Columns>
+                <asp:CommandField ShowSelectButton="True" />
                 <asp:BoundField DataField="setID" HeaderText="SetID" ReadOnly="True" SortExpression="setID" />
                 <asp:BoundField DataField="stuID" HeaderText="StuID" ReadOnly="True" SortExpression="stuID" />
                 <asp:BoundField DataField="mark" HeaderText="Mark" SortExpression="mark" />
@@ -115,7 +112,7 @@
             </tr>
         </table>
         </div>
-
+    
         <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [subjectID], [subjectName] FROM [subject]"></asp:SqlDataSource>
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT p.setID, p.subjectID, p.type, p.duration, p.mode, p.available FROM paperset AS p INNER JOIN subject AS s ON p.subjectID = s.subjectID INNER JOIN lecturer AS l ON s.CourseCode = l.teachCourse WHERE l.lecId = @personID">
             <SelectParameters>
@@ -124,8 +121,9 @@
         </asp:SqlDataSource>
         <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT * FROM [StudentSetList] WHERE ([setID] = @setID)">
             <SelectParameters>
-                <asp:Parameter Name="setID" Type="Int32" />
+                <asp:SessionParameter Name="setID" SessionField="setID" />
             </SelectParameters>
+            
         </asp:SqlDataSource>
         <br />
         
