@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/LayoutPage.Master" AutoEventWireup="true" CodeBehind="PersonalInformation.aspx.cs" Inherits="Assignment.PersonalInformation" %>
 <%@ Register TagPrefix="studentHead" TagName="studentHeader" Src="studentHeader.ascx" %>
+<%@ Register TagPrefix="lecturerHead" TagName="lecturerHeader" Src="lecturerHeader.ascx" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">

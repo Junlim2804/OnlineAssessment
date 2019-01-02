@@ -11,7 +11,22 @@ namespace Assignment
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+         
+                string registerUser = Request.Cookies["registerUser"].Value.ToString();
+                Control ctrlControl;
+                if (registerUser == "stuRegister")
+                {
+                    ctrlControl = LoadControl("CreateStudentInfo.ascx");
+                  
+                }
+                else 
+                {
+                    ctrlControl = LoadControl("CreateLecturer.ascx");
+                }
+       
 
+                div1.Controls.Add(ctrlControl);
+            
         }
     }
 }

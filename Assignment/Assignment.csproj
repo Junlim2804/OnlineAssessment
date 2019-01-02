@@ -81,6 +81,8 @@
     <Content Include="App_Data\CaringWow_log.ldf">
       <DependentUpon>CaringWow.mdf</DependentUpon>
     </Content>
+    <Content Include="CreateLecturerInfo.ascx" />
+    <Content Include="CreateStudentInfo.ascx" />
     <Content Include="emailResult.aspx" />
     <Content Include="Image\lecBack.jpg" />
     <Content Include="Image\studBack.jpg" />
@@ -143,6 +145,20 @@
     </Compile>
     <Compile Include="About.aspx.designer.cs">
       <DependentUpon>About.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CreateLecturerInfo.ascx.cs">
+      <DependentUpon>CreateLecturerInfo.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CreateLecturerInfo.ascx.designer.cs">
+      <DependentUpon>CreateLecturerInfo.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="CreateStudentInfo.ascx.cs">
+      <DependentUpon>CreateStudentInfo.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CreateStudentInfo.ascx.designer.cs">
+      <DependentUpon>CreateStudentInfo.ascx</DependentUpon>
     </Compile>
     <Compile Include="emailResult.aspx.cs">
       <DependentUpon>emailResult.aspx</DependentUpon>

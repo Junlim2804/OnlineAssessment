@@ -81,7 +81,7 @@
                             <tr>
                                 <td>
                                     <div style="text-align:center">
-                                        <asp:Button ID="StuLoginBtn" class="button" runat="server" Text="Register as Student" PostBackUrl="~/CreateStudentAccount.aspx" />
+                                        <asp:Button ID="StuLoginBtn" class="button" runat="server" Text="Register as Student" Onclick="StuLoginBtn_Click" />
 
                                     </div>
                                     
@@ -93,7 +93,7 @@
                             <tr>
                                 <td class="auto-style11">
                                     <div style="text-align:center">
-                                        <asp:Button ID="LecLoginBtn" class="button" runat="server" Text="Register as Lecturer" PostBackUrl="~/CreateLecturerAccount.aspx" />
+                                        <asp:Button ID="LecLoginBtn" class="button" runat="server" Text="Register as Lecturer" Onclick="LecLoginBtn_Click"/>
 
                                     </div>
                                 </td>
