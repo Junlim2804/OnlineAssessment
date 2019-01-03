@@ -9,6 +9,17 @@
 <head runat="server">
     <title>Layout</title>
     <asp:ContentPlaceHolder ID="head" runat="server">
+        <script>
+            window.onclose = funcRef;
+
+funcRef()
+
+{
+
+ document.all("LoginStatus1_LoggingOut").click();
+
+}
+        </script>
     </asp:ContentPlaceHolder>
 </head>
 <body>

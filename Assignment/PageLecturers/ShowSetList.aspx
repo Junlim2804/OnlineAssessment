@@ -163,9 +163,9 @@
                                         <th>Type</th>
                                         <td>
                                             <asp:RadioButtonList ID="rblType" runat="server">
-                                                 <asp:ListItem Value="Objective" Selected="True" >Objective</asp:ListItem>
+                                                 <asp:ListItem Value="obj" Selected="True" >Objective</asp:ListItem>
 
-                                                    <asp:ListItem Value="Subjective" >Subjective</asp:ListItem>
+                                                    <asp:ListItem Value="sub" >Subjective</asp:ListItem>
                                                
                                             </asp:RadioButtonList>
                                         </td>
@@ -214,9 +214,9 @@
                                         <th>Type</th>
                                         <td class="auto-style6">
                                             <asp:RadioButtonList ID="rblType" runat="server">
-                                                 <asp:ListItem Value="Objective" Selected="True" >Objective</asp:ListItem>
+                                                 <asp:ListItem Value="obj" Selected="True" >Objective</asp:ListItem>
 
-                                                    <asp:ListItem Value="Subjective" >Subjective</asp:ListItem>
+                                                    <asp:ListItem Value="sub" >Subjective</asp:ListItem>
                                                
                                             </asp:RadioButtonList>
                                         </td>

@@ -150,7 +150,8 @@
                                                                             <table class="tblOptions">
                                                                                 <tr>
                                                                                     <td>
-                                                                                        <asp:Image ID="Image1" runat="server" height="25%" width="25%" Visible='<%#Eval("Image")!=DBNull.Value %>' ImageUrl='<%#(Eval("Image")!=DBNull.Value)?"data:Image/jpg;base64,"+Convert.ToBase64String((byte[])Eval("Image")):"~/Image/brain1.png" %>'/>
+                                                                                        <asp:Image ID="Image1" runat="server" height="25%" width="25%" Visible='<%#Eval("Image")!=DBNull.Value %>' />
+                                                                                            
                                                                                     </td>
                                                                                 </tr>
                                                                                 <tr>

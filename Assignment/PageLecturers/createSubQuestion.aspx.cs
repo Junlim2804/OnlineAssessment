@@ -79,29 +79,31 @@ namespace Assignment
                 if (!((FileUpload)e.Item.FindControl("FileUpload1")).HasFile)
                 {
                     ((Label)e.Item.FindControl("Label1")).Text = "No yet upload";
+                    return;
                 }
+                else
+                {
+                    int length = ((FileUpload)e.Item.FindControl("FileUpload1")).PostedFile.ContentLength;
+                    byte[] pic = new byte[length];
+                    HttpPostedFile uploaded = ((FileUpload)e.Item.FindControl("FileUpload1")).PostedFile;
+                    uploaded.InputStream.Read(pic, 0, length);
+                    e.Item.FindControl("Image1").Visible = true;
 
-                int length = ((FileUpload)e.Item.FindControl("FileUpload1")).PostedFile.ContentLength;
-                byte[] pic = new byte[length];
-                HttpPostedFile uploaded = ((FileUpload)e.Item.FindControl("FileUpload1")).PostedFile;
-                uploaded.InputStream.Read(pic, 0, length);
-                e.Item.FindControl("Image1").Visible = true;
+                    string newDesc = ((TextBox)e.Item.FindControl("tbDesc")).Text;
+                    string newAnswer = ((TextBox)e.Item.FindControl("tbAnswer")).Text;
+                    string qid = ((HiddenField)e.Item.FindControl("hdnquestionId")).Value;
 
-                string newDesc = ((TextBox)e.Item.FindControl("tbDesc")).Text;
-                string newAnswer = ((TextBox)e.Item.FindControl("tbAnswer")).Text;
-                string qid = ((HiddenField)e.Item.FindControl("hdnquestionId")).Value;
+                    SqlCommand cmd = new SqlCommand("update question set questionDesc='" + newDesc +
+                       "',sampleAns='" + newAnswer + "', image=@image where questionID='" + qid + "';", conn);
 
-                SqlCommand cmd = new SqlCommand("update question set questionDesc='" + newDesc +
-                   "',sampleAns='" + newAnswer + "', image=@image where questionID='" + qid + "';", conn);
-                
-                conn.Open();
-                cmd.Parameters.AddWithValue("@image", pic);
-                cmd.ExecuteNonQuery();
-                dl_question.EditItemIndex = -1;
-                conn.Close();
+                    conn.Open();
+                    cmd.Parameters.AddWithValue("@image", pic);
+                    cmd.ExecuteNonQuery();
+                    dl_question.EditItemIndex = -1;
+                    conn.Close();
 
-                Filldata();
-
+                    Filldata();
+                }
             }
             else if (e.CommandName == "Delete")
             {

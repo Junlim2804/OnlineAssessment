@@ -62,8 +62,7 @@ namespace Assignment
             {
                 if (rblType.Items[i].Selected)
                 {
-
-                    type = rblType.Items[i].Value;
+                   type = rblType.Items[i].Value;
                     break;
                 }
             }
@@ -114,7 +113,7 @@ namespace Assignment
             string sql = "";
             conn.Open();
             string setid = "";
-
+           
             sql = "select max(setid) from paperset";
             SqlCommand cmd = new SqlCommand(sql, conn);
             setid = cmd.ExecuteScalar().ToString();
