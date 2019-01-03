@@ -40,7 +40,7 @@ namespace Assignment
         protected void Filldata()
         {
 
-            string sql = "Select ql.questionID,questionDesc,sampleAns,studAns from question q,questionList ql where stuId ='"+stuid+"' and q.setID ='"+setid+"' and ql.questionID = q.questionID;";
+            string sql = "Select ql.questionID,questionDesc,sampleAns,studAns,image from question q,questionList ql where stuId ='"+stuid+"' and q.setID ='"+setid+"' and ql.questionID = q.questionID;";
             SqlDataAdapter da = new SqlDataAdapter(sql, ConfigurationManager.ConnectionStrings["CaringWow"].ToString());
             DataSet ds = new DataSet();
             da.Fill(ds);

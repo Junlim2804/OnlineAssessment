@@ -57,10 +57,15 @@
             <asp:DataList ID="DataList1" runat="server" OnSelectedIndexChanged="DataList1_SelectedIndexChanged"  CssClass="auto-style9" Width="718px">
                 <ItemTemplate>
                     <table class="auto-style1">
+                    
                         <tr>
                             <th class="auto-style7"><b>Question  <%# Container.ItemIndex + 1 %> : <%#Eval("questionDesc") %></b></th>
+
                             <th class="auto-style4"><asp:HiddenField ID="hdnquestionId" Value='<%#Eval("questionId") %>' runat="server" /></th>
                         </tr>
+                        <tr>
+                            <td colspan="2"><asp:Image ID="Image1" runat="server" height="25%" width="25%" Visible='<%#Eval("Image")!=DBNull.Value %>' ImageUrl='<%#(Eval("Image")!=DBNull.Value)?"data:Image/jpg;base64,"+Convert.ToBase64String((byte[])Eval("Image")):"~/Image/brain1.png" %>'/></td>
+                       </tr>
                         <tr>
                             <td class="auto-style7">Sample Answer</td>
                             <td class="auto-style4">Student Answer</td>
