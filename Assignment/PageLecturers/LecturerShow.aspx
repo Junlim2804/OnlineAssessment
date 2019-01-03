@@ -105,7 +105,7 @@
             <Columns>
                 <asp:CommandField ShowSelectButton="True" />
                 <asp:BoundField DataField="setID" HeaderText="SetID" ReadOnly="True" SortExpression="setID" />
-                <asp:BoundField DataField="stuID" HeaderText="StuID" ReadOnly="True" SortExpression="stuID" />
+                <asp:BoundField DataField="stuID" HeaderText="StudentID" ReadOnly="True" SortExpression="stuID" />
                 <asp:BoundField DataField="mark" HeaderText="Mark" SortExpression="mark" />
             </Columns>
         </asp:GridView>
@@ -120,7 +120,13 @@
                 <asp:SessionParameter Name="personID" SessionField="username" />
             </SelectParameters>
         </asp:SqlDataSource>
-        <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT * FROM [StudentSetList] WHERE ([setID] = @setID)">
+        <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT stuid,setid, cast(mark as varchar(3) )as mark FROM [StudentSetList] WHERE ([setID] = @setID) and mark is not null and mark&gt;0
+union
+SELECT stuid,setid,'Need Mark' as mark FROM [StudentSetList] WHERE ([setID] = @setID) and mark is not null and mark=-1
+union
+SELECT stuid,setid,'Not Answered' as mark FROM [StudentSetList] WHERE ([setID] = @setID) and mark is null
+order by mark
+" OnSelecting="SqlDataSource3_Selecting">
             <SelectParameters>
                 <asp:SessionParameter Name="setID" SessionField="setID" />
             </SelectParameters>
