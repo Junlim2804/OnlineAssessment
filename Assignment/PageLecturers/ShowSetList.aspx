@@ -364,7 +364,7 @@
                 </SelectParameters>
         </asp:SqlDataSource>
 
-            <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT * FROM [paperset] WHERE ([setID] = @setID)" DeleteCommand="DELETE FROM [paperset] WHERE [setID] = @setID"
+            <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT setid,subjectid,(case when [type]='obj' then 'Objective' else 'Subjective' end) as type,duration,mode,expireddate FROM [paperset] WHERE ([setID] = @setID)" DeleteCommand="DELETE FROM [paperset] WHERE [setID] = @setID"
                 InsertCommand="INSERT INTO [paperset] ( [mode], [duration], [subjectID], [type],expiredDate) VALUES ( @mode, @duration, @subjectID, @type,@ExpiredDate)"
                 UpdateCommand="UPDATE [paperset] SET [duration] = @duration, [subjectID]=@subjectID,[type]=@type,expiredDate=@expiredDate WHERE [setID] = @setID" OnUpdating="SqlDataSource2_Updating" OnUpdated="SqlDataSource2_Updated" OnInserting="SqlDataSource2_Inserting" OnInserted="SqlDataSource2_Inserted">
                 <DeleteParameters>
