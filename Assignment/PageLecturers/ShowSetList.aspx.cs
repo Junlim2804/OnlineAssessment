@@ -139,6 +139,7 @@ namespace Assignment
 
             DataList1.DataBind();
             fv_set.ChangeMode(FormViewMode.ReadOnly);
+            GridView1.DataBind();
             
         }
         protected void SqlDataSource2_Inserting(object sender, SqlDataSourceCommandEventArgs e)

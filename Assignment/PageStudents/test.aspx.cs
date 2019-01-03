@@ -14,6 +14,10 @@ namespace OnlineAssessementSite
         {
             
             Session["USERNAME"] = HttpContext.Current.User.Identity.Name.ToString();
+            if (GridView1.Rows.Count == 0)
+            {
+                Button1.Visible = false;
+            }
         }
 
         protected void btnControl_Click(object sender, EventArgs e)
@@ -46,7 +50,7 @@ namespace OnlineAssessementSite
 
            lblTime.Text= row.Cells[3].Text;
             lblSet.Focus();
-            
+            Button1.Enabled = true;
         }
     }
 }

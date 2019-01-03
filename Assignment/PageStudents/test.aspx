@@ -105,9 +105,9 @@
             </tr>
             <tr>
                 <td class="auto-style3">
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="select p.setid,mode,duration,p.subjectID,subjectName,[type]
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="select p.setid,mode,duration,p.subjectID,subjectName,(case when [type]='obj' then 'Objective' else 'Subjective' end) as type
 from studentsetlist ss,paperset p,subject s
-where stuid=@stuID and p.setId=ss.setID and p.subjectID=s.subjectID and ss.mark is null and available=1 and expiredDate>CURRENT_TIMESTAMP;">
+where stuid=@stuID and p.setId=ss.setID and p.subjectID=s.subjectID and ss.mark is null and available=1 and expiredDate&gt;CURRENT_TIMESTAMP;">
             <SelectParameters>
                 <asp:SessionParameter Name="stuID" SessionField="USERNAME" DefaultValue="" />
             </SelectParameters>
@@ -128,7 +128,7 @@ where stuid=@stuID and p.setId=ss.setID and p.subjectID=s.subjectID and ss.mark 
           <p class="w3-opacity"><asp:Label ID="lblSubID" runat="server"></asp:Label></p>
           <p>Question Set ID:<asp:Label ID="lblSet" runat="server"></asp:Label></p>
           <p>Duration: <asp:Label ID="lblTime" runat="server"></asp:Label></p>
-          <p><asp:Button ID="Button1" Cssclass="button" runat="server" Text="Start Exam" OnClientClick="return confirm('ARE YOU READY');" OnClick="btnControl_Click" /></p>
+          <p><asp:Button ID="Button1" Cssclass="button" runat="server" Text="Start Exam" OnClientClick="return confirm('ARE YOU READY');" OnClick="btnControl_Click" Enabled="False" /></p>
         </div>
       </div>
     </div>

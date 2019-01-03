@@ -358,7 +358,7 @@
         </div>
         </section>
 
-            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT p.setID, p.subjectID, p.type, p.duration, p.mode, p.available FROM paperset AS p INNER JOIN subject AS s ON p.subjectID = s.subjectID INNER JOIN lecturer AS l ON s.CourseCode = l.teachCourse WHERE l.lecId = @personID">
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT p.setID, p.subjectID, (case when [type]='obj' then 'Objective' else 'Subjective' end) as type, p.duration, p.mode, p.available FROM paperset AS p INNER JOIN subject AS s ON p.subjectID = s.subjectID INNER JOIN lecturer AS l ON s.CourseCode = l.teachCourse WHERE l.lecId = @personID">
                 <SelectParameters>
                     <asp:SessionParameter Name="personID" SessionField="username" />
                 </SelectParameters>
