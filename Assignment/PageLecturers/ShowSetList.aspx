@@ -255,7 +255,7 @@
                                          <tr>
                                              <th>ExpiredDate</th>
                                              <td class="auto-style6">
-                                                 <asp:Calendar ID="CalExp" runat="server"></asp:Calendar>
+                                                 <asp:Calendar ID="CalExp" runat="server" SelectedDate='<%# DateTime.Today %>'></asp:Calendar>
                                              </td>
                                          </tr>
                                       <tr>
