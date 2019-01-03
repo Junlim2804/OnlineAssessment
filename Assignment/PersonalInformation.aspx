@@ -9,12 +9,11 @@
 
 
 <div id="div1" runat="server">
-
+    
 </div>
 
 
 <section>
-  
 
  
 <div id="div2" runat="server"></div>
@@ -26,6 +25,7 @@
        
        "Keep doing some kind of work, that the devil may always find you employed."</p>
     <p>-St Jerome</p>
+         
   </div>
 
 

@@ -20,10 +20,12 @@
 
 <nav>
 <div class="sidenav">
-<ul>   
+    <asp:Menu ID="Menu1" runat="server" DataSourceID="SiteMapDataSource1" OnMenuItemDataBound="Menu1_MenuItemDataBound"></asp:Menu>
+    <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" />
+    <!---<ul>   
 <asp:HyperLink ID="hpPersonalInfo" runat="server" NavigateUrl="~/PersonalInformation.aspx">Personal Information</asp:HyperLink>
 <asp:HyperLink ID="hpSet" runat="server" NavigateUrl="~/PageLecturers/ShowSetList.aspx">Create Examination Set</asp:HyperLink>
 <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/PageLecturers/LecturerShow.aspx">Mark Paper</asp:HyperLink>        
-</ul>
+</ul>---->
 </div>
 </nav>
