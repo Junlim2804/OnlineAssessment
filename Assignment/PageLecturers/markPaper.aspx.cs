@@ -120,7 +120,7 @@ namespace Assignment
                 obj.Priority = System.Net.Mail.MailPriority.High;
                 obj.Subject = "Result for Exam ("+setid +")";
                 string date = DateTime.Now.ToString();
-                obj.Body = "Good day !! \n Your test paper of has been graded !! \n You get " + mark + " out of ";
+                obj.Body = "Good day !! Your test paper of has been graded !! You get " + mark;
                 serverobj.Send(obj);
             }
             catch (Exception ex)

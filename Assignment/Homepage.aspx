@@ -345,46 +345,6 @@ img {vertical-align: middle;}
 
 
 
-<!-- Contact -->
- 
-<div class=" w3-padding-64 w3-grayscale-min w3-large bgimg-3" id="contact">
-  <div class="w3-content">
-    <h1 class="w3-center w3-xxlarge" style="margin-bottom:64px">Contact Us</h1>
-    <p>Find us by filling the form below or call us at 012-5543223</p>
-    <p><span class="w3-tag">FYI!</span>We provide in-depth consultation regarding course information.</p>
-    <p class="w3-large"><strong>Call us</strong>, ask for anything in mind or just send us a message:</p>
-
-     <div class="w3-input w3-padding-10 w3-border"> 
-         <table style="width: 100%;">
-             <tr>
-                 <td><asp:Label ID="Label1" runat="server" Text="Name"></asp:Label></td>
-                 <td><asp:TextBox ID="TextBox1" runat="server" Width="300px"  ></asp:TextBox></td>
-                
-             </tr>
-             <tr>
-                 <td> <asp:Label ID="Label2" runat="server" Text="E-mail"></asp:Label></td>
-                 <td><asp:TextBox ID="TextBox2" runat="server" Width="300px"  ></asp:TextBox></td>
-                 
-             </tr>
-             <tr>
-                 <td><asp:Label ID="Label3" runat="server" Text="Contact Number"></asp:Label></td>
-                 <td><asp:TextBox ID="TextBox3" runat="server" Width="300px"  ></asp:TextBox></td>
-                 
-             </tr>
-             <tr>
-                 <td> <asp:Label ID="Label4" runat="server" Text="Message"></asp:Label></td>
-                 <td> <asp:TextBox ID="TextBox4" runat="server" Height="112px" Width="300px"  ></asp:TextBox></td>
-             </tr>
-         </table>
-       
-        
-        <asp:Button ID="Button2" runat="server"  class="w3-button w3-light-grey w3-block" Text ="SEND MESSAGE" OnClick="Button1_Click" />
-     
-      
-    </div>
-  </div>
-</div>
-
 
  
 <script>

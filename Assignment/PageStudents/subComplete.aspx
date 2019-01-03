@@ -19,7 +19,7 @@
     </style>
     <form id="form1" runat="server">
          <div><h2>
-            <asp:Label CssClass="label" ID="Label1" runat="server" Text="Congradulation , you just DO IT"></asp:Label>
+            <asp:Label CssClass="label" ID="Label1" runat="server" Text="Congratulation , you had completed the exam."></asp:Label>
              . You can close this page now.</h2></div>
     </form>
 </body>

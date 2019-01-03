@@ -27,7 +27,7 @@ namespace Assignment
                 
             }
 
-            conn.Open();
+            /*conn.Open();
 
             SqlCommand cmd = new SqlCommand("SELECT p.subjectID, subjectName, mode FROM paperset p, subject s where setID=@setID", conn);
             cmd.Parameters.AddWithValue("@setID", paperset);
@@ -36,7 +36,7 @@ namespace Assignment
             {
                 Label2.Text = "For " + read[0].ToString() + read[1].ToString() + " as " + read[2].ToString() + " paper.";
             }
-            conn.Close();
+            conn.Close();*/
             
         }
 
