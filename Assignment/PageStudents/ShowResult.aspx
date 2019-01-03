@@ -49,7 +49,6 @@
                             <Columns>
                                 <asp:BoundField DataField="setID" HeaderText="Set ID" SortExpression="subjectID" ReadOnly="True" />
                                 <asp:BoundField DataField="subjectID" HeaderText="Subject Code" />
-                                <asp:BoundField DataField="type" HeaderText="Type" />
                                 <asp:BoundField DataField="mark" HeaderText="Score" SortExpression="score" />
                             </Columns>
                             <EditRowStyle BackColor="#2461BF" />
@@ -63,7 +62,7 @@
                             <SortedDescendingCellStyle BackColor="#E9EBEF" />
                             <SortedDescendingHeaderStyle BackColor="#4870BE" />
                         </asp:GridView>
-                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString2 %>" SelectCommand="SELECT s.setID, p.subjectID, p.mode, p.type, s.mark FROM StudentSetList AS s INNER JOIN paperset AS p ON s.setID = p.setID WHERE (s.stuID = @stuID)">
+                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString2 %>" SelectCommand="SELECT s.setID, p.subjectID, p.mode, p.type, s.mark FROM StudentSetList AS s INNER JOIN paperset AS p ON s.setID = p.setID WHERE (s.stuID = @stuID) and s.mark is not null and s.mark&gt;=0">
                             <SelectParameters>
                                 <asp:SessionParameter Name="stuID" SessionField="username" Type="String" />
                             </SelectParameters>

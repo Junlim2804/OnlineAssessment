@@ -16,8 +16,6 @@
          
                     <table style="width: 100%;">
                         <tr>
-                        </tr>
-                        <tr>
                             <td>
 
                                 <table style="width: 100%;">
@@ -46,8 +44,11 @@
                                                         <tr>
                                                             <td><b>Question  <%# Container.DataItemIndex + 1 %>: <%#Eval("questionDesc") %></b>
                                                                 <asp:HiddenField ID="hdnquestionId" Value='<%#Eval("questionId") %>' runat="server" />
+                                                                
+                                                                <br />
                                                             </td>
                                                         </tr>
+                                                        <tr><td><asp:Image ID="Image1" runat="server" height="25%" width="25%" Visible='<%#Eval("Image")!=DBNull.Value %>' ImageUrl='<%#(Eval("Image")!=DBNull.Value)?"data:Image/jpg;base64,"+Convert.ToBase64String((byte[])Eval("Image")):"~/Image/brain1.png" %>'/></td></tr>
                                                         <tr>
                                                             <td>
                                                                 <table>
@@ -114,7 +115,7 @@
                      var confirmation = confirm("ARE YOU CONFIRM TO SUBMIT??");
                         if (confirmation == true) {  
 
-                            window.opener.location.href = "PersonalInformation.aspx";
+                            window.opener.location.href = "../PersonalInformation.aspx";
                             return true;
                         }                 
                    

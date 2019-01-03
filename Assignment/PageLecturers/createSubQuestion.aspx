@@ -20,10 +20,10 @@
             text-align: left;
         }
 
-        .tblOptions tr{
+        .tblOptions tr {
             padding: 8px;
             text-align: left;
-            border-bottom: 1px solid #ddd;
+            C: \OnlineAssessment\Assignment\PageLecturers\createSubQuestion.aspx border-bottom: 1px solid #ddd;
         }
 
         .question {background-color:#B0BEC5;}
@@ -150,7 +150,7 @@
                                                                             <table class="tblOptions">
                                                                                 <tr>
                                                                                     <td>
-                                                                                        <asp:Image ID="Image1" runat="server" height="25%" width="25%" Visible='<%#Eval("Image")!=DBNull.Value %>' />
+                                                                                        <asp:Image ID="Image1" runat="server" height="25%" width="25%" Visible='<%#Eval("Image")!=DBNull.Value %>' ImageUrl='<%#(Eval("Image")!=DBNull.Value)?"data:Image/jpg;base64,"+Convert.ToBase64String((byte[])Eval("Image")):"~/Image/brain1.png" %>'  />
                                                                                             
                                                                                     </td>
                                                                                 </tr>

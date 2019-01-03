@@ -402,10 +402,13 @@ where setid=@setid
                  </UpdateParameters>
             </asp:SqlDataSource>
 
-             <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT * FROM [subject]" OnUpdating="SqlDataSource3_Updating" UpdateCommand="UPDATE PAPERSET
+             <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT subject.subjectName, subject.subjectID FROM subject INNER JOIN lecturer ON subject.CourseCode = lecturer.teachCourse WHERE (lecturer.lecId = @personID)" OnUpdating="SqlDataSource3_Updating" UpdateCommand="UPDATE PAPERSET
 SET available=0
 where setid=@setid
 " OnUpdated="SqlDataSource3_Updated">
+                 <SelectParameters>
+                     <asp:SessionParameter Name="personID" SessionField="username" />
+                 </SelectParameters>
                  <UpdateParameters>
                      <asp:Parameter Name="setid" />
                  </UpdateParameters>

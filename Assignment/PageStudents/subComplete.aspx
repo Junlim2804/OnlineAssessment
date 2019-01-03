@@ -18,9 +18,9 @@
         }
     </style>
     <form id="form1" runat="server">
-         <div>
+         <div><h2>
             <asp:Label CssClass="label" ID="Label1" runat="server" Text="Congradulation , you just DO IT"></asp:Label>
-         </div>
+             . You can close this page now.</h2></div>
     </form>
 </body>
 </html>

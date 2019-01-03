@@ -76,10 +76,18 @@ namespace Assignment
             }
             else if (e.CommandName == "Update")
             {
+                string newDesc = ((TextBox)e.Item.FindControl("tbDesc")).Text;
+                string newAnswer = ((TextBox)e.Item.FindControl("tbAnswer")).Text;
+                string qid = ((HiddenField)e.Item.FindControl("hdnquestionId")).Value;
                 if (!((FileUpload)e.Item.FindControl("FileUpload1")).HasFile)
                 {
                     ((Label)e.Item.FindControl("Label1")).Text = "No yet upload";
-                    return;
+                    SqlCommand cmd = new SqlCommand("update question set questionDesc='" + newDesc +
+                     "',sampleAns='" + newAnswer + "' where questionID='" + qid + "';", conn);
+
+                    conn.Open();
+                    
+                    cmd.ExecuteNonQuery();
                 }
                 else
                 {
@@ -89,9 +97,7 @@ namespace Assignment
                     uploaded.InputStream.Read(pic, 0, length);
                     e.Item.FindControl("Image1").Visible = true;
 
-                    string newDesc = ((TextBox)e.Item.FindControl("tbDesc")).Text;
-                    string newAnswer = ((TextBox)e.Item.FindControl("tbAnswer")).Text;
-                    string qid = ((HiddenField)e.Item.FindControl("hdnquestionId")).Value;
+                   
 
                     SqlCommand cmd = new SqlCommand("update question set questionDesc='" + newDesc +
                        "',sampleAns='" + newAnswer + "', image=@image where questionID='" + qid + "';", conn);
@@ -99,11 +105,12 @@ namespace Assignment
                     conn.Open();
                     cmd.Parameters.AddWithValue("@image", pic);
                     cmd.ExecuteNonQuery();
-                    dl_question.EditItemIndex = -1;
+                }
+                     dl_question.EditItemIndex = -1;
                     conn.Close();
 
                     Filldata();
-                }
+                
             }
             else if (e.CommandName == "Delete")
             {
@@ -129,10 +136,19 @@ namespace Assignment
             string newDesc = ((TextBox)fv_add.Row.FindControl("tbNewDesc")).Text;
             string newAnswer = ((TextBox)fv_add.Row.FindControl("tbNewAnswer")).Text;
 
-            SqlCommand cmd = new SqlCommand("Insert into question(questionDesc,sampleAns,setID,image) " +
-                "values('" + newDesc + "','" + newAnswer + "','"+paperset+"', @image)", conn);
-            
+            SqlCommand cmd;
+            if (!((FileUpload)fv_add.Row.FindControl("FileUpload2")).HasFile)
+            {
+                cmd = new SqlCommand("Insert into question(questionDesc,sampleAns,setID) " +
+                 "values('" + newDesc + "','" + newAnswer + "','" + paperset + "')", conn);
+            }
+            else
+            { 
+                cmd = new SqlCommand("Insert into question(questionDesc,sampleAns,setID,image) " +
+                    "values('" + newDesc + "','" + newAnswer + "','" + paperset + "', @image)", conn);
+
             cmd.Parameters.AddWithValue("@image", pic);
+            }
             conn.Open();
             cmd.ExecuteNonQuery();
             conn.Close();

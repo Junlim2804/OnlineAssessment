@@ -92,17 +92,6 @@ namespace Assignment
             }
             else if (e.CommandName == "Update")
             {
-                if (!((FileUpload)e.Item.FindControl("FileUpload1")).HasFile)
-                {
-                    ((Label)e.Item.FindControl("Label1")).Text = "No yet upload";
-                    return;
-                }
-
-                int length = ((FileUpload)e.Item.FindControl("FileUpload1")).PostedFile.ContentLength;
-                byte[] pic = new byte[length];
-                HttpPostedFile uploaded = ((FileUpload)e.Item.FindControl("FileUpload1")).PostedFile;
-                uploaded.InputStream.Read(pic, 0, length);
-
                 string newDesc = ((TextBox)e.Item.FindControl("tbDesc")).Text;
                 string newOption1 = ((TextBox)e.Item.FindControl("tbOption1")).Text;
                 string newOption2 = ((TextBox)e.Item.FindControl("tbOption2")).Text;
@@ -110,12 +99,29 @@ namespace Assignment
                 string newOption4 = ((TextBox)e.Item.FindControl("tbOption4")).Text;
                 string newAnswer = ((TextBox)e.Item.FindControl("tbAnswer")).Text;
                 string qid = ((HiddenField)e.Item.FindControl("hdnquestionId")).Value;
-
-                SqlCommand cmd = new SqlCommand("update question set questionDesc='"+newDesc+
-                    "',Option1='"+newOption1+"',Option2='"+newOption2+"',Option3='"+newOption3
-                    +"',Option4='"+newOption4+"',sampleAns='"+newAnswer+"', image=@image where questionID='"+qid+"';", conn);
+                SqlCommand cmd;
                 conn.Open();
-                cmd.Parameters.AddWithValue("@image", pic);
+                if (!((FileUpload)e.Item.FindControl("FileUpload1")).HasFile)
+                {
+                    ((Label)e.Item.FindControl("Label1")).Text = "No yet upload";
+                    cmd = new SqlCommand("update question set questionDesc='" + newDesc +
+                        "',Option1='" + newOption1 + "',Option2='" + newOption2 + "',Option3='" + newOption3
+                        + "',Option4='" + newOption4 + "',sampleAns='" + newAnswer + "' where questionID='" + qid + "';", conn);
+                }
+                else
+                {
+                    int length = ((FileUpload)e.Item.FindControl("FileUpload1")).PostedFile.ContentLength;
+                    byte[] pic = new byte[length];
+                    HttpPostedFile uploaded = ((FileUpload)e.Item.FindControl("FileUpload1")).PostedFile;
+                    uploaded.InputStream.Read(pic, 0, length);
+
+
+                        cmd = new SqlCommand("update question set questionDesc='" + newDesc +
+                        "',Option1='" + newOption1 + "',Option2='" + newOption2 + "',Option3='" + newOption3
+                        + "',Option4='" + newOption4 + "',sampleAns='" + newAnswer + "', image=@image where questionID='" + qid + "';", conn);
+                    
+                    cmd.Parameters.AddWithValue("@image", pic);
+                }
                 cmd.ExecuteNonQuery();
                 dl_question.EditItemIndex = -1;
                 conn.Close();
@@ -147,11 +153,21 @@ namespace Assignment
             byte[] pic = new byte[length];
             HttpPostedFile uploaded = ((FileUpload)fv_add.Row.FindControl("FileUpload2")).PostedFile;
             uploaded.InputStream.Read(pic, 0, length);
-            
-            SqlCommand cmd = new SqlCommand("Insert into question(questionDesc,Option1,Option2,Option3,Option4,sampleAns,setID,image) " +
-                "values('" + newDesc + "','" + newOption1 + "','" + newOption2 + "','" + newOption3 + "','" + newOption4 + "','" + newAnswer + "','"+paperSet+"',@image)", conn);
+
+            SqlCommand cmd;
+            if (!((FileUpload)fv_add.Row.FindControl("FileUpload2")).HasFile)
+            {
+                cmd = new SqlCommand("Insert into question(questionDesc,Option1,Option2,Option3,Option4,sampleAns,setID) " +
+                    "values('" + newDesc + "','" + newOption1 + "','" + newOption2 + "','" + newOption3 + "','" + newOption4 + "','" + newAnswer + "','" + paperSet + "')", conn);
+            }
+            else
+            {
+                cmd = new SqlCommand("Insert into question(questionDesc,Option1,Option2,Option3,Option4,sampleAns,setID,image) " +
+                    "values('" + newDesc + "','" + newOption1 + "','" + newOption2 + "','" + newOption3 + "','" + newOption4 + "','" + newAnswer + "','" + paperSet + "',@image)", conn);
+
+                cmd.Parameters.AddWithValue("@image", pic);
+            }
             conn.Open();
-            cmd.Parameters.AddWithValue("@image", pic);
             cmd.ExecuteNonQuery();
             conn.Close();
             fv_add.ChangeMode(FormViewMode.ReadOnly);

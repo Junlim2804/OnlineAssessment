@@ -26,7 +26,7 @@ namespace Assignment
 
             string userId = u.UserName;
 
-            string sql = "SELECT * from studentSetList s,paperset p where stuID='"+u.UserName+ "' and (mark is not null or expiredDate<CURRENT_TIMESTAMP) and p.setid=s.setid  ";
+            string sql = "SELECT * from studentSetList s,paperset p where stuID='"+u.UserName+ "' and (mark is not null or expiredDate<CURRENT_TIMESTAMP) and p.setid=s.setid and mark>=0 ";
             SqlDataAdapter da = new SqlDataAdapter(sql, ConfigurationManager.ConnectionStrings["CaringWow"].ToString());
 
             DataSet ds = new DataSet();

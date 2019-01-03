@@ -61,7 +61,7 @@ namespace Assignment
             
 
             grdquestions.DataBind();
-            if(type=="Sub"||type=="sub")
+            if(type=="Sub"||type=="sub"||type=="subjective"||type=="Subjective")
             foreach (GridViewRow row in grdquestions.Rows)
             {
                
@@ -125,7 +125,7 @@ namespace Assignment
             SqlCommand command;
             int noOfCorrectAnswer=0;
             int i = 0;
-            if (type == "Obj"||type=="obj")
+            if (type == "Obj"||type=="obj"||type == "Objective" || type == "objective")
                 foreach (GridViewRow row in grdquestions.Rows)
                 {
                   
@@ -171,8 +171,9 @@ namespace Assignment
                     sql = "insert into questionList(stuID,questionID,studAns) values('"+userId+"','" + qid + "','" + answer +" ');";
                     command = new SqlCommand(sql, cnn);
                     command.ExecuteNonQuery();
-                   
-
+                    sql = "update StudentSetList set mark=-1 where setid='" + setID + "' and stuId='" + userId + "'";
+                    command = new SqlCommand(sql, cnn);
+                    command.ExecuteNonQuery();
 
                 }
                 Response.Redirect("subComplete.aspx");
