@@ -135,7 +135,7 @@
                         var confirmation = confirm("ARE YOU CONFIRM TO SUBMIT??");
                         if (confirmation == true) {  
 
-                            window.opener.location.href = "PersonalInformation.aspx";
+                            window.opener.location.href = "../PersonalInformation.aspx";
                             return true;
                         }                          
                         else

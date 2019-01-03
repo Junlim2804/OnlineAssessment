@@ -396,7 +396,7 @@
 where available=1" OnUpdating="SqlDataSource4_Updating" UpdateCommand="UPDATE PAPERSET
 SET available=1
 where setid=@setid
-">
+" OnUpdated="SqlDataSource4_Updated">
                  <UpdateParameters>
                      <asp:Parameter Name="setid" />
                  </UpdateParameters>

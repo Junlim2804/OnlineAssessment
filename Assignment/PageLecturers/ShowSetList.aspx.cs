@@ -210,7 +210,7 @@ namespace Assignment
         protected void BtnEditQuestion_Click(object sender, EventArgs e)
         {
             Label lbType = (Label)fv_set.FindControl("lbType");
-            if (lbType.Text=="obj")
+            if (lbType.Text=="Objective")
             Response.Redirect("createQuestion.aspx?SETID=" + GridView1.SelectedValue);
             else
                 Response.Redirect("createSubQuestion.aspx?SETID=" + GridView1.SelectedValue);
@@ -247,6 +247,7 @@ namespace Assignment
         protected void SqlDataSource3_Updated(object sender, SqlDataSourceStatusEventArgs e)
         {
             GridView2.DataBind();
+            GridView1.DataBind();
         }
 
         protected void btnAddStud_Click(object sender, EventArgs e)
@@ -332,6 +333,10 @@ namespace Assignment
 
         }
 
-
+        protected void SqlDataSource4_Updated(object sender, SqlDataSourceStatusEventArgs e)
+        {
+            GridView1.DataBind();
+            GridView2.DataBind();
+        }
     }
 }
