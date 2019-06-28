@@ -1,6 +1,4 @@
-* linguist-vendored
-*.rb linguist-language=C#
-*.js linguist-vendored=false
+
 
 ###############################################################################
 # Set default behavior to automatically normalize line endings.
